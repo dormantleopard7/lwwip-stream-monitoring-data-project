@@ -53,6 +53,7 @@ public class StreamMonitoringMain {
 
         // stats:
         //  min (Date), Q1, median, Q3, max (Date)
+        //   note that these work best when the data is sorted first
         //  mean, variance/stdev, outliers
         // options:
         //  start and end date
