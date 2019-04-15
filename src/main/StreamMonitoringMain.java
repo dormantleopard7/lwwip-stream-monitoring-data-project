@@ -81,7 +81,7 @@ public class StreamMonitoringMain {
 
         Scanner console = new Scanner(System.in);
         String resp = "continue";
-        while (!resp.equals("q")) {
+        while (!resp.equalsIgnoreCase("q")) {
             System.out.print("Start date: ");
             Date start = new Date(console.nextLine());
             System.out.print("End date: ");
