@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f222aa8f-a7ac-492f-a42a-73b8efff7dc6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/StreamMonitoringDataWriter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lwwip-stream-monitoring-data-project/main/data/coal_creek_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lwwip-stream-monitoring-data-project/main/data/coal_creek_data.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/StreamMonitoringDataParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/StreamMonitoringDataParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/StreamMonitoringMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/StreamMonitoringMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/ConvertersTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/ConvertersTests.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,19 +33,51 @@
     <select />
   </component>
   <component name="DefaultGradleProjectSettings">
-    <option name="testRunner" value="GRADLE" />
-    <option name="delegatedBuild" value="true" />
+    <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/StreamMonitoringMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="89" column="41" selection-start-line="89" selection-start-column="41" selection-end-line="89" selection-end-column="41" />
+            <state relative-caret-position="170">
+              <caret line="10" column="87" selection-start-line="10" selection-start-column="87" selection-end-line="10" selection-end-column="87" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/StreamMonitoringDataWriter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" column="21" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/StreamMonitoringDataParser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="13" column="28" lean-forward="true" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/ConvertersTests.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="39" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -60,6 +94,9 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>stand</find>
+      <find>COEFF</find>
+      <find>CENT</find>
+      <find>turb_offs</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -68,7 +105,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/StreamMonitoringDataParser.java" />
         <option value="$PROJECT_DIR$/src/main/NumericConverter.java" />
         <option value="$PROJECT_DIR$/src/main/SimpleDoubleConverter.java" />
         <option value="$PROJECT_DIR$/src/main/CoordinatesConverter.java" />
@@ -79,8 +115,10 @@
         <option value="$PROJECT_DIR$/src/main/DoubleConverter2.java" />
         <option value="$PROJECT_DIR$/src/main/UnitsTextConverter.java" />
         <option value="$PROJECT_DIR$/src/main/StreamMonitoringData.java" />
-        <option value="$PROJECT_DIR$/src/test/ConvertersTests.java" />
+        <option value="$PROJECT_DIR$/src/main/StreamMonitoringDataParser.java" />
+        <option value="$PROJECT_DIR$/src/main/StreamMonitoringDataWriter.java" />
         <option value="$PROJECT_DIR$/src/main/StreamMonitoringMain.java" />
+        <option value="$PROJECT_DIR$/src/test/ConvertersTests.java" />
       </list>
     </option>
   </component>
@@ -96,7 +134,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -119,13 +157,6 @@
               <item name="lwwip-stream-monitoring-data-project" type="b2602c69:ProjectViewProjectNode" />
               <item name="lwwip-stream-monitoring-data-project" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="lwwip-stream-monitoring-data-project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lwwip-stream-monitoring-data-project" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -136,7 +167,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -265,7 +296,8 @@
       <workItem from="1553993320016" duration="714000" />
       <workItem from="1553995047893" duration="200000" />
       <workItem from="1553997400849" duration="9142000" />
-      <workItem from="1555294506586" duration="1504000" />
+      <workItem from="1555294506586" duration="1633000" />
+      <workItem from="1558124279657" duration="1972000" />
     </task>
     <servers />
   </component>
@@ -302,7 +334,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76550000" />
+    <option name="totallyTimeSpent" value="78651000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -314,9 +346,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="695" extended-state="7" />
+    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2874494" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2923077" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -332,7 +365,7 @@
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="7" weight="0.3285968" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="9" visible="true" weight="0.3285968" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.3285968" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.3285968" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
@@ -466,26 +499,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/ConvertersTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="12" column="10" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/StreamMonitoringDataParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="17" column="55" selection-start-line="17" selection-start-column="55" selection-end-line="17" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/StreamMonitoringData.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3662">
@@ -496,13 +509,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/StreamMonitoringMain.java">
+    <entry file="file://$PROJECT_DIR$/src/main/StreamMonitoringDataParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="89" column="41" selection-start-line="89" selection-start-column="41" selection-end-line="89" selection-end-column="41" />
+        <state relative-caret-position="221">
+          <caret line="13" column="28" lean-forward="true" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/StreamMonitoringMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="87" selection-start-line="10" selection-start-column="87" selection-end-line="10" selection-end-column="87" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/StreamMonitoringDataWriter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="21" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/ConvertersTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="39" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
         </state>
       </provider>
     </entry>
