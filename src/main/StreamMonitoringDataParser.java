@@ -53,8 +53,6 @@ public class StreamMonitoringDataParser {
             }
             // removes null dates
             streamData.removeIf(o -> o.getDate() == null);
-            // sort
-            streamData.sort(Comparator.comparing(StreamMonitoringData::getDate));
 
             return streamData;
         } catch (IOException e) {

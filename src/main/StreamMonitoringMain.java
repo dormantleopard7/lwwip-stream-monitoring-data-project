@@ -1,10 +1,7 @@
 package main;
 
-import org.apache.commons.collections4.MultiValuedMap;
-
 import java.io.FileNotFoundException;
 import java.util.Date;
-import java.util.List;
 import java.util.Scanner;
 
 public class StreamMonitoringMain {
@@ -25,9 +22,9 @@ public class StreamMonitoringMain {
         // Using BindByPosition (new):
         // - remove headers altogether
 
-        // initial parsing
-        List<StreamMonitoringData> streamData =
-                StreamMonitoringDataParser.parseData(STREAM_FILE_PATH);
+        StreamMonitoringDataModel streamModel = new StreamMonitoringDataModel(STREAM_FILE_PATH);
+
+        //StreamMonitoringDataWriter.write(streamModel, "data.tsv");
 
         // stats:
         //  min (Date), Q1, median, Q3, max (Date)
@@ -69,7 +66,7 @@ public class StreamMonitoringMain {
                     "(3) Air Temperature (°C), (4) Water Temperature (°C), " +
                     "(5) pH, (6) Dissolved Oxygen (ppm), (7) Conductivity (μS/cm)");
             int dataType = Integer.parseInt(console.nextLine());
-            System.out.println("Average: " + calculateAverage(dataType, streamData, start, end));
+            System.out.println("Average: " + streamModel.calculateAverage(dataType, start, end));
             System.out.print("Continue? (Type q to quit) ");
             resp = console.nextLine();
         }
@@ -77,86 +74,5 @@ public class StreamMonitoringMain {
         // Future:
         // - need to fix flow units stuff
         // - visualizing (histogram, scatter plot, line graph, bar graph, pie chart)
-    }
-
-    // find average of dateType between startDate and endDate from streamData
-    private static double calculateAverage(int dataType, List<StreamMonitoringData> streamData,
-                                           Date startDate, Date endDate) {
-        if (startDate.compareTo(endDate) > 0) {
-            return Double.NaN;
-        }
-        int startIndex = leftBinarySearch(startDate, streamData);
-        if (startIndex >= streamData.size()) {
-            return Double.NaN;
-        }
-        double sum = 0.0;
-        int num = 0;
-        for (int i = startIndex; i < streamData.size(); i++) {
-            StreamMonitoringData data = streamData.get(i);
-            if (data.getDate().compareTo(endDate) > 0) {
-                break;
-            }
-            MultiValuedMap<Integer, Double> dataTypes;
-            switch (dataType) {
-                case 1:
-                    dataTypes = data.getTurbiditiesFirst();
-                    break;
-                case 2:
-                    dataTypes = data.getTurbiditiesSecond();
-                    break;
-                case 3:
-                    dataTypes = data.getAirTemps();
-                    break;
-                case 4:
-                    dataTypes = data.getWaterTemps();
-                    break;
-                case 5:
-                    dataTypes = data.getPHs();
-                    break;
-                case 6:
-                    dataTypes = data.getOxygens();
-                    break;
-                case 7:
-                    dataTypes = data.getConductivities();
-                    break;
-                default:
-                    // flow -- not good yet
-                    dataTypes = data.getFlowLefts();
-                    break;
-            }
-            // could use .values() instead
-            for (Double value : dataTypes.values()) {
-                if (value != null) {
-                    sum += value;
-                    num++;
-                }
-            }
-        }
-        return sum / num;
-    }
-
-    // find index of leftmost instance of date
-    // works when date not in list (first date after)
-    //  if date too early, returns first
-    //  if date too late, then invalid
-    private static int leftBinarySearch(Date date, List<StreamMonitoringData> streamData) {
-        if (date.compareTo(streamData.get(0).getDate()) <= 0) {
-            return 0;
-        }
-        if (date.compareTo(streamData.get(streamData.size() - 1).getDate()) > 0) {
-            return streamData.size();
-        }
-        int left = -1;
-        int mid;
-        int right = streamData.size() - 1;
-        while (right - left > 1) {
-            mid = left + (right - left) / 2;
-            if (streamData.get(mid).getDate().compareTo(date) >= 0) {
-                right = mid;
-            } else {
-                left = mid;
-            }
-        }
-        return right;
     }
 }

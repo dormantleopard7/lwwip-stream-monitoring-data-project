@@ -6,10 +6,20 @@ import java.io.PrintStream;
 import java.util.List;
 
 public class StreamMonitoringDataWriter {
+    public static void write(StreamMonitoringDataModel streamModel, String outputFileName)
+            throws FileNotFoundException {
+        printToFile(streamModel.getData(), outputFileName);
+    }
+
     public static void write(String inputFilePath, String outputFileName)
             throws FileNotFoundException {
         List<StreamMonitoringData> streamData =
                 StreamMonitoringDataParser.parseData(inputFilePath);
+        printToFile(streamData, outputFileName);
+    }
+
+    private static void printToFile(List<StreamMonitoringData> streamData, String outputFileName)
+            throws FileNotFoundException {
         PrintStream output = new PrintStream(new File(outputFileName));
         // headers:
         output.print("Date\t");
