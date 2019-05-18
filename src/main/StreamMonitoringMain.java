@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class StreamMonitoringMain {
-    private static final String STREAM_FILE_PATH = "src/main/data/coal_creek_data.tsv";
+    public static final String STREAM_FILE_PATH = "src/main/data/coal_creek_data.tsv";
 
     public static void main(String[] args) throws FileNotFoundException {
         // Notes:
