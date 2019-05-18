@@ -66,7 +66,7 @@ public class StreamMonitoringMain {
                     "(3) Air Temperature (°C), (4) Water Temperature (°C), " +
                     "(5) pH, (6) Dissolved Oxygen (ppm), (7) Conductivity (μS/cm)");
             int dataType = Integer.parseInt(console.nextLine());
-            System.out.println("Average: " + streamModel.calculateAverage(dataType, start, end));
+            System.out.println("Average: " + streamModel.getMean(dataType, start, end));
             System.out.print("Continue? (Type q to quit) ");
             resp = console.nextLine();
         }
