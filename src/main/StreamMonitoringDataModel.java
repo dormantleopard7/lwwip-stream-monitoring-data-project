@@ -5,6 +5,9 @@ import org.apache.commons.collections4.MultiValuedMap;
 import java.util.*;
 
 public class StreamMonitoringDataModel {
+    private static final int OUTLIER_SDS = 3;
+    private static final double OUTLIERS_IQR = 1.5;
+
     private List<StreamMonitoringData> streamData;
 
     public StreamMonitoringDataModel(String inputFilePath) {
@@ -119,6 +122,35 @@ public class StreamMonitoringDataModel {
             sumSqDiff += (diff * diff);
         }
         return Math.sqrt(sumSqDiff / data.size());
+    }
+
+    public List<Double> getOutliersStdDev(List<Double> sortedData, double mean, double stdDev) {
+        double low = mean - OUTLIER_SDS * stdDev;
+        double high = mean + OUTLIER_SDS * stdDev;
+        return getOutliers(sortedData, low, high);
+    }
+
+    public List<Double> getOutliersIQR(List<Double> sortedData, double[] quartiles) {
+        double iqr = quartiles[2] - quartiles[0];
+        double low = quartiles[0] - OUTLIERS_IQR * iqr;
+        double high = quartiles[2] + OUTLIERS_IQR * iqr;
+        return getOutliers(sortedData, low, high);
+    }
+
+    private List<Double> getOutliers(List<Double> sortedData, double low, double high) {
+        List<Double> outliers = new ArrayList<>();
+        int i = 0;
+        while (sortedData.get(i) < low) { //&& i < sortedData.size()) {
+            outliers.add(sortedData.get(i));
+            i++;
+        }
+        i = sortedData.size() - 1;
+        while (sortedData.get(i) > high) { //&& i >= 0) {
+            outliers.add(sortedData.get(i));
+            i--;
+        }
+        Collections.sort(outliers);
+        return outliers;
     }
 
     // find average of dateType between startDate and endDate from streamData

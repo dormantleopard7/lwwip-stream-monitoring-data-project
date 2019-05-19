@@ -22,6 +22,15 @@ public class ModelTests {
         System.out.println(Arrays.toString(streamModel.getQuartiles(modelTests.arrayToList(arr2))));
         System.out.println(Arrays.toString(streamModel.getQuartiles(modelTests.arrayToList(arr3))));
         System.out.println(Arrays.toString(streamModel.getQuartiles(modelTests.arrayToList(arr4))));
+
+        double[] arr5 = { -9, -8, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 20, 25 };
+        List<Double> list5 = modelTests.arrayToList(arr5);
+        double mean = streamModel.getMean(list5);
+        double stdev = streamModel.getStdDev(list5, mean);
+        System.out.println(mean + " " + stdev);
+        System.out.println(streamModel.getOutliersStdDev(list5, mean, stdev));
+        double[] quartiles = streamModel.getQuartiles(list5);
+        System.out.println(streamModel.getOutliersIQR(list5, quartiles));
     }
 
     private List<Double> arrayToList(double[] arr) {
