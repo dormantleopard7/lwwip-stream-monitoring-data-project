@@ -32,7 +32,7 @@ public class ModelTests {
         double[] quartiles = streamModel.getQuartiles(list5);
         System.out.println(streamModel.getOutliersIQR(list5, quartiles));
 
-        double[] arr6 = { 1, 2, 2, 2, 3, 3, 4, 4, 5, 6, 7, 7, 7, 7, 8, 9, 10, 10, 10, 10, 10 };
+        double[] arr6 = { 1, 2, 2, 2, 3, 3, 4, 4, 5, 6, 7, 7, 7, 7, 8, 9, 10, 10, 10, 10 };
         System.out.println("mode: " + streamModel.getMode(modelTests.arrayToList(arr6)));
     }
 

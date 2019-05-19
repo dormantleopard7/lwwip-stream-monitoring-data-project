@@ -7,8 +7,8 @@ import java.util.*;
 import static main.StreamMonitoringDataParser.DELTA;
 
 public class StreamMonitoringDataModel {
-    private static final int OUTLIER_SDS = 3;
-    private static final double OUTLIERS_IQR = 1.5;
+    public static final int OUTLIER_SDS = 3;
+    public static final double OUTLIERS_IQR = 1.5;
 
     private List<StreamMonitoringData> streamData;
 
@@ -109,8 +109,9 @@ public class StreamMonitoringDataModel {
     }
 
     // account for multiple modes!!!
-    public double getMode(List<Double> sortedData) {
-        double most = Double.NaN;
+    public List<Double> getMode(List<Double> sortedData) {
+        //double most = Double.NaN;
+        List<Double> mosts = new ArrayList<>();
         int mostCount = 1;
         int i = 0;
         while (i < sortedData.size()) {
@@ -121,13 +122,16 @@ public class StreamMonitoringDataModel {
                 currCount++;
                 i++;
             }
-            if (currCount > mostCount) {
-                mostCount = currCount;
-                most = curr;
+            if (currCount >= mostCount) {
+                if (currCount > mostCount) {
+                    mostCount = currCount;
+                    mosts.clear();
+                }
+                mosts.add(curr);
             }
             i++;
         }
-        return most;
+        return mosts;
     }
 
     public double getMean(List<Double> data) {
@@ -175,61 +179,6 @@ public class StreamMonitoringDataModel {
         }
         Collections.sort(outliers);
         return outliers;
-    }
-
-    // find average of dateType between startDate and endDate from streamData
-    public double getMean(int dataType, Date startDate, Date endDate) {
-        if (startDate.compareTo(endDate) > 0) {
-            return Double.NaN;
-        }
-        int startIndex = leftBinarySearch(startDate);
-        if (startIndex >= streamData.size()) {
-            return Double.NaN;
-        }
-        double sum = 0.0;
-        int num = 0;
-        for (int i = startIndex; i < streamData.size(); i++) {
-            StreamMonitoringData data = streamData.get(i);
-            if (data.getDate().compareTo(endDate) > 0) {
-                break;
-            }
-            MultiValuedMap<Integer, Double> dataTypes;
-            switch (dataType) {
-                case 1:
-                    dataTypes = data.getTurbiditiesFirst();
-                    break;
-                case 2:
-                    dataTypes = data.getTurbiditiesSecond();
-                    break;
-                case 3:
-                    dataTypes = data.getAirTemps();
-                    break;
-                case 4:
-                    dataTypes = data.getWaterTemps();
-                    break;
-                case 5:
-                    dataTypes = data.getPHs();
-                    break;
-                case 6:
-                    dataTypes = data.getOxygens();
-                    break;
-                case 7:
-                    dataTypes = data.getConductivities();
-                    break;
-                default:
-                    // flow -- not good yet
-                    dataTypes = data.getFlowLefts();
-                    break;
-            }
-            // could use .values() instead
-            for (Double value : dataTypes.values()) {
-                if (value != null) {
-                    sum += value;
-                    num++;
-                }
-            }
-        }
-        return sum / num;
     }
 
     // find index of leftmost instance of date

@@ -35,11 +35,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/StreamMonitoringMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="406">
-              <caret line="65" column="80" selection-start-line="65" selection-start-column="80" selection-end-line="65" selection-end-column="80" />
+            <state relative-caret-position="189">
+              <caret line="88" column="79" lean-forward="true" selection-start-line="88" selection-start-column="79" selection-end-line="88" selection-end-column="79" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -47,11 +47,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/StreamMonitoringDataModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="44">
-              <caret line="110" column="36" selection-start-line="110" selection-start-column="36" selection-end-line="110" selection-end-column="36" />
+            <state relative-caret-position="3043">
+              <caret line="181" column="5" selection-start-line="181" selection-start-column="5" selection-end-line="181" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1102#1110#0" expanded="true" />
@@ -65,9 +65,21 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/ModelTests.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="189">
+              <caret line="34" column="88" selection-start-line="34" selection-start-column="88" selection-end-line="34" selection-end-column="88" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/StreamMonitoringDataWriter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
+            <state relative-caret-position="153">
               <caret line="9" column="40" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -81,18 +93,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="381">
               <caret line="32" column="29" lean-forward="true" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="29" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/ModelTests.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="34" column="92" selection-start-line="34" selection-start-column="92" selection-end-line="34" selection-end-column="92" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -136,9 +136,9 @@
         <option value="$PROJECT_DIR$/src/test/ConvertersTests.java" />
         <option value="$PROJECT_DIR$/src/main/StreamMonitoringDataParser.java" />
         <option value="$PROJECT_DIR$/src/main/StreamMonitoringDataWriter.java" />
-        <option value="$PROJECT_DIR$/src/main/StreamMonitoringMain.java" />
         <option value="$PROJECT_DIR$/src/test/ModelTests.java" />
         <option value="$PROJECT_DIR$/src/main/StreamMonitoringDataModel.java" />
+        <option value="$PROJECT_DIR$/src/main/StreamMonitoringMain.java" />
       </list>
     </option>
   </component>
@@ -226,7 +226,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.ModelTests">
+  <component name="RunManager" selected="Application.StreamMonitoringMain">
     <configuration name="ModelTests" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="test.ModelTests" />
       <module name="lwwip-stream-monitoring-data-project" />
@@ -302,8 +302,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ModelTests" />
         <item itemvalue="Application.StreamMonitoringMain" />
+        <item itemvalue="Application.ModelTests" />
         <item itemvalue="JUnit.ConvertersTests" />
         <item itemvalue="JUnit.ConvertersTests.testTurbidity" />
         <item itemvalue="JUnit.ConvertersTests.testFlow" />
@@ -332,7 +332,7 @@
       <workItem from="1553997400849" duration="9142000" />
       <workItem from="1555294506586" duration="1633000" />
       <workItem from="1558124279657" duration="3785000" />
-      <workItem from="1558209396897" duration="13954000" />
+      <workItem from="1558209396897" duration="16127000" />
     </task>
     <servers />
   </component>
@@ -369,7 +369,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="94418000" />
+    <option name="totallyTimeSpent" value="96591000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -382,7 +382,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.297166" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -559,30 +558,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/StreamMonitoringDataWriter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="9" column="40" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/ConvertersTests.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="178">
           <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/StreamMonitoringMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="65" column="80" selection-start-line="65" selection-start-column="80" selection-end-line="65" selection-end-column="80" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -599,10 +578,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/StreamMonitoringDataWriter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="40" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/ModelTests.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
-          <caret line="34" column="92" selection-start-line="34" selection-start-column="92" selection-end-line="34" selection-end-column="92" />
+          <caret line="34" column="88" selection-start-line="34" selection-start-column="88" selection-end-line="34" selection-end-column="88" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -611,8 +600,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/StreamMonitoringDataModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="110" column="36" selection-start-line="110" selection-start-column="36" selection-end-line="110" selection-end-column="36" />
+        <state relative-caret-position="3043">
+          <caret line="181" column="5" selection-start-line="181" selection-start-column="5" selection-end-line="181" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1102#1110#0" expanded="true" />
@@ -620,6 +609,16 @@
             <element signature="e#2578#2579#0" expanded="true" />
             <element signature="e#2635#2636#0" expanded="true" />
             <element signature="e#2667#2668#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/StreamMonitoringMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="88" column="79" lean-forward="true" selection-start-line="88" selection-start-column="79" selection-end-line="88" selection-end-column="79" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
