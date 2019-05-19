@@ -1,0 +1,37 @@
+Notes:
+- double quotes character on row 305/6 (it was a typo anyway)
+- might need any boxes with just notes and no numbers in data columns to be gone
+  (like AQ:282 "Site 2 too high...")
+- changed 1.2m to 10NTU at G:284 and G:285
+Using BindByName (old):
+- to preserve column names, need to change the turbidity column names
+  to distinguish between the two
+- ideal to put space after degree symbol in column S
+     or I could figure out regexes
+- also ideal to change AQ column header
+Using BindByPosition (new):
+- remove headers altogether
+
+// options:
+        //  start and end date
+        //  site 1 or 2
+        //  data type
+        //  also should be able to check a particular date and entry and examine it
+        // things to see (*data types):
+        // - date
+        // - site
+        // - coordinates
+        // - sheet #
+        // * turbidity (basically fixed)
+        // * air temp (should be good to go)
+        // * water temp (should be good to go)
+        // * pH (should be good)
+        // * DO (should be good)
+        // * flow (needs fixing)
+        // - phosphate
+        // - nitrate/nitrite
+        // * conductivity (should be good)
+        // - rain
+        // - benthic macro
+        // - data recorder
+        // - notes
