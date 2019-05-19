@@ -6,8 +6,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
-import static main.StreamMonitoringDataModel.OUTLIERS_IQR;
-import static main.StreamMonitoringDataModel.OUTLIER_SDS;
+import static main.StreamMonitoringDataModel.*;
 
 public class StreamMonitoringMain {
     public static final String STREAM_FILE_PATH = "src/main/data/coal_creek_data.tsv";
@@ -62,20 +61,26 @@ public class StreamMonitoringMain {
             Date start = new Date(console.nextLine());
             System.out.print("End date: ");
             Date end = new Date(console.nextLine());
-            System.out.println("Data type: " +
+            System.out.print("Site (1 or 2; 0 if want both): ");
+            int site = Integer.parseInt(console.nextLine());
+            /*System.out.println("Data type: " +
                     "(1) Turbidity (NTU), (2) Turbidity (m), " +
                     "(3) Air Temperature (°C), (4) Water Temperature (°C), " +
-                    "(5) pH, (6) Dissolved Oxygen (ppm), (7) Conductivity (μS/cm)");
+                    "(5) pH, (6) Dissolved Oxygen (ppm), (7) Conductivity (μS/cm)");*/
+            System.out.print("Data type (" + DATA_TYPES + "): ");
             int dataType = Integer.parseInt(console.nextLine());
 
             //System.out.println("Average: " + streamModel.getMean(dataType, start, end));
 
             System.out.println();
             System.out.println("Resulting Statistics");
-            List<Double> sortedData = streamModel.getData(dataType, start, end);
+            System.out.println("--------------------");
+            List<Double> sortedData = streamModel.getData(dataType, site, start, end);
             double mean = streamModel.getMean(sortedData);
             double stdDev = streamModel.getStdDev(sortedData, mean);
             List<Double> modes = streamModel.getMode(sortedData);
+            int modeFreq = (int) (double) modes.get(modes.size() - 1);
+            modes.remove(modes.size() - 1);
             double min = streamModel.getMin(sortedData);
             double[] quartiles = streamModel.getQuartiles(sortedData);
             double max = streamModel.getMax(sortedData);
@@ -83,7 +88,11 @@ public class StreamMonitoringMain {
             List<Double> outliersIQR = streamModel.getOutliersIQR(sortedData, quartiles);
             System.out.println("Mean: " + mean);
             System.out.println("Standard Deviation: " + stdDev);
-            System.out.println("Mode: " + modes);
+            if (modes.isEmpty()) {
+                System.out.println("Mode (frequency 1): all data unique");
+            } else {
+                System.out.println("Mode (frequency " + modeFreq + "): " + modes);
+            }
             double[] boxplot = new double[] { min, quartiles[0], quartiles[1], quartiles[2], max };
             System.out.println("Min, Q1, Median, Q3, Max: " + Arrays.toString(boxplot));
             System.out.println("Outliers (based on " + OUTLIER_SDS + " std devs): " + outliersStdDev);
@@ -92,6 +101,7 @@ public class StreamMonitoringMain {
 
             System.out.print("Continue? (Type q to quit) ");
             resp = console.nextLine();
+            System.out.println();
         }
 
         // Future:

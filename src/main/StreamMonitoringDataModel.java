@@ -10,6 +10,20 @@ public class StreamMonitoringDataModel {
     public static final int OUTLIER_SDS = 3;
     public static final double OUTLIERS_IQR = 1.5;
 
+    private static final Map<Integer, String> DATA_TYPES_INTERNAL = new TreeMap<Integer, String>()
+    {
+        {
+            put(1, "Turbidity (NTU)");
+            put(2, "Turbidity (m)");
+            put(3, "Air Temp (°C)");
+            put(4, "Water Temp (°C)");
+            put(5, "pH");
+            put(6, "DO (ppm)");
+            put(7, "Conductivity (μS/cm)");
+        };
+    };
+    public static final Map<Integer, String> DATA_TYPES = Collections.unmodifiableMap(DATA_TYPES_INTERNAL);
+
     private List<StreamMonitoringData> streamData;
 
     public StreamMonitoringDataModel(String inputFilePath) {
@@ -22,7 +36,7 @@ public class StreamMonitoringDataModel {
         return Collections.unmodifiableList(streamData);
     }
 
-    public List<Double> getData(int dataType, Date startDate, Date endDate) {
+    public List<Double> getData(int dataType, int site, Date startDate, Date endDate) {
         if (startDate.compareTo(endDate) > 0) {
             return null;
         }
@@ -40,6 +54,11 @@ public class StreamMonitoringDataModel {
             StreamMonitoringData data = streamData.get(i);
             if (data.getDate().compareTo(endDate) > 0) {
                 break;
+            }
+            if (site == 1 || site == 2) {
+                if (data.getSite() != site) {
+                    continue;
+                }
             }
             MultiValuedMap<Integer, Double> dataTypes;
             switch (dataType) {
@@ -122,7 +141,7 @@ public class StreamMonitoringDataModel {
                 currCount++;
                 i++;
             }
-            if (currCount >= mostCount) {
+            if (currCount >= mostCount && currCount > 1) {
                 if (currCount > mostCount) {
                     mostCount = currCount;
                     mosts.clear();
@@ -131,6 +150,7 @@ public class StreamMonitoringDataModel {
             }
             i++;
         }
+        mosts.add((double) mostCount);
         return mosts;
     }
 
