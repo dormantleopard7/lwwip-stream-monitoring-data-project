@@ -31,6 +31,9 @@ public class ModelTests {
         System.out.println(streamModel.getOutliersStdDev(list5, mean, stdev));
         double[] quartiles = streamModel.getQuartiles(list5);
         System.out.println(streamModel.getOutliersIQR(list5, quartiles));
+
+        double[] arr6 = { 1, 2, 2, 2, 3, 3, 4, 4, 5, 6, 7, 7, 7, 7, 8, 9, 10, 10, 10, 10, 10 };
+        System.out.println("mode: " + streamModel.getMode(modelTests.arrayToList(arr6)));
     }
 
     private List<Double> arrayToList(double[] arr) {

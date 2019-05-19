@@ -4,6 +4,8 @@ import org.apache.commons.collections4.MultiValuedMap;
 
 import java.util.*;
 
+import static main.StreamMonitoringDataParser.DELTA;
+
 public class StreamMonitoringDataModel {
     private static final int OUTLIER_SDS = 3;
     private static final double OUTLIERS_IQR = 1.5;
@@ -20,7 +22,7 @@ public class StreamMonitoringDataModel {
         return Collections.unmodifiableList(streamData);
     }
 
-    private List<Double> getData(int dataType, Date startDate, Date endDate) {
+    public List<Double> getData(int dataType, Date startDate, Date endDate) {
         if (startDate.compareTo(endDate) > 0) {
             return null;
         }
@@ -104,6 +106,28 @@ public class StreamMonitoringDataModel {
             return (sortedData.get(mid - 1) + sortedData.get(mid)) / 2;
         }
         return sortedData.get(mid);
+    }
+
+    // account for multiple modes!!!
+    public double getMode(List<Double> sortedData) {
+        double most = Double.NaN;
+        int mostCount = 1;
+        int i = 0;
+        while (i < sortedData.size()) {
+            double curr = sortedData.get(i);
+            int currCount = 1;
+            while ((i + 1) < sortedData.size() &&
+                   Math.abs(sortedData.get(i + 1) - curr) < DELTA) {
+                currCount++;
+                i++;
+            }
+            if (currCount > mostCount) {
+                mostCount = currCount;
+                most = curr;
+            }
+            i++;
+        }
+        return most;
     }
 
     public double getMean(List<Double> data) {

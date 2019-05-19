@@ -2,6 +2,7 @@ package main;
 
 import java.io.FileNotFoundException;
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 
 public class StreamMonitoringMain {
@@ -26,10 +27,6 @@ public class StreamMonitoringMain {
 
         //StreamMonitoringDataWriter.write(streamModel, "data.tsv");
 
-        // stats:
-        //  min (Date), Q1, median, Q3, max (Date)
-        //   note that these work best when the data is sorted first
-        //  mean, variance/stdev, outliers
         // options:
         //  start and end date
         //  site 1 or 2
@@ -66,6 +63,7 @@ public class StreamMonitoringMain {
                     "(3) Air Temperature (°C), (4) Water Temperature (°C), " +
                     "(5) pH, (6) Dissolved Oxygen (ppm), (7) Conductivity (μS/cm)");
             int dataType = Integer.parseInt(console.nextLine());
+            List<Double> sortedData = streamModel.getData(dataType, start, end);
             System.out.println("Average: " + streamModel.getMean(dataType, start, end));
             System.out.print("Continue? (Type q to quit) ");
             resp = console.nextLine();
