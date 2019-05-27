@@ -205,7 +205,7 @@ public class StreamMonitoringDataModel {
     // works when date not in list (first date after)
     //  if date too early, returns first
     //  if date too late, then invalid
-    private int leftBinarySearch(Date date) {
+    public int leftBinarySearch(Date date) {
         if (date.compareTo(streamData.get(0).getDate()) <= 0) {
             return 0;
         }

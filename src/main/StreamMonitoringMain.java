@@ -48,6 +48,9 @@ public class StreamMonitoringMain {
 
             System.out.println();
             printStats(streamModel, sortedData);
+        } else if (option.equalsIgnoreCase("v")) {
+            StreamMonitoringDataVisualizer visualizer = new StreamMonitoringDataVisualizer(STREAM_FILE_PATH);
+            visualizer.drawTempGraph();
         } else if (!option.equalsIgnoreCase("q")) {
             System.out.println("Unknown option");
         }
@@ -57,7 +60,7 @@ public class StreamMonitoringMain {
         System.out.println("Menu:");
         System.out.println("\tw to write cleaned data to file");
         System.out.println("\ta to analyze data statistically");
-        //System.out.println("\tv to visualize the data");
+        System.out.println("\tv to visualize the data");
         System.out.println("\tq to quit");
     }
 
