@@ -36,7 +36,7 @@ public class StreamMonitoringMain {
             System.out.print("Output file name: ");
             String outputFileName = console.nextLine();
             StreamMonitoringDataWriter.write(streamModel, outputFileName);
-        } else if (option.equalsIgnoreCase("a") || option.equalsIgnoreCase("s")) {
+        } else if (option.equalsIgnoreCase("a") || option.equalsIgnoreCase("v")) {
             System.out.print("Start date: ");
             Date start = new Date(console.nextLine());
             System.out.print("End date: ");
@@ -45,20 +45,15 @@ public class StreamMonitoringMain {
             int site = Integer.parseInt(console.nextLine());
             System.out.print("Data type (" + DATA_TYPES + "): ");
             int dataType = Integer.parseInt(console.nextLine());
-            List<Double> sortedData = streamModel.getData(dataType, site, start, end);
-            System.out.println();
-            printStats(streamModel, sortedData);
-        } else if (option.equalsIgnoreCase("v")) {
-            System.out.print("Start date: ");
-            Date start = new Date(console.nextLine());
-            System.out.print("End date: ");
-            Date end = new Date(console.nextLine());
-            System.out.print("Site (1 or 2; 0 if want both): ");
-            int site = Integer.parseInt(console.nextLine());
-            System.out.print("Data type (" + DATA_TYPES + "): ");
-            int dataType = Integer.parseInt(console.nextLine());
-            visualizer.drawAirTempLineGraph(site, start, end);
-            visualizer.drawLineGraph(dataType, site, start, end);
+
+            if (option.equalsIgnoreCase("a")) {
+                List<Double> sortedData = streamModel.getData(dataType, site, start, end);
+                System.out.println();
+                printStats(streamModel, sortedData);
+            } else {
+                visualizer.drawScatterPlot(dataType, site, start, end);
+                System.out.println("Scatter Plot Generated!");
+            }
         } else if (!option.equalsIgnoreCase("q")) {
             System.out.println("Unknown option");
         }
