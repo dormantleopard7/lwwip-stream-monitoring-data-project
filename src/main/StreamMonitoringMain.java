@@ -29,6 +29,7 @@ public class StreamMonitoringMain {
     }
 
     public static void processOption(String option, StreamMonitoringDataModel streamModel, Scanner console) {
+        StreamMonitoringDataVisualizer visualizer = new StreamMonitoringDataVisualizer(streamModel);
         if (option.equalsIgnoreCase("m")) {
             printMenu();
         } else if (option.equalsIgnoreCase("w")) {
@@ -45,20 +46,19 @@ public class StreamMonitoringMain {
             System.out.print("Data type (" + DATA_TYPES + "): ");
             int dataType = Integer.parseInt(console.nextLine());
             List<Double> sortedData = streamModel.getData(dataType, site, start, end);
-
             System.out.println();
             printStats(streamModel, sortedData);
         } else if (option.equalsIgnoreCase("v")) {
-            StreamMonitoringDataVisualizer visualizer = new StreamMonitoringDataVisualizer(STREAM_FILE_PATH);
-            //visualizer.drawAirTempGraph();
-            //visualizer.drawAirTempGraph(0, new Date("1/1/2018"), new Date("12/31/2018"));
             System.out.print("Start date: ");
             Date start = new Date(console.nextLine());
             System.out.print("End date: ");
             Date end = new Date(console.nextLine());
             System.out.print("Site (1 or 2; 0 if want both): ");
             int site = Integer.parseInt(console.nextLine());
-            visualizer.drawAirTempGraph(site, start, end);
+            System.out.print("Data type (" + DATA_TYPES + "): ");
+            int dataType = Integer.parseInt(console.nextLine());
+            visualizer.drawAirTempLineGraph(site, start, end);
+            visualizer.drawLineGraph(dataType, site, start, end);
         } else if (!option.equalsIgnoreCase("q")) {
             System.out.println("Unknown option");
         }

@@ -34,11 +34,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/StreamMonitoringMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="757">
-              <caret line="56" column="43" lean-forward="true" selection-start-line="56" selection-start-column="43" selection-end-line="56" selection-end-column="43" />
+            <state relative-caret-position="209">
+              <caret line="66" column="36" lean-forward="true" selection-start-line="66" selection-start-column="36" selection-end-line="66" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -49,8 +49,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/StreamMonitoringDataModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1088">
-              <caret line="72" column="26" lean-forward="true" selection-start-line="72" selection-start-column="26" selection-end-line="72" selection-end-column="26" />
+            <state relative-caret-position="285">
+              <caret line="96" column="9" lean-forward="true" selection-start-line="52" selection-start-column="8" selection-end-line="96" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -58,13 +58,17 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/StreamMonitoringDataVisualizer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="55" column="102" selection-start-line="55" selection-start-column="102" selection-end-line="55" selection-end-column="102" />
+            <state relative-caret-position="170">
+              <caret line="67" column="27" selection-start-line="67" selection-start-column="27" selection-end-line="67" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1152#1153#0" expanded="true" />
+                <element signature="e#1178#1179#0" expanded="true" />
+                <element signature="e#1265#1266#0" expanded="true" />
+                <element signature="e#1330#1331#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -128,6 +132,7 @@
       <find>turb_offs</find>
       <find>getWidth</find>
       <find>default_w</find>
+      <find>313.0</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -154,8 +159,8 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/main/DrawingPanel.java" />
         <option value="$PROJECT_DIR$/src/main/StreamMonitoringDataModel.java" />
-        <option value="$PROJECT_DIR$/src/main/StreamMonitoringMain.java" />
         <option value="$PROJECT_DIR$/src/main/StreamMonitoringDataVisualizer.java" />
+        <option value="$PROJECT_DIR$/src/main/StreamMonitoringMain.java" />
       </list>
     </option>
   </component>
@@ -368,7 +373,7 @@
       <workItem from="1558124279657" duration="3785000" />
       <workItem from="1558209396897" duration="16368000" />
       <workItem from="1558235321690" duration="7500000" />
-      <workItem from="1558990671943" duration="11645000" />
+      <workItem from="1558990671943" duration="15626000" />
     </task>
     <servers />
   </component>
@@ -405,7 +410,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="115977000" />
+    <option name="totallyTimeSpent" value="119958000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -418,9 +423,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.31417003" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.31417003" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -430,7 +434,7 @@
       <window_info anchor="bottom" id="Duplicate detector" order="0" weight="0.3285968" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.3285968" />
-      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.348135" />
+      <window_info anchor="bottom" id="Run" order="3" weight="0.39609236" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.39964476" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
@@ -440,7 +444,7 @@
       <window_info anchor="bottom" id="Database Changes" order="10" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.3285968" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="13" weight="0.3285968" />
+      <window_info anchor="bottom" id="Messages" order="13" weight="0.36412078" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="1" weight="0.25" />
       <window_info anchor="right" id="Palette" order="2" />
@@ -601,9 +605,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/notes.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/StreamMonitoringDataWriter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -627,13 +628,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/data/coal_creek_data.tsv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-5027" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data.tsv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4097">
-          <caret line="17" column="8" lean-forward="true" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/DrawingPanel.java">
@@ -797,30 +791,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/notes.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/StreamMonitoringDataModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1088">
-          <caret line="72" column="26" lean-forward="true" selection-start-line="72" selection-start-column="26" selection-end-line="72" selection-end-column="26" />
+        <state relative-caret-position="285">
+          <caret line="96" column="9" lean-forward="true" selection-start-line="52" selection-start-column="8" selection-end-line="96" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data.tsv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4488">
+          <caret line="264" column="778" selection-start-line="264" selection-start-column="773" selection-end-line="264" selection-end-column="778" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/StreamMonitoringDataVisualizer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="67" column="27" selection-start-line="67" selection-start-column="27" selection-end-line="67" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1152#1153#0" expanded="true" />
+            <element signature="e#1178#1179#0" expanded="true" />
+            <element signature="e#1265#1266#0" expanded="true" />
+            <element signature="e#1330#1331#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/StreamMonitoringMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="757">
-          <caret line="56" column="43" lean-forward="true" selection-start-line="56" selection-start-column="43" selection-end-line="56" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/StreamMonitoringDataVisualizer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="55" column="102" selection-start-line="55" selection-start-column="102" selection-end-line="55" selection-end-column="102" />
+        <state relative-caret-position="209">
+          <caret line="66" column="36" lean-forward="true" selection-start-line="66" selection-start-column="36" selection-end-line="66" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
