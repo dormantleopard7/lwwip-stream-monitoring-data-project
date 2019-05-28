@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 import static main.StreamMonitoringDataModel.DATA_TYPES;
+import static main.StreamMonitoringDataParser.DELTA;
 
 public class StreamMonitoringDataVisualizer {
     public static int getDaysInYear(int year) {
@@ -41,6 +42,21 @@ public class StreamMonitoringDataVisualizer {
 
     public StreamMonitoringDataVisualizer(String inputFilePath) {
         this(new StreamMonitoringDataModel(inputFilePath));
+    }
+
+    public void simpleTextHistogram(int dataType, int site, Date startDate, Date endDate) {
+        List<Double> sortedData = streamModel.getData(dataType, site, startDate, endDate);
+        Double curr = null;
+        for (Double datum : sortedData) {
+            if (curr == null || Math.abs(datum - curr) > DELTA) {
+                curr = datum;
+                System.out.println();
+                // there is probably some better way to format that aligns things
+                System.out.printf("%.2f: ", datum);
+            }
+            System.out.print("*");
+        }
+        System.out.println();
     }
 
     public void drawScatterPlot(int dataType, int site, Date startDate, Date endDate) {

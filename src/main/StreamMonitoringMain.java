@@ -51,8 +51,15 @@ public class StreamMonitoringMain {
                 System.out.println();
                 printStats(streamModel, sortedData);
             } else {
-                visualizer.drawScatterPlot(dataType, site, start, end);
-                System.out.println("Scatter Plot Generated!");
+                System.out.print("(S)catter plot OR (H)istogram: ");
+                String choice = console.nextLine();
+                if (choice.equalsIgnoreCase("S")) {
+                    visualizer.drawScatterPlot(dataType, site, start, end);
+                    System.out.println("Scatter Plot Generated!");
+                } else {
+                    visualizer.simpleTextHistogram(dataType, site, start, end);
+                    System.out.println("Histogram Generated!");
+                }
             }
         } else if (!option.equalsIgnoreCase("q")) {
             System.out.println("Unknown option");
