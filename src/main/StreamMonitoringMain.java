@@ -50,7 +50,15 @@ public class StreamMonitoringMain {
             printStats(streamModel, sortedData);
         } else if (option.equalsIgnoreCase("v")) {
             StreamMonitoringDataVisualizer visualizer = new StreamMonitoringDataVisualizer(STREAM_FILE_PATH);
-            visualizer.drawTempGraph();
+            //visualizer.drawAirTempGraph();
+            //visualizer.drawAirTempGraph(0, new Date("1/1/2018"), new Date("12/31/2018"));
+            System.out.print("Start date: ");
+            Date start = new Date(console.nextLine());
+            System.out.print("End date: ");
+            Date end = new Date(console.nextLine());
+            System.out.print("Site (1 or 2; 0 if want both): ");
+            int site = Integer.parseInt(console.nextLine());
+            visualizer.drawAirTempGraph(site, start, end);
         } else if (!option.equalsIgnoreCase("q")) {
             System.out.println("Unknown option");
         }
