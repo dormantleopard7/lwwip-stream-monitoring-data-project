@@ -44,15 +44,23 @@ public class StreamMonitoringDataVisualizer {
         this(new StreamMonitoringDataModel(inputFilePath));
     }
 
-    public void simpleTextHistogram(int dataType, int site, Date startDate, Date endDate) {
+    public void textHistogram(int dataType, int site, Date startDate, Date endDate, double bucketSize) {
         List<Double> sortedData = streamModel.getData(dataType, site, startDate, endDate);
         Double curr = null;
         for (Double datum : sortedData) {
-            if (curr == null || Math.abs(datum - curr) > DELTA) {
-                curr = datum;
+            if (curr == null || Math.abs(datum - curr) >= bucketSize) {
+                if (curr == null) {
+                    curr = 0.;
+                    while ((curr < datum - bucketSize) || ((Math.abs(datum - bucketSize - curr) < DELTA))) {
+                        curr += bucketSize;
+                    }
+                    // curr = first multiple of bucketSize below datum
+                    //curr = datum;
+                } else {
+                    curr += bucketSize;
+                }
                 System.out.println();
-                // there is probably some better way to format that aligns things
-                System.out.printf("%.2f: ", datum);
+                System.out.printf("[%-7.2f - %7.2f) : ", curr, curr + bucketSize);
             }
             System.out.print("*");
         }

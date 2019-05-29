@@ -52,13 +52,22 @@ public class StreamMonitoringMain {
                 printStats(streamModel, sortedData);
             } else {
                 System.out.print("(S)catter plot OR (H)istogram: ");
-                String choice = console.nextLine();
-                if (choice.equalsIgnoreCase("S")) {
+                String choice = console.nextLine().substring(0, 1);
+                if (choice.equalsIgnoreCase("H")) {
+                    System.out.print("Bucket Size: ");
+                    double bucketSize = Double.parseDouble(console.nextLine());
+                    if (bucketSize <= 0) {
+                        bucketSize = 1;
+                        System.out.println("Bucket size invalid; changed to default of 1");
+                    }
+                    visualizer.textHistogram(dataType, site, start, end, bucketSize);
+                    System.out.println("Histogram Generated!");
+                } else {
+                    if (!choice.equalsIgnoreCase("S")) {
+                        System.out.println("Invalid choice, but still...");
+                    }
                     visualizer.drawScatterPlot(dataType, site, start, end);
                     System.out.println("Scatter Plot Generated!");
-                } else {
-                    visualizer.simpleTextHistogram(dataType, site, start, end);
-                    System.out.println("Histogram Generated!");
                 }
             }
         } else if (!option.equalsIgnoreCase("q")) {
