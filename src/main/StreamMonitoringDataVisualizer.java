@@ -3,6 +3,7 @@ package main;
 import org.apache.commons.collections4.MultiValuedMap;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -24,6 +25,7 @@ public class StreamMonitoringDataVisualizer {
         }
     }
 
+    // constants for scatter plotting
     private static final int DOT_SIZE = 6;
     private static final int FONT_SIZE = 14;
     private static final int BUFFER = 70;
@@ -31,8 +33,12 @@ public class StreamMonitoringDataVisualizer {
     private static final int AXES_BUFFER = 10;
     private static final int TOTAL_BUFF = BUFF - AXES_BUFFER;
     private static final int NOTCH = 10;
-
+    // scaling factors for data points; MULTIPLIERS[i] = multiplier for DATA_TYPES.get(i + 1)
     private static final int[] MULTIPLIERS = { 10, 100, 10, 10, 10, 10, 1 };
+
+    // constants for histogram
+    private static final int HIST_BAR_WIDTH = 40;
+    private static final int HIST_MULTIPLIER = 10;
 
     private StreamMonitoringDataModel streamModel;
 
@@ -44,9 +50,37 @@ public class StreamMonitoringDataVisualizer {
         this(new StreamMonitoringDataModel(inputFilePath));
     }
 
+    public void drawHistogram(int dataType, int site, Date startDate, Date endDate, double bucketSize) {
+        List<Integer> counts = new ArrayList<>();
+        double firstBucket = textHistogram(dataType, site, startDate, endDate, bucketSize, counts);
+        System.out.println("counts (from " + firstBucket + "): " + counts);
+
+        int maxCount = 0;
+        for (int count : counts) {
+            maxCount = Math.max(maxCount, count);
+        }
+        DrawingPanel panel = new DrawingPanel(counts.size() * HIST_BAR_WIDTH, maxCount * HIST_MULTIPLIER);
+        Graphics g = panel.getGraphics();
+        int heightBuffer = panel.getHeight() - BUFFER;
+        for (int i = 0; i < counts.size(); i++) {
+            //g.setColor(Color.BLACK);
+            //g.fillRect(i * HIST_BAR_WIDTH, 0, HIST_BAR_WIDTH, counts.get(i) * HIST_MULTIPLIER);
+            g.setColor(Color.BLUE);
+            g.drawRect(i * HIST_BAR_WIDTH, panel.getHeight() - (counts.get(i) * HIST_MULTIPLIER),
+                    HIST_BAR_WIDTH, panel.getHeight());
+        }
+    }
+
     public void textHistogram(int dataType, int site, Date startDate, Date endDate, double bucketSize) {
+        textHistogram(dataType, site, startDate, endDate, bucketSize, null);
+    }
+
+    private double textHistogram(int dataType, int site, Date startDate, Date endDate, double bucketSize,
+                               List<Integer> counts) {
         List<Double> sortedData = streamModel.getData(dataType, site, startDate, endDate);
         Double curr = null;
+        double firstBucket = 0;
+        int index = -1;
         for (Double datum : sortedData) {
             if (curr == null || Math.abs(datum - curr) >= bucketSize) {
                 if (curr == null) {
@@ -55,16 +89,24 @@ public class StreamMonitoringDataVisualizer {
                         curr += bucketSize;
                     }
                     // curr = first multiple of bucketSize below datum
-                    //curr = datum;
+                    firstBucket = curr;
                 } else {
                     curr += bucketSize;
                 }
                 System.out.println();
                 System.out.printf("[%-7.2f - %7.2f) : ", curr, curr + bucketSize);
+                if (counts != null) {
+                    counts.add(0);
+                }
+                index++;
             }
             System.out.print("*");
+            if (counts != null) {
+                counts.set(index, counts.get(index) + 1);
+            }
         }
         System.out.println();
+        return firstBucket;
     }
 
     public void drawScatterPlot(int dataType, int site, Date startDate, Date endDate) {
@@ -143,6 +185,7 @@ public class StreamMonitoringDataVisualizer {
                                 DrawingPanel panel, Graphics g) {
         assert g.equals(panel.getGraphics());
 
+        g.setColor(Color.BLUE);
         for (int i = startIndex; i < streamData.size(); i++) {
             StreamMonitoringData data = streamData.get(i);
             Date date = data.getDate();

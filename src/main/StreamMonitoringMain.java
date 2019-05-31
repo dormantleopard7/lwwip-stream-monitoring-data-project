@@ -46,6 +46,14 @@ public class StreamMonitoringMain {
             System.out.print("Data type (" + DATA_TYPES + "): ");
             int dataType = Integer.parseInt(console.nextLine());
 
+            if (dataType < 1 || dataType > 7) {
+                System.out.println("Invalid data type; try again: ");
+                dataType = Integer.parseInt(console.nextLine());
+                if (dataType < 1 || dataType > 7) {
+                    System.out.println("Invalid data type (again); now interpreted as flow (left), which is not cleaned; Too Bad!");
+                }
+            }
+
             if (option.equalsIgnoreCase("a")) {
                 List<Double> sortedData = streamModel.getData(dataType, site, start, end);
                 System.out.println();
@@ -58,9 +66,9 @@ public class StreamMonitoringMain {
                     double bucketSize = Double.parseDouble(console.nextLine());
                     if (bucketSize <= 0) {
                         bucketSize = 1;
-                        System.out.println("Bucket size invalid; changed to default of 1");
+                        System.out.println("Invalid bucket size; changed to default of 1");
                     }
-                    visualizer.textHistogram(dataType, site, start, end, bucketSize);
+                    visualizer.drawHistogram(dataType, site, start, end, bucketSize);
                     System.out.println("Histogram Generated!");
                 } else {
                     if (!choice.equalsIgnoreCase("S")) {
