@@ -25,14 +25,15 @@ public class StreamMonitoringDataVisualizer {
         }
     }
 
-    // constants for scatter plotting
-    private static final int DOT_SIZE = 6;
     private static final int FONT_SIZE = 14;
     private static final int BUFFER = 70;
     private static final int BUFF = BUFFER - 1;
     private static final int AXES_BUFFER = 10;
     private static final int TOTAL_BUFF = BUFF - AXES_BUFFER;
     private static final int NOTCH = 10;
+
+    // constants for scatter plotting
+    private static final int DOT_SIZE = 6;
     // scaling factors for data points; MULTIPLIERS[i] = multiplier for DATA_TYPES.get(i + 1)
     private static final int[] MULTIPLIERS = { 10, 100, 10, 10, 10, 10, 1 };
 
@@ -53,22 +54,46 @@ public class StreamMonitoringDataVisualizer {
     public void drawHistogram(int dataType, int site, Date startDate, Date endDate, double bucketSize) {
         List<Integer> counts = new ArrayList<>();
         double firstBucket = textHistogram(dataType, site, startDate, endDate, bucketSize, counts);
-        System.out.println("counts (from " + firstBucket + "): " + counts);
+        String firstVal = String.format("%.2f", firstBucket);
+        String lastVal = String.format("%.2f", (firstBucket + counts.size() * bucketSize));
+        System.out.println("counts (from " + firstVal + " to " + lastVal + "): " + counts);
 
         int maxCount = 0;
         for (int count : counts) {
             maxCount = Math.max(maxCount, count);
         }
-        DrawingPanel panel = new DrawingPanel(counts.size() * HIST_BAR_WIDTH, maxCount * HIST_MULTIPLIER);
+        DrawingPanel panel = new DrawingPanel(counts.size() * HIST_BAR_WIDTH + 2 * (BUFFER + AXES_BUFFER),
+                maxCount * HIST_MULTIPLIER + 2 * (BUFFER + AXES_BUFFER));
         Graphics g = panel.getGraphics();
         int heightBuffer = panel.getHeight() - BUFFER;
+
+        g.setColor(Color.BLUE);
         for (int i = 0; i < counts.size(); i++) {
-            //g.setColor(Color.BLACK);
-            //g.fillRect(i * HIST_BAR_WIDTH, 0, HIST_BAR_WIDTH, counts.get(i) * HIST_MULTIPLIER);
-            g.setColor(Color.BLUE);
-            g.drawRect(i * HIST_BAR_WIDTH, panel.getHeight() - (counts.get(i) * HIST_MULTIPLIER),
-                    HIST_BAR_WIDTH, panel.getHeight());
+            g.drawRect(i * HIST_BAR_WIDTH + BUFFER + AXES_BUFFER, heightBuffer - (counts.get(i) * HIST_MULTIPLIER),
+                    HIST_BAR_WIDTH, counts.get(i) * HIST_MULTIPLIER);
         }
+
+        g.setColor(Color.BLACK);
+        g.drawLine(BUFF, BUFF, BUFF, maxCount * HIST_MULTIPLIER + BUFFER + 2 * AXES_BUFFER);
+        g.drawLine(BUFF, maxCount * HIST_MULTIPLIER + BUFFER + 2 * AXES_BUFFER,
+                BUFFER + counts.size() * HIST_BAR_WIDTH + 1 + 2 * AXES_BUFFER, maxCount * HIST_MULTIPLIER + BUFFER + 2 * AXES_BUFFER);
+
+        drawTitle(dataType, panel, g);
+
+        g.setFont(new Font(Font.SANS_SERIF, Font.BOLD, FONT_SIZE));
+        g.drawLine(BUFF - NOTCH / 2, BUFF + 2 * AXES_BUFFER, BUFF + NOTCH / 2, BUFF + 2 * AXES_BUFFER);
+        g.drawString(maxCount + "", BUFF - NOTCH / 2 - 20, BUFF + 2 * AXES_BUFFER + 5);
+        g.drawLine(BUFFER + AXES_BUFFER, maxCount * HIST_MULTIPLIER + BUFFER + 2 * AXES_BUFFER - NOTCH / 2,
+                BUFFER + AXES_BUFFER, maxCount * HIST_MULTIPLIER + BUFFER + 2 * AXES_BUFFER + NOTCH / 2);
+        g.drawString(firstVal,BUFFER + AXES_BUFFER - 10, maxCount * HIST_MULTIPLIER + BUFFER + 2 * AXES_BUFFER + 10 + 10);
+        g.drawLine(BUFFER + AXES_BUFFER + counts.size() * HIST_BAR_WIDTH, maxCount * HIST_MULTIPLIER + BUFFER + 2 * AXES_BUFFER - NOTCH / 2,
+                BUFFER + AXES_BUFFER + counts.size() * HIST_BAR_WIDTH, maxCount * HIST_MULTIPLIER + BUFFER + 2 * AXES_BUFFER + NOTCH / 2);
+        g.drawString(lastVal,BUFFER + AXES_BUFFER + counts.size() * HIST_BAR_WIDTH - 10, maxCount * HIST_MULTIPLIER + BUFFER + 2 * AXES_BUFFER + 10 + 10);
+
+        String dataTypeStr = DATA_TYPES.get(dataType);
+        g.setFont(new Font(Font.SANS_SERIF, Font.BOLD + Font.ITALIC, (int)(FONT_SIZE * 1.2)));
+        g.drawString(dataTypeStr, (panel.getWidth() - (dataTypeStr.length() * 10)) / 2, panel.getHeight() - BUFFER / 2);
+
     }
 
     public void textHistogram(int dataType, int site, Date startDate, Date endDate, double bucketSize) {
@@ -90,15 +115,23 @@ public class StreamMonitoringDataVisualizer {
                     }
                     // curr = first multiple of bucketSize below datum
                     firstBucket = curr;
+                    System.out.println();
+                    System.out.printf("[%-7.2f - %7.2f) : ", curr, curr + bucketSize);
+                    if (counts != null) {
+                        counts.add(0);
+                    }
+                    index++;
                 } else {
-                    curr += bucketSize;
+                    while (Math.abs(datum - curr) >= bucketSize) {
+                        System.out.println();
+                        curr += bucketSize;
+                        System.out.printf("[%-7.2f - %7.2f) : ", curr, curr + bucketSize);
+                        if (counts != null) {
+                            counts.add(0);
+                        }
+                        index++;
+                    }
                 }
-                System.out.println();
-                System.out.printf("[%-7.2f - %7.2f) : ", curr, curr + bucketSize);
-                if (counts != null) {
-                    counts.add(0);
-                }
-                index++;
             }
             System.out.print("*");
             if (counts != null) {
@@ -107,6 +140,20 @@ public class StreamMonitoringDataVisualizer {
         }
         System.out.println();
         return firstBucket;
+    }
+
+    public void simpleTextHistogram(int dataType, int site, Date startDate, Date endDate) {
+        List<Double> sortedData = streamModel.getData(dataType, site, startDate, endDate);
+        Double curr = null;
+        for (Double datum : sortedData) {
+            if (curr == null || Math.abs(datum - curr) > DELTA) {
+                curr = datum;
+                System.out.println();
+                System.out.printf("%-7.2f: ", datum);
+            }
+            System.out.print("*");
+        }
+        System.out.println();
     }
 
     public void drawScatterPlot(int dataType, int site, Date startDate, Date endDate) {
@@ -125,15 +172,15 @@ public class StreamMonitoringDataVisualizer {
                 (int)(max * MULTIPLIERS[dataType - 1]) + 2 * BUFFER);
         Graphics g = panel.getGraphics();
 
-        drawAxes(panel, g);
+        drawScatterAxes(panel, g);
         drawTitle(dataType, panel, g);
-        drawLabelNotches(startDate, endDate, panel, g, max);
+        drawScatterLabelNotches(startDate, endDate, panel, g, max);
         drawDateAxisTitle(panel, g);
 
         plotDataPoints(dataType, site, startDate, endDate, streamData, startIndex, panel, g);
     }
 
-    private void drawAxes(DrawingPanel panel, Graphics g) {
+    private void drawScatterAxes(DrawingPanel panel, Graphics g) {
         assert g.equals(panel.getGraphics());
 
         int heightBuff = panel.getHeight() - BUFF;
@@ -153,7 +200,7 @@ public class StreamMonitoringDataVisualizer {
         g.drawString(titleStr, sides, BUFFER / 2);
     }
 
-    private void drawLabelNotches(Date startDate, Date endDate, DrawingPanel panel, Graphics g, double max) {
+    private void drawScatterLabelNotches(Date startDate, Date endDate, DrawingPanel panel, Graphics g, double max) {
         assert g.equals(panel.getGraphics());
 
         int heightBuff = panel.getHeight() - BUFF;

@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import static main.StreamMonitoringDataModel.*;
+import static main.StreamMonitoringDataParser.DELTA;
 
 public class StreamMonitoringMain {
     public static final String STREAM_FILE_PATH = "src/main/data/coal_creek_data.tsv";
@@ -62,13 +63,20 @@ public class StreamMonitoringMain {
                 System.out.print("(S)catter plot OR (H)istogram: ");
                 String choice = console.nextLine().substring(0, 1);
                 if (choice.equalsIgnoreCase("H")) {
-                    System.out.print("Bucket Size: ");
+                    System.out.print("Bucket Size (0 for individual counts): ");
                     double bucketSize = Double.parseDouble(console.nextLine());
-                    if (bucketSize <= 0) {
+                    if (bucketSize < 0) {
                         bucketSize = 1;
-                        System.out.println("Invalid bucket size; changed to default of 1");
+                        System.out.println("Invalid bucket size; changed to 1");
                     }
-                    visualizer.drawHistogram(dataType, site, start, end, bucketSize);
+                    if (bucketSize < DELTA) {
+                        if (bucketSize != 0) {
+                            System.out.println("Bucket size too low; printing individual counts:");
+                        }
+                        visualizer.simpleTextHistogram(dataType, site, start, end);
+                    } else {
+                        visualizer.drawHistogram(dataType, site, start, end, bucketSize);
+                    }
                     System.out.println("Histogram Generated!");
                 } else {
                     if (!choice.equalsIgnoreCase("S")) {
