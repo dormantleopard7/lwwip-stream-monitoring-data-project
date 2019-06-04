@@ -9,7 +9,7 @@ import static main.StreamMonitoringDataModel.*;
 import static main.StreamMonitoringDataParser.DELTA;
 
 public class StreamMonitoringMain {
-    public static final String STREAM_FILE_PATH = "src/main/data/coal_creek_data.tsv";
+    public static final String STREAM_FILE_PATH = "src/main/data/coal_creek_data_3-2019.tsv";
 
     public static void main(String[] args) {
         StreamMonitoringDataModel streamModel = new StreamMonitoringDataModel(STREAM_FILE_PATH);

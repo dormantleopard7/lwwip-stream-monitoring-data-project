@@ -49,7 +49,7 @@ public class StreamMonitoringDataParser {
             // make sure there are units for everything
             for (StreamMonitoringData data : streamData) {
                 fixTurbidityUnits(data); // basically standardized, issue with 60 JTU tho
-                fixFlowUnits(data); // not quite working (need to standardize)
+                //fixFlowUnits(data); // not quite working (need to standardize)
             }
             // removes null dates
             streamData.removeIf(o -> o.getDate() == null);
