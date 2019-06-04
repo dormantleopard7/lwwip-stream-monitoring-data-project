@@ -3,8 +3,7 @@ package main;
 import org.apache.commons.collections4.MultiValuedMap;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.Date;
+import java.util.*;
 import java.util.List;
 
 import static main.StreamMonitoringDataModel.DATA_TYPES;
@@ -33,7 +32,7 @@ public class StreamMonitoringDataVisualizer {
     private static final int NOTCH = 10;
 
     // constants for scatter plotting
-    private static final int DOT_SIZE = 6;
+    private static final int DOT_SIZE = 4;
     // scaling factors for data points; MULTIPLIERS[i] = multiplier for DATA_TYPES.get(i + 1)
     private static final int[] MULTIPLIERS = { 10, 100, 10, 10, 10, 10, 1 };
 
@@ -273,12 +272,23 @@ public class StreamMonitoringDataVisualizer {
                     break;
             }
             int multiplier = MULTIPLIERS[dataType - 1];
-            for (Double value : dataTypes.values()) {
-                if (value != null) {
-                    g.fillOval((differenceBetweenDates(startDate, date) - 1 + BUFFER) - DOT_SIZE / 2,
-                            panel.getHeight() - ((int)(double)(value * multiplier) + BUFFER)
-                                    - DOT_SIZE / 2, DOT_SIZE, DOT_SIZE);
+            List<Double> vals = new ArrayList<>(dataTypes.values());
+            vals.removeIf(Objects::isNull);
+            Collections.sort(vals);
+
+            // dot size increases based on frequency
+            Double curr = null;
+            int dotIncrease = -1;
+            for (Double value : vals) {
+                if (curr == null || Math.abs(value - curr) > DELTA) {
+                    curr = value;
+                    dotIncrease = -1;
                 }
+                dotIncrease++;
+                int dotSize = DOT_SIZE + dotIncrease * 2;
+                g.fillOval((differenceBetweenDates(startDate, date) - 1 + BUFFER) - dotSize / 2,
+                        panel.getHeight() - ((int)(double)(value * multiplier) + BUFFER)
+                                - dotSize / 2, dotSize, dotSize);
             }
         }
     }

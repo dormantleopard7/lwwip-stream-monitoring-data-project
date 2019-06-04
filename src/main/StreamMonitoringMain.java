@@ -23,10 +23,6 @@ public class StreamMonitoringMain {
             option = console.nextLine();
             processOption(option, streamModel, console);
         } while (!option.equalsIgnoreCase("q"));
-
-        // Future:
-        // - need to fix flow units stuff
-        // - visualizing (histogram, scatter plot, line graph, bar graph, pie chart)
     }
 
     public static void processOption(String option, StreamMonitoringDataModel streamModel, Scanner console) {
