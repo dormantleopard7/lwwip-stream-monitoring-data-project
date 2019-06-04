@@ -67,12 +67,22 @@ public class StreamMonitoringDataVisualizer {
         Graphics g = panel.getGraphics();
         int heightBuffer = panel.getHeight() - BUFFER;
 
+        // draw bars
         g.setColor(Color.BLUE);
         for (int i = 0; i < counts.size(); i++) {
             g.drawRect(i * HIST_BAR_WIDTH + BUFFER + AXES_BUFFER, heightBuffer - (counts.get(i) * HIST_MULTIPLIER),
                     HIST_BAR_WIDTH, counts.get(i) * HIST_MULTIPLIER);
         }
 
+        // line to show average
+        g.setColor(GREEN);
+        double avg = streamModel.getMean(streamModel.getData(dataType, site, startDate, endDate));
+        g.drawLine((int)(((avg - firstBucket) / bucketSize) * HIST_BAR_WIDTH + BUFFER + AXES_BUFFER),
+                maxCount * HIST_MULTIPLIER + BUFFER + 2 * AXES_BUFFER,
+                (int)(((avg - firstBucket) / bucketSize) * HIST_BAR_WIDTH + BUFFER + AXES_BUFFER),
+                heightBuffer - maxCount * HIST_MULTIPLIER - AXES_BUFFER);
+
+        // axes
         g.setColor(Color.BLACK);
         g.drawLine(BUFF, BUFF, BUFF, maxCount * HIST_MULTIPLIER + BUFFER + 2 * AXES_BUFFER);
         g.drawLine(BUFF, maxCount * HIST_MULTIPLIER + BUFFER + 2 * AXES_BUFFER,
@@ -80,6 +90,7 @@ public class StreamMonitoringDataVisualizer {
 
         drawTitle(dataType, panel, g);
 
+        // notches/labels
         g.setFont(new Font(Font.SANS_SERIF, Font.BOLD, FONT_SIZE));
         g.drawLine(BUFF - NOTCH / 2, BUFF + 2 * AXES_BUFFER, BUFF + NOTCH / 2, BUFF + 2 * AXES_BUFFER);
         g.drawString(maxCount + "", BUFF - NOTCH / 2 - 20, BUFF + 2 * AXES_BUFFER + 5);
@@ -90,6 +101,7 @@ public class StreamMonitoringDataVisualizer {
                 BUFFER + AXES_BUFFER + counts.size() * HIST_BAR_WIDTH, maxCount * HIST_MULTIPLIER + BUFFER + 2 * AXES_BUFFER + NOTCH / 2);
         g.drawString(lastVal,BUFFER + AXES_BUFFER + counts.size() * HIST_BAR_WIDTH - 10, maxCount * HIST_MULTIPLIER + BUFFER + 2 * AXES_BUFFER + 10 + 10);
 
+        // axis label
         String dataTypeStr = DATA_TYPES.get(dataType);
         g.setFont(new Font(Font.SANS_SERIF, Font.BOLD + Font.ITALIC, (int)(FONT_SIZE * 1.2)));
         g.drawString(dataTypeStr, (panel.getWidth() - (dataTypeStr.length() * 10)) / 2, panel.getHeight() - BUFFER / 2);
