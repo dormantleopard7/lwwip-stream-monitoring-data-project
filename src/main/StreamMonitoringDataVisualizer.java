@@ -32,9 +32,10 @@ public class StreamMonitoringDataVisualizer {
     private static final int NOTCH = 10;
 
     // constants for scatter plotting
-    private static final int DOT_SIZE = 6;
+    private static final int DOT_SIZE = 4;
     // scaling factors for data points; MULTIPLIERS[i] = multiplier for DATA_TYPES.get(i + 1)
     private static final int[] MULTIPLIERS = { 10, 100, 10, 10, 10, 10, 1 };
+    private static final Color GREEN = new Color(20, 160, 30);
 
     // constants for histogram
     private static final int HIST_BAR_WIDTH = 40;
@@ -232,6 +233,7 @@ public class StreamMonitoringDataVisualizer {
         assert g.equals(panel.getGraphics());
 
         int multiplier = MULTIPLIERS[dataType - 1];
+        List<int[]> averageCoords = new ArrayList<>();
         Date currDate = streamData.get(startIndex).getDate(); //startDate;
         List<Double> currVals = new ArrayList<>();
         for (int i = startIndex; i < streamData.size(); i++) {
@@ -299,63 +301,26 @@ public class StreamMonitoringDataVisualizer {
                     count++;
                     sum += value;
                 }
+                // plot average
                 double avg = sum / count;
-                g.setColor(new Color(20, 160, 30)); // green for average
-                int dotSize = DOT_SIZE + 2;
-                g.fillOval(x - dotSize / 2,
-                        panel.getHeight() - ((int)(double)(avg * multiplier) + BUFFER)
-                                - dotSize / 2, dotSize, dotSize);
+                g.setColor(GREEN);
+                int[] coords = { x, panel.getHeight() - ((int)(double)(avg * multiplier) + BUFFER) };
+                averageCoords.add(coords);
+                g.fillOval(coords[0] - DOT_SIZE / 2, coords[1] - DOT_SIZE / 2, DOT_SIZE, DOT_SIZE);
 
+                // re-initialize for next date
                 currDate = date;
                 currVals = new ArrayList<>();
             }
             currVals.addAll(vals);
+        }
 
-            /*g.setColor(Color.BLUE);
-            int x = differenceBetweenDates(startDate, date) - 1 + BUFFER;
-            for (Double value : dataTypes.values()) {
-                if (value != null) {
-                    g.fillOval(x - DOT_SIZE / 2,
-                            panel.getHeight() - ((int) (double) (value * multiplier) + BUFFER)
-                                    - DOT_SIZE / 2, DOT_SIZE, DOT_SIZE);
-                }
-            }*/
-
-            // this is actually incorrect because there may be multiple entries for the same date
-            // ideally (this takes more work), would maintain list of vals per date before plotting
-            /*
-            List<Double> vals = new ArrayList<>(dataTypes.values());
-            vals.removeIf(Objects::isNull);
-            Collections.sort(vals);
-
-            g.setColor(Color.BLUE);
-            double sum = 0.0;
-            int count = 0;
-            // dot size increases based on frequency
-            Double curr = null;
-            int dotIncrease = -1;
-            int x = differenceBetweenDates(startDate, date) - 1 + BUFFER;
-            for (Double value : vals) {
-                if (curr == null || Math.abs(value - curr) > DELTA) {
-                    curr = value;
-                    dotIncrease = -1;
-                }
-                dotIncrease++;
-                int dotSize = DOT_SIZE + dotIncrease * 2;
-                g.fillOval(x - dotSize / 2,
-                        panel.getHeight() - ((int)(double)(value * multiplier) + BUFFER)
-                                - dotSize / 2, dotSize, dotSize);
-                count++;
-                sum += value;
-            }
-            double avg = sum / count;
-            g.setColor(new Color(20, 160, 30)); // green for average
-            int dotSize = DOT_SIZE + 2;
-            g.fillOval(x - dotSize / 2,
-                    panel.getHeight() - ((int)(double)(avg * multiplier) + BUFFER)
-                            - dotSize / 2, dotSize, dotSize);
-
-            */
+        // line to connect averages
+        g.setColor(GREEN);
+        for (int i = 0; i < averageCoords.size() - 1; i++) {
+            int[] coord1 = averageCoords.get(i);
+            int[] coord2 = averageCoords.get(i + 1);
+            g.drawLine(coord1[0], coord1[1], coord2[0], coord2[1]);
         }
     }
 
