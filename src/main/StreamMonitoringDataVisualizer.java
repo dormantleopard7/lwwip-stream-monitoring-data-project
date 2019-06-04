@@ -32,7 +32,7 @@ public class StreamMonitoringDataVisualizer {
     private static final int NOTCH = 10;
 
     // constants for scatter plotting
-    private static final int DOT_SIZE = 4;
+    private static final int DOT_SIZE = 6;
     // scaling factors for data points; MULTIPLIERS[i] = multiplier for DATA_TYPES.get(i + 1)
     private static final int[] MULTIPLIERS = { 10, 100, 10, 10, 10, 10, 1 };
 
@@ -231,7 +231,6 @@ public class StreamMonitoringDataVisualizer {
                                 DrawingPanel panel, Graphics g) {
         assert g.equals(panel.getGraphics());
 
-        g.setColor(Color.BLUE);
         for (int i = startIndex; i < streamData.size(); i++) {
             StreamMonitoringData data = streamData.get(i);
             Date date = data.getDate();
@@ -271,14 +270,31 @@ public class StreamMonitoringDataVisualizer {
                     dataTypes = data.getFlowLefts();
                     break;
             }
+            g.setColor(Color.BLUE);
             int multiplier = MULTIPLIERS[dataType - 1];
-            List<Double> vals = new ArrayList<>(dataTypes.values());
+            int x = differenceBetweenDates(startDate, date) - 1 + BUFFER;
+            for (Double value : dataTypes.values()) {
+                if (value != null) {
+                    g.fillOval(x - DOT_SIZE / 2,
+                            panel.getHeight() - ((int) (double) (value * multiplier) + BUFFER)
+                                    - DOT_SIZE / 2, DOT_SIZE, DOT_SIZE);
+                }
+            }
+
+            // this is actually incorrect because there may be multiple entries for the same date
+            // ideally (this takes more work), would maintain list of vals per date before plotting
+            /*
+            List<Double> vals = new ArrayList<>();
             vals.removeIf(Objects::isNull);
             Collections.sort(vals);
 
+            g.setColor(Color.BLUE);
+            double sum = 0.0;
+            int count = 0;
             // dot size increases based on frequency
             Double curr = null;
             int dotIncrease = -1;
+            int x = differenceBetweenDates(startDate, date) - 1 + BUFFER;
             for (Double value : vals) {
                 if (curr == null || Math.abs(value - curr) > DELTA) {
                     curr = value;
@@ -286,10 +302,20 @@ public class StreamMonitoringDataVisualizer {
                 }
                 dotIncrease++;
                 int dotSize = DOT_SIZE + dotIncrease * 2;
-                g.fillOval((differenceBetweenDates(startDate, date) - 1 + BUFFER) - dotSize / 2,
+                g.fillOval(x - dotSize / 2,
                         panel.getHeight() - ((int)(double)(value * multiplier) + BUFFER)
                                 - dotSize / 2, dotSize, dotSize);
+                count++;
+                sum += value;
             }
+            double avg = sum / count;
+            g.setColor(new Color(20, 160, 30)); // green for average
+            int dotSize = DOT_SIZE + 2;
+            g.fillOval(x - dotSize / 2,
+                    panel.getHeight() - ((int)(double)(avg * multiplier) + BUFFER)
+                            - dotSize / 2, dotSize, dotSize);
+
+            */
         }
     }
 
