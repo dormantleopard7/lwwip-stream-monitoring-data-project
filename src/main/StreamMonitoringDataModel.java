@@ -90,9 +90,11 @@ public class StreamMonitoringDataModel {
                     dataTypes = data.getFlowLefts();
                     break;
             }
-            for (Double value : dataTypes.values()) {
-                if (value != null) {
-                    result.add(value);
+            if (dataTypes != null) {
+                for (Double value : dataTypes.values()) {
+                    if (value != null) {
+                        result.add(value);
+                    }
                 }
             }
         }

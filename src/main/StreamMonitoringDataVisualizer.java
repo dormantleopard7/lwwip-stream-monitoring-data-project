@@ -287,44 +287,48 @@ public class StreamMonitoringDataVisualizer {
                     dataTypes = data.getFlowLefts();
                     break;
             }
-            Collection<Double> vals = dataTypes.values();
-            vals.removeIf(Objects::isNull);
+            if (dataTypes != null) {
+                Collection<Double> vals = dataTypes.values();
+                vals.removeIf(Objects::isNull);
 
-            if (!date.equals(currDate)) {
-                // plot currDate's points first
-                Collections.sort(currVals);
-                g.setColor(Color.BLUE);
-                double sum = 0.0;
-                int count = 0;
-                // dot size increases based on frequency
-                Double curr = null;
-                int dotIncrease = -1;
-                int x = differenceBetweenDates(startDate, currDate) - 1 + BUFFER;
-                for (Double value : currVals) {
-                    if (curr == null || Math.abs(value - curr) > DELTA) {
-                        curr = value;
-                        dotIncrease = -1;
+                if (!date.equals(currDate)) {
+                    // plot currDate's points first
+                    Collections.sort(currVals);
+                    g.setColor(Color.BLUE);
+                    double sum = 0.0;
+                    int count = 0;
+                    // dot size increases based on frequency
+                    Double curr = null;
+                    int dotIncrease = -1;
+                    int x = differenceBetweenDates(startDate, currDate) - 1 + BUFFER;
+                    for (Double value : currVals) {
+                        if (curr == null || Math.abs(value - curr) > DELTA) {
+                            curr = value;
+                            dotIncrease = -1;
+                        }
+                        dotIncrease++;
+                        int dotSize = DOT_SIZE + dotIncrease * 2;
+                        g.fillOval(x - dotSize / 2,
+                                panel.getHeight() - ((int) (double) (value * multiplier) + BUFFER)
+                                        - dotSize / 2, dotSize, dotSize);
+                        count++;
+                        sum += value;
                     }
-                    dotIncrease++;
-                    int dotSize = DOT_SIZE + dotIncrease * 2;
-                    g.fillOval(x - dotSize / 2,
-                            panel.getHeight() - ((int)(double)(value * multiplier) + BUFFER)
-                                    - dotSize / 2, dotSize, dotSize);
-                    count++;
-                    sum += value;
-                }
-                // plot average
-                double avg = sum / count;
-                g.setColor(GREEN);
-                int[] coords = { x, panel.getHeight() - ((int)(double)(avg * multiplier) + BUFFER) };
-                averageCoords.add(coords);
-                g.fillOval(coords[0] - DOT_SIZE / 2, coords[1] - DOT_SIZE / 2, DOT_SIZE, DOT_SIZE);
+                    if (!currVals.isEmpty()) {
+                        // plot average
+                        double avg = sum / count;
+                        g.setColor(GREEN);
+                        int[] coords = {x, panel.getHeight() - ((int) (double) (avg * multiplier) + BUFFER)};
+                        averageCoords.add(coords);
+                        g.fillOval(coords[0] - DOT_SIZE / 2, coords[1] - DOT_SIZE / 2, DOT_SIZE, DOT_SIZE);
+                    }
 
-                // re-initialize for next date
-                currDate = date;
-                currVals = new ArrayList<>();
+                    // re-initialize for next date
+                    currDate = date;
+                    currVals = new ArrayList<>();
+                }
+                currVals.addAll(vals);
             }
-            currVals.addAll(vals);
         }
 
         // line to connect averages
