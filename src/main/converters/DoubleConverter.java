@@ -37,8 +37,7 @@ public class DoubleConverter extends AbstractBeanField<String> {
                 value = (Double) converter.convertToRead(s.substring(index));
             }
             if (value == null) {
-                // beginning and end?
-
+                // beginning and end
                 int beginIndex = 0;
                 for (int i = 0; i < s.length(); i++) {
                     if (Character.isDigit(s.charAt(i))) {
