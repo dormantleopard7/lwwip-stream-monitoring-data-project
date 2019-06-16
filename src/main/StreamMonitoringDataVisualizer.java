@@ -259,34 +259,7 @@ public class StreamMonitoringDataVisualizer {
                     continue;
                 }
             }
-            MultiValuedMap<Integer, Double> dataTypes;
-            switch (dataType) {
-                case 1:
-                    dataTypes = data.getTurbiditiesFirst();
-                    break;
-                case 2:
-                    dataTypes = data.getTurbiditiesSecond();
-                    break;
-                case 3:
-                    dataTypes = data.getAirTemps();
-                    break;
-                case 4:
-                    dataTypes = data.getWaterTemps();
-                    break;
-                case 5:
-                    dataTypes = data.getPHs();
-                    break;
-                case 6:
-                    dataTypes = data.getOxygens();
-                    break;
-                case 7:
-                    dataTypes = data.getConductivities();
-                    break;
-                default:
-                    // flow -- not good yet
-                    dataTypes = data.getFlowLefts();
-                    break;
-            }
+            MultiValuedMap<Integer, Double> dataTypes = StreamMonitoringMain.getDataTypes(dataType, site, data);
             if (dataTypes != null) {
                 Collection<Double> vals = dataTypes.values();
                 vals.removeIf(Objects::isNull);

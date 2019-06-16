@@ -1,5 +1,7 @@
 package main;
 
+import org.apache.commons.collections4.MultiValuedMap;
+
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -121,5 +123,46 @@ public class StreamMonitoringMain {
         System.out.println("Min, Q1, Median, Q3, Max: " + Arrays.toString(boxplot));
         System.out.println("Outliers (based on " + OUTLIER_SDS + " std devs): " + outliersStdDev);
         System.out.println("Outliers (based on " + OUTLIERS_IQR + " IQRs): " + outliersIQR);
+    }
+
+    static MultiValuedMap<Integer, Double> getDataTypes(int dataType, int site, StreamMonitoringData data) {
+        if (site == 1 || site == 2) {
+            if (data.getSite() == null) {
+                return null;
+            }
+            if (data.getSite() != site) {
+                return null;
+            }
+        }
+
+        MultiValuedMap<Integer, Double> dataTypes;
+        switch (dataType) {
+            case 1:
+                dataTypes = data.getTurbiditiesFirst();
+                break;
+            case 2:
+                dataTypes = data.getTurbiditiesSecond();
+                break;
+            case 3:
+                dataTypes = data.getAirTemps();
+                break;
+            case 4:
+                dataTypes = data.getWaterTemps();
+                break;
+            case 5:
+                dataTypes = data.getPHs();
+                break;
+            case 6:
+                dataTypes = data.getOxygens();
+                break;
+            case 7:
+                dataTypes = data.getConductivities();
+                break;
+            default:
+                // flow -- not good yet
+                dataTypes = data.getFlowLefts();
+                break;
+        }
+        return dataTypes;
     }
 }
