@@ -1,16 +1,20 @@
 package main.converters;
 
 import com.opencsv.bean.AbstractBeanField;
-import com.opencsv.exceptions.CsvConstraintViolationException;
-import com.opencsv.exceptions.CsvDataTypeMismatchException;
 
 import java.util.Date;
 
+/*
+ * Converts given String into a java.util.Date object.
+ * Meant to be used with 'Date' column; example String: 5/12/06 .
+ */
 public class DateConverter extends AbstractBeanField<String> {
     @Override
-    public Object convert(String s) throws CsvDataTypeMismatchException, CsvConstraintViolationException {
+    public Object convert(String s) {
         try {
-            Date date = new Date(s); // should use DateFormat.parse()? or Calendar.set and such?
+            // ordinary Date: mm/dd/yy
+            Date date = new Date(s);
+            // deprecated, but DateFormat.parse()? or Calendar.set and such do not work as well
             return date;
         } catch (Exception e) {
             try {
