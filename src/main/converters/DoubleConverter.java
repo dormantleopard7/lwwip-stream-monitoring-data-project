@@ -1,15 +1,17 @@
 package main.converters;
 
 import com.opencsv.bean.AbstractBeanField;
-import com.opencsv.exceptions.CsvConstraintViolationException;
-import com.opencsv.exceptions.CsvDataTypeMismatchException;
 
-// should work with phosphate, nitrate/nitrite
+/*
+ * Converts given String into Java Double object.
+ * Works directly for phosphate, nitrate/nitrite.
+ */
 public class DoubleConverter extends AbstractBeanField<String> {
+    // uses SimpleDoubleConverter as base
     private SimpleDoubleConverter converter = new SimpleDoubleConverter();
 
     @Override
-    public Object convert(String s) throws CsvDataTypeMismatchException, CsvConstraintViolationException {
+    public Object convert(String s) {
         try {
             Double value = (Double) converter.convertToRead(s);
             if (value == null) {
@@ -35,6 +37,8 @@ public class DoubleConverter extends AbstractBeanField<String> {
                 value = (Double) converter.convertToRead(s.substring(index));
             }
             if (value == null) {
+                // beginning and end?
+
                 int beginIndex = 0;
                 for (int i = 0; i < s.length(); i++) {
                     if (Character.isDigit(s.charAt(i))) {

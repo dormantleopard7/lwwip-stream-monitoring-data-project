@@ -1,20 +1,19 @@
 package main.converters;
 
 import com.opencsv.bean.AbstractCsvConverter;
-import com.opencsv.exceptions.CsvConstraintViolationException;
-import com.opencsv.exceptions.CsvDataTypeMismatchException;
 
-// !!! Might want to rethink design with these converters
-//  maybe have this one do what DoubleConverter does, then have Temp extend this one ???
+/*
+ * Converts given String into a Java Double.
+ * Works well with conductivity and pH.
+ * Basically, if numeric, converts to Double, otherwise null.
+ */
 
-// should work with conductivity, pH, DO
 public class SimpleDoubleConverter extends AbstractCsvConverter {
     @Override
-    public Object convertToRead(String s) throws CsvDataTypeMismatchException, CsvConstraintViolationException {
+    public Object convertToRead(String s) {
         try {
             // nice numeric
-            Double value = Double.parseDouble(s);
-            return value;
+            return Double.parseDouble(s);
         } catch (Exception e) {
             return null;
         }

@@ -1,28 +1,26 @@
 package main.converters;
 
-import com.opencsv.exceptions.CsvConstraintViolationException;
-import com.opencsv.exceptions.CsvDataTypeMismatchException;
-
-// !!! redesign ???
-
-// should work with air and water temp
-public class TemperatureConverter extends SimpleDoubleConverter {
-    DoubleConverter converter = new DoubleConverter();
-
+/*
+ * Converts given String to a temperature Java Double.
+ * Meant for air and water temperature.
+ * Includes conversion from Fahrenheit to Celsius.
+ */
+public class TemperatureConverter extends DoubleConverter2 {
     @Override
-    public Object convertToRead(String s) throws CsvDataTypeMismatchException, CsvConstraintViolationException {
+    public Object convertToRead(String s) {
         try {
-            if (s.endsWith("F") || s.endsWith("Fahrenheit")) { // might add something with °
+            if (s.endsWith("F") || s.endsWith("Fahrenheit")) {
                 // fahrenheit value
                 Double value = Double.parseDouble(s.substring(0, s.indexOf("F")));
                 return fahrenheitToCelsius(value);
             }
-            return converter.convert(s);
+            return super.convertToRead(s);
         } catch (Exception e) {
             return null;
         }
     }
 
+    // converts from fahrenheit to celsius
     public Double fahrenheitToCelsius(Double f) {
         return (f - 32.0) * (5.0 / 9.0);
     }
