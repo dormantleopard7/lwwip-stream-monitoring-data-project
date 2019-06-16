@@ -254,11 +254,6 @@ public class StreamMonitoringDataVisualizer {
             if (date.compareTo(endDate) > 0) {
                 break;
             }
-            if (site == 1 || site == 2) {
-                if (data.getSite() != site) {
-                    continue;
-                }
-            }
             MultiValuedMap<Integer, Double> dataTypes = StreamMonitoringMain.getDataTypes(dataType, site, data);
             if (dataTypes != null) {
                 Collection<Double> vals = dataTypes.values();
@@ -342,7 +337,7 @@ public class StreamMonitoringDataVisualizer {
         return x;
     }
 
-    private String dateToString(Date date) {
+    public static String dateToString(Date date) {
         return (date.getMonth() + 1) + "/" + date.getDate() + "/" + (date.getYear() + 1900);
     }
 }

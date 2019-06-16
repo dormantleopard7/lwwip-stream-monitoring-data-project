@@ -36,10 +36,22 @@ public class StreamMonitoringMain {
             String outputFileName = console.nextLine();
             StreamMonitoringDataWriter.write(streamModel, outputFileName);
         } else if (option.equalsIgnoreCase("a") || option.equalsIgnoreCase("v")) {
-            System.out.print("Start date: ");
-            Date start = new Date(console.nextLine());
-            System.out.print("End date: ");
-            Date end = new Date(console.nextLine());
+            System.out.print("Start date (leave blank if want first data date): ");
+            Date start;
+            try {
+                start = new Date(console.nextLine());
+            } catch (IllegalArgumentException e) {
+                start = streamModel.getData().get(0).getDate();
+                System.out.println("Start date set to " + StreamMonitoringDataVisualizer.dateToString(start));
+            }
+            System.out.print("End date (leave blank if want today's date): ");
+            Date end;
+            try {
+                end = new Date(console.nextLine());
+            } catch (IllegalArgumentException e) {
+                end = new Date();
+                System.out.println("End date set to " + StreamMonitoringDataVisualizer.dateToString(end));
+            }
             System.out.print("Site (1 or 2; 0 if want both): ");
             int site = Integer.parseInt(console.nextLine());
             System.out.print("Data type (" + DATA_TYPES + "): ");
@@ -159,7 +171,7 @@ public class StreamMonitoringMain {
                 dataTypes = data.getConductivities();
                 break;
             default:
-                // flow -- not good yet
+                // flow -- not good at all
                 dataTypes = data.getFlowLefts();
                 break;
         }
