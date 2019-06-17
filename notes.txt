@@ -6,3 +6,14 @@ Changes required to make file-reading work:
 - remove headers (line 1) altogether, so that the first line now has data (use a text editor to do this)
 
 * something that should be changed in the Google sheet soon
+
+How to run the program (on Windows):
+- download Java
+- download the .jar
+- download the data and do the above
+- move the file to the same directory as the .jar file
+- open Command prompt (cmd.exe) or something similar (like git bash)
+- navigate to the directory (using the cd command)
+- when in directory, run java -jar lwwip-stream-monitoring-data-project.jar
+- it should prompt for file name; enter the file name (including the .tsv)
+- should be good to go!

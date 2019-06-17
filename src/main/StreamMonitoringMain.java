@@ -13,15 +13,19 @@ import static main.StreamMonitoringDataParser.DELTA;
  */
 public class StreamMonitoringMain {
     // constant for input file
-    public static final String STREAM_FILE_PATH = "src/main/data/coal_creek_data_3-2019.tsv";
+    public static final String STREAM_FILE_PATH = /*"C:/Users/Anirudh P/Documents/0 School/LWWIP/LWWIP Stream Monitoring Data Project/lwwip-stream-monitoring-data-project/*/"src/main/data/coal_creek_data_3-2019.tsv";
 
     // prints menu and prompts for option
     public static void main(String[] args) {
-        StreamMonitoringDataModel streamModel = new StreamMonitoringDataModel(STREAM_FILE_PATH);
+        Scanner console = new Scanner(System.in);
+        System.out.println("Enter the stream data .tsv file name/path.\n" +
+                "Specify the path from the root directory or from the current directory.");
+        System.out.print("File name/path: ");
+        String streamFilePath = console.nextLine();
+        StreamMonitoringDataModel streamModel = new StreamMonitoringDataModel(streamFilePath);
         StreamMonitoringDataVisualizer visualizer = new StreamMonitoringDataVisualizer(streamModel);
 
         printMenu();
-        Scanner console = new Scanner(System.in);
         String option;
         do {
             System.out.println();
