@@ -1,22 +1,29 @@
 package main;
 
-// represents a Coordinate location on the Earth
+/*
+ * Represents a Coordinate location on the Earth.
+ * Meant to be used for the 'Coordinates' column.
+ */
 public class Coordinates {
+    // latitude
     private int latDeg;
     private int latMin;
     private double latSec;
     private char latDir;
 
+    // longitude
     private int longDeg;
     private int longMin;
     private double longSec;
     private char longDir;
 
+    // constructor based on input String
     // format: [lat]deg°min'sec"dir [long]deg°min'sec"dir
     // site 1: 47°33'07.16"N 122°09'54.26"W
     // site 2: 47°33'04.16"N 122°09'51.67"W
     public Coordinates(String coordinates) {
         String[] latLong = coordinates.split(" ");
+
         String latitude = latLong[0];
         int laDeg = latitude.indexOf("°");
         int laMin = latitude.indexOf("'");
@@ -25,6 +32,7 @@ public class Coordinates {
         latMin = Integer.parseInt(latitude.substring(laDeg + 1, laMin));
         latSec = Double.parseDouble(latitude.substring(laMin + 1, laSec));
         latDir = latitude.charAt(latitude.length() - 1);
+
         String longitude = latLong[1];
         int loDeg = longitude.indexOf("°");
         int loMin = longitude.indexOf("'");
@@ -72,8 +80,4 @@ public class Coordinates {
         return latDeg + "°" + latMin + "'" + latSec + "\"" + latDir + " " +
                longDeg + "°" + longMin + "'" + longSec + "\"" + longDir;
     }
-
-    // things to think about:
-    // - store toString as field (arg to constructor anyway)
-    // - or add setters maybe ???
 }

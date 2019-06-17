@@ -6,7 +6,11 @@ import org.apache.commons.collections4.MultiValuedMap;
 
 import java.util.Date;
 
-public class StreamMonitoringData /*implements Comparable<StreamMonitoringData>*/ {
+/*
+ * Represents a row in the data spreadsheet.
+ * Stores all the data, though not all of it might be used.
+ */
+public class StreamMonitoringData {
     // date
     @CsvCustomBindByPosition(position = 0, converter = DateConverter.class)
     private Date date;
@@ -109,7 +113,7 @@ public class StreamMonitoringData /*implements Comparable<StreamMonitoringData>*
     private MultiValuedMap<Integer, Double> conductivities;
 
     // rain
-    // varying capitalizations: heavy, trace, light, none, moderate [need to figure out which is which]
+    // varying capitalizations: heavy, trace, light, none, moderate
     // trace/intermittent, light to moderate, moderate to heavy,
     // very little..., today no rain, (no observations...
     @CsvBindByPosition(position = 69)
@@ -312,22 +316,33 @@ public class StreamMonitoringData /*implements Comparable<StreamMonitoringData>*
         this.notes = notes;
     }
 
-    /*@Override
-    public int compareTo(StreamMonitoringData o) {
-        if (this.getDate() == null) {
-            return o.getDate() == null ? 0 : -1;
-
-        } else {
-            return o.getDate() == null ? 1 :
-                    (this.getDate().compareTo(o.getDate()));
-        }
-    }*/
-
+    // returns a String containing all the data
     @Override
     public String toString() {
-        if (this.getDate() == null) {
-            return null;
-        }
-        return this.getDate().getYear() + 1900 + "";
+        StringBuilder builder = new StringBuilder();
+        builder.append(this.getDate()).append("\t");
+        builder.append(this.getSite()).append("\t");
+        builder.append(this.getCoordinates()).append("\t");
+        builder.append(this.getSheet()).append("\t");
+        builder.append(this.getTurbiditiesFirst()).append("\t");
+        builder.append(this.getTurbidityUnitsFirst()).append("\t");
+        builder.append(this.getTurbiditiesSecond()).append("\t");
+        builder.append(this.getTurbidityUnitsSecond()).append("\t");
+        builder.append(this.getAirTemps()).append("\t");
+        builder.append(this.getWaterTemps()).append("\t");
+        builder.append(this.getPHs()).append("\t");
+        builder.append(this.getOxygens()).append("\t");
+        builder.append(this.getFlowRights()).append("\t");
+        builder.append(this.getFlowCenters()).append("\t");
+        builder.append(this.getFlowLefts()).append("\t");
+        builder.append(this.getFlowUnits()).append("\t");
+        builder.append(this.getPhosphate()).append("\t");
+        builder.append(this.getNitr()).append("\t");
+        builder.append(this.getConductivities()).append("\t");
+        builder.append(this.getRain()).append("\t");
+        builder.append(this.getBenthicMacros()).append("\t");
+        builder.append(this.getDataRecorder()).append("\t");
+        builder.append(this.getNotes());
+        return builder.toString();
     }
 }

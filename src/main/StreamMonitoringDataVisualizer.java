@@ -254,7 +254,7 @@ public class StreamMonitoringDataVisualizer {
             if (date.compareTo(endDate) > 0) {
                 break;
             }
-            MultiValuedMap<Integer, Double> dataTypes = StreamMonitoringMain.getDataTypes(dataType, site, data);
+            MultiValuedMap<Integer, Double> dataTypes = StreamMonitoringDataModel.getDataTypes(dataType, site, data);
             if (dataTypes != null) {
                 Collection<Double> vals = dataTypes.values();
                 vals.removeIf(Objects::isNull);

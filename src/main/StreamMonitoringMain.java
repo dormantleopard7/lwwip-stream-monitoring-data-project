@@ -1,7 +1,5 @@
 package main;
 
-import org.apache.commons.collections4.MultiValuedMap;
-
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -10,11 +8,17 @@ import java.util.Scanner;
 import static main.StreamMonitoringDataModel.*;
 import static main.StreamMonitoringDataParser.DELTA;
 
+/*
+ * Contains the full user interface and options available to the user.
+ */
 public class StreamMonitoringMain {
+    // constant for input file
     public static final String STREAM_FILE_PATH = "src/main/data/coal_creek_data_3-2019.tsv";
 
+    // prints menu and prompts for option
     public static void main(String[] args) {
         StreamMonitoringDataModel streamModel = new StreamMonitoringDataModel(STREAM_FILE_PATH);
+        StreamMonitoringDataVisualizer visualizer = new StreamMonitoringDataVisualizer(streamModel);
 
         printMenu();
         Scanner console = new Scanner(System.in);
@@ -23,19 +27,22 @@ public class StreamMonitoringMain {
             System.out.println();
             System.out.print("Enter an option (m to see the menu): ");
             option = console.nextLine();
-            processOption(option, streamModel, console);
+            processOption(option, streamModel, visualizer, console);
         } while (!option.equalsIgnoreCase("q"));
     }
 
-    public static void processOption(String option, StreamMonitoringDataModel streamModel, Scanner console) {
-        StreamMonitoringDataVisualizer visualizer = new StreamMonitoringDataVisualizer(streamModel);
-        if (option.equalsIgnoreCase("m")) {
+    // processes option given by user
+    public static void processOption(String option, StreamMonitoringDataModel streamModel,
+                                     StreamMonitoringDataVisualizer visualizer, Scanner console) {
+        if (option.equalsIgnoreCase("m")) { // menu
             printMenu();
-        } else if (option.equalsIgnoreCase("w")) {
+        } else if (option.equalsIgnoreCase("w")) { // write
             System.out.print("Output file name: ");
             String outputFileName = console.nextLine();
             StreamMonitoringDataWriter.write(streamModel, outputFileName);
         } else if (option.equalsIgnoreCase("a") || option.equalsIgnoreCase("v")) {
+            // analyze or visualize
+
             System.out.print("Start date (leave blank if want first data date): ");
             Date start;
             try {
@@ -65,14 +72,14 @@ public class StreamMonitoringMain {
                 }
             }
 
-            if (option.equalsIgnoreCase("a")) {
+            if (option.equalsIgnoreCase("a")) { // analyze
                 List<Double> sortedData = streamModel.getData(dataType, site, start, end);
                 System.out.println();
                 printStats(streamModel, sortedData);
-            } else {
+            } else { // visualize
                 System.out.print("(S)catter plot OR (H)istogram: ");
                 String choice = console.nextLine().substring(0, 1);
-                if (choice.equalsIgnoreCase("H")) {
+                if (choice.equalsIgnoreCase("H")) { // histogram
                     System.out.print("Bucket Size (0 for individual counts): ");
                     double bucketSize = Double.parseDouble(console.nextLine());
                     if (bucketSize < 0) {
@@ -88,7 +95,7 @@ public class StreamMonitoringMain {
                         visualizer.drawHistogram(dataType, site, start, end, bucketSize);
                     }
                     System.out.println("Histogram Generated!");
-                } else {
+                } else { // scatter plot (default)
                     if (!choice.equalsIgnoreCase("S")) {
                         System.out.println("Invalid choice, but still...");
                     }
@@ -96,11 +103,12 @@ public class StreamMonitoringMain {
                     System.out.println("Scatter Plot Generated!");
                 }
             }
-        } else if (!option.equalsIgnoreCase("q")) {
+        } else if (!option.equalsIgnoreCase("q")) { // invalid option
             System.out.println("Unknown option");
         }
     }
 
+    // prints the menu of options
     public static void printMenu() {
         System.out.println("Menu:");
         System.out.println("\tw to write cleaned data to file");
@@ -109,6 +117,7 @@ public class StreamMonitoringMain {
         System.out.println("\tq to quit");
     }
 
+    // prints the statistics of the streamModel's sortedData
     public static void printStats(StreamMonitoringDataModel streamModel, List<Double> sortedData) {
         System.out.println("Resulting Statistics");
         System.out.println("--------------------");
@@ -135,46 +144,5 @@ public class StreamMonitoringMain {
         System.out.println("Min, Q1, Median, Q3, Max: " + Arrays.toString(boxplot));
         System.out.println("Outliers (based on " + OUTLIER_SDS + " std devs): " + outliersStdDev);
         System.out.println("Outliers (based on " + OUTLIERS_IQR + " IQRs): " + outliersIQR);
-    }
-
-    static MultiValuedMap<Integer, Double> getDataTypes(int dataType, int site, StreamMonitoringData data) {
-        if (site == 1 || site == 2) {
-            if (data.getSite() == null) {
-                return null;
-            }
-            if (data.getSite() != site) {
-                return null;
-            }
-        }
-
-        MultiValuedMap<Integer, Double> dataTypes;
-        switch (dataType) {
-            case 1:
-                dataTypes = data.getTurbiditiesFirst();
-                break;
-            case 2:
-                dataTypes = data.getTurbiditiesSecond();
-                break;
-            case 3:
-                dataTypes = data.getAirTemps();
-                break;
-            case 4:
-                dataTypes = data.getWaterTemps();
-                break;
-            case 5:
-                dataTypes = data.getPHs();
-                break;
-            case 6:
-                dataTypes = data.getOxygens();
-                break;
-            case 7:
-                dataTypes = data.getConductivities();
-                break;
-            default:
-                // flow -- not good at all
-                dataTypes = data.getFlowLefts();
-                break;
-        }
-        return dataTypes;
     }
 }

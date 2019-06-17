@@ -5,17 +5,31 @@ import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.util.List;
 
+/*
+ * Writes cleaned data to a file.
+ * Note that the format of the output file is similar to input, in that it is a
+ * .tsv file with similar header ordering, but the output is not the same, in
+ * that MultiValuedMaps are printed as is.
+ */
 public class StreamMonitoringDataWriter {
+    // can provide a model and output file name
     public static void write(StreamMonitoringDataModel streamModel, String outputFileName) {
         printToFile(streamModel.getData(), outputFileName);
     }
 
+    // or provide the input file path itself and output file name
     public static void write(String inputFilePath, String outputFileName) {
         List<StreamMonitoringData> streamData =
                 StreamMonitoringDataParser.parseData(inputFilePath);
         printToFile(streamData, outputFileName);
     }
 
+    // or provide the data list itself and output file name
+    public static void write(List<StreamMonitoringData> streamData, String outputFileName) {
+        printToFile(streamData, outputFileName);
+    }
+
+    // prints the data to the output file
     private static void printToFile(List<StreamMonitoringData> streamData, String outputFileName) {
         try {
             PrintStream output = new PrintStream(new File(outputFileName));
@@ -45,30 +59,7 @@ public class StreamMonitoringDataWriter {
             output.print("Notes\t");
             output.println();
             for (StreamMonitoringData data : streamData) {
-                output.print(data.getDate() + "\t");
-                output.print(data.getSite() + "\t");
-                output.print(data.getCoordinates() + "\t");
-                output.print(data.getSheet() + "\t");
-                output.print(data.getTurbiditiesFirst() + "\t");
-                output.print(data.getTurbidityUnitsFirst() + "\t");
-                output.print(data.getTurbiditiesSecond() + "\t");
-                output.print(data.getTurbidityUnitsSecond() + "\t");
-                output.print(data.getAirTemps() + "\t");
-                output.print(data.getWaterTemps() + "\t");
-                output.print(data.getPHs() + "\t");
-                output.print(data.getOxygens() + "\t");
-                output.print(data.getFlowRights() + "\t");
-                output.print(data.getFlowCenters() + "\t");
-                output.print(data.getFlowLefts() + "\t");
-                output.print(data.getFlowUnits() + "\t");
-                output.print(data.getPhosphate() + "\t");
-                output.print(data.getNitr() + "\t");
-                output.print(data.getConductivities() + "\t");
-                output.print(data.getRain() + "\t");
-                output.print(data.getBenthicMacros() + "\t");
-                output.print(data.getDataRecorder() + "\t");
-                output.print(data.getNotes() + "\t");
-                output.println();
+                output.println(data);
             }
             output.close();
         } catch (FileNotFoundException e) {
