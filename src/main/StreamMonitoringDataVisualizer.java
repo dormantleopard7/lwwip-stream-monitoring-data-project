@@ -9,11 +9,20 @@ import java.util.List;
 import static main.StreamMonitoringDataModel.DATA_TYPES;
 import static main.StreamMonitoringDataParser.DELTA;
 
+/*
+ * Visualizes data through a scatter plot or histogram.
+ */
 public class StreamMonitoringDataVisualizer {
+    // returns the number of days in the given year,
+    // where year = [intended year] - 1900
+    // e.g. if wanted days in 2016, call getDaysInYear(116)
     public static int getDaysInYear(int year) {
         year += 1900;
         return ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) ? 366 : 365;
     }
+    // returns the number of days in the given month in the given year,
+    // where year = [intended year] - 1900 and month = [intended month] - 1
+    // e.g. if wanted days in March 2014, call getDaysInMonth(2, 114)
     public static int getDaysInMonth(int m, int y) {
         if (m == 3 || m == 5 || m == 8 || m == 10) {
             return 30;
@@ -24,33 +33,47 @@ public class StreamMonitoringDataVisualizer {
         }
     }
 
+    /* VISUALIZATION CONSTANTS */
+    // font size
     private static final int FONT_SIZE = 14;
+    // white space buffer around the axes
     private static final int BUFFER = 70;
+    // BUFFER - 1
     private static final int BUFF = BUFFER - 1;
+    // white space between axes and data
     private static final int AXES_BUFFER = 10;
+    // BUFF - AXES_BUFFER
     private static final int TOTAL_BUFF = BUFF - AXES_BUFFER;
+    // length of notch
     private static final int NOTCH = 10;
+    // color green
+    private static final Color GREEN = new Color(20, 160, 30);
 
-    // constants for scatter plotting
+    // scatter plot single dot size
     private static final int DOT_SIZE = 4;
     // scaling factors for data points; MULTIPLIERS[i] = multiplier for DATA_TYPES.get(i + 1)
     private static final int[] MULTIPLIERS = { 10, 100, 10, 10, 10, 10, 1 };
-    private static final Color GREEN = new Color(20, 160, 30);
 
-    // constants for histogram
+    // histogram bar width
     private static final int HIST_BAR_WIDTH = 40;
+    // histogram count multiplier
     private static final int HIST_MULTIPLIER = 10;
 
+    // stream model with all the data
     private StreamMonitoringDataModel streamModel;
 
+    // construct using a stream model
     public StreamMonitoringDataVisualizer(StreamMonitoringDataModel streamModel) {
         this.streamModel = streamModel;
     }
 
+    // or construct using inputFilePath itself
     public StreamMonitoringDataVisualizer(String inputFilePath) {
         this(new StreamMonitoringDataModel(inputFilePath));
     }
 
+    // draw a histogram of dataType at site site from startDate to endDate,
+    // with bucket size bucketSize; accompanied by text histogram as well
     public void drawHistogram(int dataType, int site, Date startDate, Date endDate, double bucketSize) {
         List<Integer> counts = new ArrayList<>();
         double firstBucket = textHistogram(dataType, site, startDate, endDate, bucketSize, counts);
@@ -90,7 +113,7 @@ public class StreamMonitoringDataVisualizer {
 
         drawTitle(dataType, panel, g);
 
-        // notches/labels
+        // notches and notch value labels
         g.setFont(new Font(Font.SANS_SERIF, Font.BOLD, FONT_SIZE));
         g.drawLine(BUFF - NOTCH / 2, BUFF + 2 * AXES_BUFFER, BUFF + NOTCH / 2, BUFF + 2 * AXES_BUFFER);
         g.drawString(maxCount + "", BUFF - NOTCH / 2 - 20, BUFF + 2 * AXES_BUFFER + 5);
@@ -108,10 +131,14 @@ public class StreamMonitoringDataVisualizer {
 
     }
 
+    // just draw text histogram of dataType at site site from startDate to
+    // endDate, with bucket size bucketSize
     public void textHistogram(int dataType, int site, Date startDate, Date endDate, double bucketSize) {
         textHistogram(dataType, site, startDate, endDate, bucketSize, null);
     }
 
+    // draw text histogram of dataType at site site from startDate to endDate,
+    // with bucket size bucketSize; returns first bucket and modifies List counts
     private double textHistogram(int dataType, int site, Date startDate, Date endDate, double bucketSize,
                                List<Integer> counts) {
         List<Double> sortedData = streamModel.getData(dataType, site, startDate, endDate);
@@ -125,7 +152,7 @@ public class StreamMonitoringDataVisualizer {
                     while ((curr < datum - bucketSize) || ((Math.abs(datum - bucketSize - curr) < DELTA))) {
                         curr += bucketSize;
                     }
-                    // curr = first multiple of bucketSize below datum
+                    // curr is first multiple of bucketSize below datum
                     firstBucket = curr;
                     System.out.println();
                     System.out.printf("[%-7.2f - %7.2f) : ", curr, curr + bucketSize);
@@ -154,6 +181,8 @@ public class StreamMonitoringDataVisualizer {
         return firstBucket;
     }
 
+    // print a text histogram of dataType at site site from startDate to endDate,
+    // with bar size based solely on count of data
     public void simpleTextHistogram(int dataType, int site, Date startDate, Date endDate) {
         List<Double> sortedData = streamModel.getData(dataType, site, startDate, endDate);
         Double curr = null;
@@ -168,6 +197,7 @@ public class StreamMonitoringDataVisualizer {
         System.out.println();
     }
 
+    // draws a scatter plot of dataType at site site from startDate to endDate
     public void drawScatterPlot(int dataType, int site, Date startDate, Date endDate) {
         List<StreamMonitoringData> streamData = streamModel.getData();
         if (startDate.compareTo(endDate) > 0) {
@@ -192,6 +222,7 @@ public class StreamMonitoringDataVisualizer {
         plotDataPoints(dataType, site, startDate, endDate, streamData, startIndex, panel, g);
     }
 
+    // draw axes for scatter plot
     private void drawScatterAxes(DrawingPanel panel, Graphics g) {
         assert g.equals(panel.getGraphics());
 
@@ -203,6 +234,7 @@ public class StreamMonitoringDataVisualizer {
         g.drawLine(TOTAL_BUFF - 1, heightBuff + 1, panel.getWidth() - TOTAL_BUFF, heightBuff + 1);
     }
 
+    // draw title for graph (scatter or histogram)
     private void drawTitle(int dataType, DrawingPanel panel, Graphics g) {
         assert g.equals(panel.getGraphics());
 
@@ -212,6 +244,7 @@ public class StreamMonitoringDataVisualizer {
         g.drawString(titleStr, sides, BUFFER / 2);
     }
 
+    // draw and label notches in scatter plot
     private void drawScatterLabelNotches(Date startDate, Date endDate, DrawingPanel panel, Graphics g, double max) {
         assert g.equals(panel.getGraphics());
 
@@ -232,6 +265,7 @@ public class StreamMonitoringDataVisualizer {
         g.drawString(dateToString(endDate), panel.getWidth() - BUFF - 50, heightBuff + 10 + 10);
     }
 
+    // draw axes title "Date" for scatter plot
     private void drawDateAxisTitle(DrawingPanel panel, Graphics g) {
         assert g.equals(panel.getGraphics());
 
@@ -239,6 +273,7 @@ public class StreamMonitoringDataVisualizer {
         g.drawString("Date", (panel.getWidth() - (4 * 10)) / 2, panel.getHeight() - BUFFER / 2);
     }
 
+    // plot data points for scatter plot
     private void plotDataPoints(int dataType, int site, Date startDate, Date endDate,
                                 List<StreamMonitoringData> streamData, int startIndex,
                                 DrawingPanel panel, Graphics g) {
@@ -308,7 +343,7 @@ public class StreamMonitoringDataVisualizer {
         }
     }
 
-    // for now only if different years
+    // finds number of days between start and end, inclusive of vboth
     private int differenceBetweenDates(Date start, Date end) {
         int startYear = start.getYear();
         int endYear = end.getYear();
@@ -330,13 +365,13 @@ public class StreamMonitoringDataVisualizer {
         int x = 0;
         // days in months prior
         for (int i = 0; i < date.getMonth(); i++) {
-            //x += DAYS_PER_MONTH[i];
             x += getDaysInMonth(i, date.getYear());
         }
         x += date.getDate();
         return x;
     }
 
+    // converts date to String of format mm/dd/yyyy
     public static String dateToString(Date date) {
         return (date.getMonth() + 1) + "/" + date.getDate() + "/" + (date.getYear() + 1900);
     }

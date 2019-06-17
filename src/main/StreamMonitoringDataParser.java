@@ -10,6 +10,9 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 
+/*
+ * Parses and cleans the data (mostly).
+ */
 public class StreamMonitoringDataParser {
     // delta for testing equality with doubles
     public static final double DELTA = 0.0001;
