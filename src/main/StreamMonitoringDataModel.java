@@ -213,7 +213,7 @@ public class StreamMonitoringDataModel {
     }
 
     // returns a list of outliers in the given sorted list based on the given
-    // quartiles (1.5 IQR from the median)
+    // quartiles (1.5 IQR from the quartiles)
     public List<Double> getOutliersIQR(List<Double> sortedData, double[] quartiles) {
         double iqr = quartiles[2] - quartiles[0];
         double low = quartiles[0] - OUTLIERS_IQR * iqr;

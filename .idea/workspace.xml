@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f222aa8f-a7ac-492f-a42a-73b8efff7dc6" name="Default Changelist" comment="" />
+    <list default="true" id="f222aa8f-a7ac-492f-a42a-73b8efff7dc6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/ModelTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/StreamMonitoringDataModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/StreamMonitoringDataModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/ConvertersTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/ConvertersTests.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,41 +39,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/StreamMonitoringDataParser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="55" column="13" lean-forward="true" selection-start-line="55" selection-start-column="13" selection-end-line="55" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/StreamMonitoringDataVisualizer.java">
+        <entry file="file://$PROJECT_DIR$/src/test/ConvertersTests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="373" column="51" selection-start-line="373" selection-start-column="51" selection-end-line="373" selection-end-column="51" />
+            <state relative-caret-position="144">
+              <caret line="15" column="44" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2035#2036#0" expanded="true" />
-                <element signature="e#2081#2082#0" expanded="true" />
-                <element signature="e#2148#2149#0" expanded="true" />
-                <element signature="e#2214#2215#0" expanded="true" />
+                <element signature="e#324#325#0" expanded="true" />
+                <element signature="e#385#386#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/StreamMonitoringMain.java">
+        <entry file="file://$PROJECT_DIR$/src/main/StreamMonitoringDataModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-995">
-              <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+            <state relative-caret-position="208">
+              <caret line="215" column="44" selection-start-line="215" selection-start-column="44" selection-end-line="215" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/ModelTests.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#487#488#0" expanded="true" />
+                <element signature="e#569#570#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -117,7 +122,6 @@
         <option value="$PROJECT_DIR$/src/main/DoubleConverter.java" />
         <option value="$PROJECT_DIR$/src/main/DoubleConverter2.java" />
         <option value="$PROJECT_DIR$/src/main/UnitsTextConverter.java" />
-        <option value="$PROJECT_DIR$/src/test/ModelTests.java" />
         <option value="$PROJECT_DIR$/src/notes.txt" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/main/DrawingPanel.java" />
@@ -129,15 +133,16 @@
         <option value="$PROJECT_DIR$/src/main/converters/SimpleDoubleConverter.java" />
         <option value="$PROJECT_DIR$/src/main/converters/DoubleConverter2.java" />
         <option value="$PROJECT_DIR$/src/main/converters/TemperatureConverter.java" />
-        <option value="$PROJECT_DIR$/src/test/ConvertersTests.java" />
         <option value="$PROJECT_DIR$/src/main/converters/DoubleConverter.java" />
         <option value="$PROJECT_DIR$/src/main/Coordinates.java" />
         <option value="$PROJECT_DIR$/src/main/StreamMonitoringData.java" />
         <option value="$PROJECT_DIR$/src/main/StreamMonitoringDataWriter.java" />
-        <option value="$PROJECT_DIR$/src/main/StreamMonitoringDataModel.java" />
         <option value="$PROJECT_DIR$/src/main/StreamMonitoringMain.java" />
         <option value="$PROJECT_DIR$/src/main/StreamMonitoringDataParser.java" />
         <option value="$PROJECT_DIR$/src/main/StreamMonitoringDataVisualizer.java" />
+        <option value="$PROJECT_DIR$/src/main/StreamMonitoringDataModel.java" />
+        <option value="$PROJECT_DIR$/src/test/ModelTests.java" />
+        <option value="$PROJECT_DIR$/src/test/ConvertersTests.java" />
       </list>
     </option>
   </component>
@@ -245,7 +250,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.ModelTests">
+  <component name="RunManager" selected="JUnit.ModelTests">
     <configuration name="ModelTests" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="test.ModelTests" />
       <module name="lwwip-stream-monitoring-data-project" />
@@ -316,8 +321,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ModelTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="lwwip-stream-monitoring-data-project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="test.ModelTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ModelTests" />
         <item itemvalue="Application.ModelTests" />
         <item itemvalue="Application.StreamMonitoringDataVisualizer" />
         <item itemvalue="JUnit.ConvertersTests.testTurbidity" />
@@ -354,44 +375,44 @@
       <workItem from="1559614948675" duration="15561000" />
       <workItem from="1560712027003" duration="8136000" />
       <workItem from="1560721622282" duration="1048000" />
-      <workItem from="1560728919826" duration="7247000" />
+      <workItem from="1560728919826" duration="11490000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ConvertersTests - 2019.03.28 at 19h 39m 14s.xml">
-      <configuration name="ConvertersTests" configurationId="JUnit" />
+    <history-entry file="ModelTests - 2019.06.16 at 20h 21m 28s.xml">
+      <configuration name="ModelTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ConvertersTests - 2019.03.28 at 19h 39m 39s.xml">
-      <configuration name="ConvertersTests" configurationId="JUnit" />
+    <history-entry file="ModelTests - 2019.06.16 at 20h 21m 52s.xml">
+      <configuration name="ModelTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ConvertersTests - 2019.03.28 at 19h 40m 03s.xml">
-      <configuration name="ConvertersTests" configurationId="JUnit" />
+    <history-entry file="ModelTests - 2019.06.16 at 20h 28m 57s.xml">
+      <configuration name="ModelTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ConvertersTests - 2019.03.28 at 19h 40m 12s.xml">
-      <configuration name="ConvertersTests" configurationId="JUnit" />
+    <history-entry file="ModelTests - 2019.06.16 at 21h 22m 43s.xml">
+      <configuration name="ModelTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ConvertersTests - 2019.03.29 at 13h 26m 53s.xml">
-      <configuration name="ConvertersTests" configurationId="JUnit" />
+    <history-entry file="ModelTests - 2019.06.16 at 21h 29m 04s.xml">
+      <configuration name="ModelTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ConvertersTests - 2019.06.16 at 14h 20m 13s.xml">
-      <configuration name="ConvertersTests" configurationId="JUnit" />
+    <history-entry file="ModelTests - 2019.06.16 at 21h 29m 27s.xml">
+      <configuration name="ModelTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ConvertersTests - 2019.06.16 at 14h 20m 41s.xml">
-      <configuration name="ConvertersTests" configurationId="JUnit" />
+    <history-entry file="ModelTests - 2019.06.16 at 21h 41m 37s.xml">
+      <configuration name="ModelTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ConvertersTests - 2019.06.16 at 14h 25m 56s.xml">
-      <configuration name="ConvertersTests" configurationId="JUnit" />
+    <history-entry file="ModelTests - 2019.06.16 at 21h 43m 51s.xml">
+      <configuration name="ModelTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ConvertersTests - 2019.06.16 at 14h 27m 43s.xml">
-      <configuration name="ConvertersTests" configurationId="JUnit" />
+    <history-entry file="ModelTests - 2019.06.16 at 21h 47m 18s.xml">
+      <configuration name="ModelTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ConvertersTests - 2019.06.16 at 17h 17m 15s.xml">
-      <configuration name="ConvertersTests" configurationId="JUnit" />
+    <history-entry file="ModelTests - 2019.06.16 at 21h 48m 58s.xml">
+      <configuration name="ModelTests" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="175640000" />
+    <option name="totallyTimeSpent" value="179883000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -406,7 +427,7 @@
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49625936" visible="true" weight="0.2680162" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49625936" visible="true" weight="0.2680162" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -416,7 +437,7 @@
       <window_info anchor="bottom" id="Duplicate detector" order="0" weight="0.3285968" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.3285968" />
-      <window_info anchor="bottom" id="Run" order="3" weight="0.3090586" />
+      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.3090586" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.39964476" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
@@ -433,9 +454,9 @@
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="right" id="Ant Build" order="4" weight="0.24939272" />
       <window_info anchor="right" id="Database" order="5" weight="0.32955465" />
-      <window_info anchor="right" id="Maven" order="6" weight="0.32955465" />
-      <window_info anchor="right" id="Capture Analysis" order="7" />
-      <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Maven" order="8" weight="0.32955465" />
     </layout>
     <layout-to-restore>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49625936" visible="true" weight="0.25910932" />
@@ -509,16 +530,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/notes.txt" />
-    <entry file="file://$PROJECT_DIR$/src/test/ModelTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="34" column="88" selection-start-line="34" selection-start-column="88" selection-end-line="34" selection-end-column="88" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data.tsv" />
     <entry file="file://$PROJECT_DIR$/src/main/data/coal_creek_data.tsv" />
     <entry file="file://$PROJECT_DIR$/src/main/data/coal_creek_data_11-2018.tsv">
@@ -607,16 +618,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/ConvertersTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="87" selection-start-line="87" selection-end-line="87" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/converters/DoubleConverter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -635,22 +636,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="488" selection-start-line="9" selection-start-column="488" selection-end-line="9" selection-end-column="488" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/StreamMonitoringDataModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="113" column="56" lean-forward="true" selection-start-line="113" selection-start-column="56" selection-end-line="113" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1124#1125#0" expanded="true" />
-            <element signature="e#1187#1188#0" expanded="true" />
-            <element signature="e#2571#2572#0" expanded="true" />
-            <element signature="e#2611#2612#0" expanded="true" />
-            <element signature="e#2699#2700#0" expanded="true" />
-            <element signature="e#2759#2760#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -681,6 +666,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/StreamMonitoringDataVisualizer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="373" column="51" selection-start-line="373" selection-start-column="51" selection-end-line="373" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2035#2036#0" expanded="true" />
+            <element signature="e#2081#2082#0" expanded="true" />
+            <element signature="e#2148#2149#0" expanded="true" />
+            <element signature="e#2214#2215#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/StreamMonitoringDataParser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="325">
@@ -693,7 +692,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/StreamMonitoringMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-995">
+        <state relative-caret-position="178">
           <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -701,16 +700,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/StreamMonitoringDataVisualizer.java">
+    <entry file="file://$PROJECT_DIR$/src/main/StreamMonitoringDataModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="373" column="51" selection-start-line="373" selection-start-column="51" selection-end-line="373" selection-end-column="51" />
+        <state relative-caret-position="208">
+          <caret line="215" column="44" selection-start-line="215" selection-start-column="44" selection-end-line="215" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2035#2036#0" expanded="true" />
-            <element signature="e#2081#2082#0" expanded="true" />
-            <element signature="e#2148#2149#0" expanded="true" />
-            <element signature="e#2214#2215#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/ModelTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#487#488#0" expanded="true" />
+            <element signature="e#569#570#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/ConvertersTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="15" column="44" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#324#325#0" expanded="true" />
+            <element signature="e#385#386#0" expanded="true" />
           </folding>
         </state>
       </provider>

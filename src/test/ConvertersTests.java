@@ -9,8 +9,11 @@ import static main.StreamMonitoringDataParser.DELTA;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
+/*
+ * Testing file for various converters.
+ */
 public class ConvertersTests {
-
+    // converts given mm/dd/yyyy into a Date
     private Date date(int month, int date, int year) {
         return new Date(year - 1900, month - 1, date);
     }
