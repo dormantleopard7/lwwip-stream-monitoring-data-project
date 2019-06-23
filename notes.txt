@@ -1,7 +1,7 @@
 Changes required to make file-reading work:
 * change double quotes character at BT306 to colon - it was a typo anyway, in general want fewer typos
 * change "Site 2" at AQ282 to "Site Two" - in general do not want numbers if not intended to be data
-* change 1.2m to 10 NTU at G284 and G285 - in general first turbidity column should be NTU and second in m
+* change 1.2m to 10 NTU (to match the other entries) at G284 and G285 - in general first turbidity column should be NTU and second in m
 * date incorrect at A314 and A315 - should be 2019
 - remove headers (line 1) altogether, so that the first line now has data (use a text editor to do this)
 

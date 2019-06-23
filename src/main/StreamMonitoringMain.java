@@ -17,6 +17,7 @@ public class StreamMonitoringMain {
 
     // prints menu and prompts for option
     public static void main(String[] args) {
+        System.out.println();
         Scanner console = new Scanner(System.in);
         System.out.println("Enter the stream data .tsv file name/path.\n" +
                 "Specify the path from the root directory or from the current directory.");
@@ -24,6 +25,7 @@ public class StreamMonitoringMain {
         String streamFilePath = console.nextLine();
         StreamMonitoringDataModel streamModel = new StreamMonitoringDataModel(streamFilePath);
         StreamMonitoringDataVisualizer visualizer = new StreamMonitoringDataVisualizer(streamModel);
+        System.out.println();
 
         printMenu();
         String option;
