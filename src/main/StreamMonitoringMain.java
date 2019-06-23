@@ -67,7 +67,7 @@ public class StreamMonitoringMain {
             }
             System.out.print("Site (1 or 2; 0 if want both): ");
             int site = Integer.parseInt(console.nextLine());
-            System.out.print("Data type (" + DATA_TYPES + "): ");
+            System.out.print("Data type " + DATA_TYPES + ": ");
             int dataType = Integer.parseInt(console.nextLine());
 
             if (dataType < 1 || dataType > 7) {
@@ -77,6 +77,7 @@ public class StreamMonitoringMain {
                     System.out.println("Invalid data type (again); now interpreted as flow (left), which is not cleaned; Too Bad!");
                 }
             }
+            System.out.println("Chosen data type: " + DATA_TYPES.get(dataType));
 
             if (option.equalsIgnoreCase("a")) { // analyze
                 List<Double> sortedData = streamModel.getData(dataType, site, start, end);
