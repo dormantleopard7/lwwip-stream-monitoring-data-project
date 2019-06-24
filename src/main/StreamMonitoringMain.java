@@ -13,7 +13,7 @@ import static main.StreamMonitoringDataParser.DELTA;
  */
 public class StreamMonitoringMain {
     // constant for input file
-    public static final String STREAM_FILE_PATH = /*"C:/Users/Anirudh P/Documents/0 School/LWWIP/LWWIP Stream Monitoring Data Project/lwwip-stream-monitoring-data-project/*/"src/main/data/coal_creek_data_3-2019.tsv";
+    public static final String STREAM_FILE_PATH = "src/main/data/coal_creek_data_3-2019.tsv";
 
     // prints menu and prompts for option
     public static void main(String[] args) {

@@ -51,7 +51,7 @@ as the .jar file from step 2.
     * You can find a sample raw
 data file in 
 [out/artifacts/lwwip_stream_monitoring_data_project_jar/coal_creek_data_3-2019_raw.tsv](https://github.com/dormantleopard7/lwwip-stream-monitoring-data-project/blob/master/out/artifacts/lwwip_stream_monitoring_data_project_jar/coal_creek_data_3-2019_raw.tsv).
-        * Note: the format of your data file must match the format
+        * Note: The format of your data file must match the format
 of this file (i.e. same order of headers).
 4. **Get the data ready.**
 Assuming there aren't any issues with the data, this
@@ -64,8 +64,8 @@ download/use (for free) a more sophisticated text editor like
 [Sublime Text](https://www.sublimetext.com/).
     * Delete the first line (the headers line) completely.
 This means that the new first line of the file should 
-contain data (in the case of out data, this line begins
-with 5/12/2006). 
+contain data (in the case of our data, this new first
+line begins with 5/12/2006). 
         * You can find a sample ready data file in
 [out/artifacts/lwwip_stream_monitoring_data_project_jar/coal_creek_data_3-2019.tsv](https://github.com/dormantleopard7/lwwip-stream-monitoring-data-project/blob/master/out/artifacts/lwwip_stream_monitoring_data_project_jar/coal_creek_data_3-2019.tsv).
         * Note: In text editors without line numbers,
@@ -74,35 +74,37 @@ first line ends. For our data, the first line (which we
 want to delete) begins with *Date* and ends with *Notes*.
 Make sure that you completely delete this first line --
 this means that there should not be a blank line in its
-place; instead the first line must be a data line.
+place; instead the first line must be a line with data.
 5. **Run the program.**
     * To do this, you need to open a Command Prompt (or Terminal)
 window. You can do this by holding down the *Windows* key
-and pressing *R*, and typing *cmd*. This will open *cmd.exe*
+and pressing *R*, then typing *cmd*. This will open *cmd.exe*
 in your home directory (likely something similar to 
-`C:\Users\Username`). 
+`C:\Users\Username`, where `Username` is your computer
+username). 
     * Now you need to navigate to the
 directory with your .jar and .tsv files. 
         * To do this, you
-will likely only need two commands: `dir` (list the
-contents of the current directory), and `cd` (change 
-directory). 
-        * If you stored them in an easy directory,
-this could be as simple as the one command `cd Desktop`
-or `cd Downloads`. It could be a bit more complicated,
-but it only requires `dir` and `cd`. 
-        * Note: If you accidentally
+will likely only need two commands: `cd` (change 
+directory), and `dir` (list the contents of the 
+current directory). 
+            * Note: If you accidentally
 go into the wrong directory, you can type `cd ..` to go
 back up one directory. 
-            * Also, fun fact: you can press
+                * Also, fun fact: you can press
 *tab* to auto-complete a directory or file in cmd. 
-        * If you
+            * If you
 would like more help with Command Prompt, there are
 numerous basic online tutorials like 
 [this one](https://www.cs.princeton.edu/courses/archive/spr05/cos126/cmd-prompt.html).
+        * If you stored them in an easy directory,
+this could be as simple as the one command `cd Desktop`
+or `cd Downloads`. Otherwise, it could be a bit more complicated,
+but it still only requires `dir` and `cd`. 
     * Once you are in the correct directory, run the command:
 `java -jar lwwip-stream-monitoring-data-project.jar`
-        * Tip: start typing the jar file name, then press *tab* 
+        * Tip: start typing `java -jar lwwip` (basically
+        start typing the jar file name), then press *tab* 
 for auto-complete. 
         * It should prompt for a file name; 
 enter the name of the .tsv data file. 
@@ -112,15 +114,16 @@ now running, and you should be able to analyze and
 visualize the data! 
     * Note: You may put the .tsv file 
 in a different location than the .jar file, though it
-requires a bit more work. When prompted for the
+requires a bit more work: When prompted for the
 file name, enter the path to the file, either from
-the root (from `C:` down), or from the current
-directory.
+the root (from `C:` down; something like 
+`C:/Users/Username/Desktop/coal_creek_data_3-2019.tsv`), or from the current
+directory (something line `data/coal_creek_data_3-2019.tsv`).
 
 **Example Run**
 ```
 C:\Users\Username>cd Desktop
-C:\Users\Username\Desktop>java -jar lwwip-stream-monitoring-data-project.jar`
+C:\Users\Username\Desktop>java -jar lwwip-stream-monitoring-data-project.jar
 
 Enter the stream data .tsv file name/path.
 Specify the path from the root directory or from the current directory.
@@ -220,12 +223,13 @@ Enter an option (m to see the menu): q
 
 C:\Users\Username\Desktop>
 ```
-Note: For visualization, graphical charts should be
+Note: For visualization, graphical charts are
 generated and will open in a new window, where the user
 can zoom in and out, and save the image as a .png.
 All of these graphics windows must be closed for the
-quit option to work.
+(q)uit option to work. (Otherwise, use Ctrl-C to stop
+the program).
 
 Note: When it shows, `Conductivity (?S/cm)`, this is
 simply because Command Prompt does not recognize the
-μ (mu for micro) symbol. It is supposed to be `Conductivity (μS/cm)`.
+μ (mu, for micro) symbol. It is supposed to be `Conductivity (μS/cm)`.
