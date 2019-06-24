@@ -1,14 +1,19 @@
 # LWWIP Stream-Monitoring Data Project
 
 As part of my 3rd year at the Lake Washington Watershed 
-Internship Program, I chose to do a technical project, 
+Internship Program (LWWIP), I chose to do a technical project, 
 particularly analyzing and visualizing our stream monitoring 
 data.
 
 Note: This project began in November 2018, and was 
 added to GitHub in March 2019.
 
-## Usage Instructions
+## Description
+
+Description of features and explanation of interface,
+along with screenshots/images, coming soon.
+
+## Installation Instructions
 
 For this project to work correctly, you must have Java
 downloaded on your machine, and be able to navigate to 
@@ -53,7 +58,7 @@ This is necessary for running the program.
         *System variables*. If you have admin privileges,
         click on the *Path* or *PATH* variable in *System
         Variables* and click *Edit...*. Otherwise, do the
-        same in the *User variables for Username* section.
+        same in the *User variables* section.
         * In the new open window, click *New* and type the
         path to the *bin* file for your Java installation.
         This should be something like `C:\Program Files\Java\jdk-12.0.1\bin`.
@@ -155,6 +160,8 @@ file name, enter the path to the file, either from
 the root (from `C:` down; something like 
 `C:/Users/Username/Desktop/coal_creek_data_3-2019.tsv`), or from the current
 directory (something line `data/coal_creek_data_3-2019.tsv`).
+
+## Usage
 
 **Example Run**
 ```
@@ -266,6 +273,11 @@ All of these graphics windows must be closed for the
 (q)uit option to work. (Otherwise, use Ctrl-C to stop
 the program).
 
-Note: When it shows, `Conductivity (?S/cm)`, this is
+Note: When it shows `Conductivity (?S/cm)`, this is
 simply because Command Prompt does not recognize the
 μ (mu, for micro) symbol. It is supposed to be `Conductivity (μS/cm)`.
+
+## Support
+
+Contact me if you have any issues or questions
+regarding the program.
