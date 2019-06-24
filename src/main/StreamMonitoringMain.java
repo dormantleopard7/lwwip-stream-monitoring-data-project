@@ -43,12 +43,12 @@ public class StreamMonitoringMain {
         if (option.equalsIgnoreCase("m")) { // menu
             printMenu();
         } else if (option.equalsIgnoreCase("w")) { // write
-            System.out.print("Output file name: ");
+            System.out.print("Output file name (end with .tsv): ");
             String outputFileName = console.nextLine();
             StreamMonitoringDataWriter.write(streamModel, outputFileName);
         } else if (option.equalsIgnoreCase("a") || option.equalsIgnoreCase("v")) {
             // analyze or visualize
-
+            System.out.println("Enter dates in format mm/dd/yy or mm/dd/yyyy");
             System.out.print("Start date (leave blank if want first data date): ");
             Date start;
             try {
@@ -67,13 +67,18 @@ public class StreamMonitoringMain {
             }
             System.out.print("Site (1 or 2; 0 if want both): ");
             int site = Integer.parseInt(console.nextLine());
+            if (site != 1 && site != 2 && site != 0) {
+                site = 0;
+                System.out.println("Invalid site number. Interpreted as both.");
+            }
             System.out.print("Data type " + DATA_TYPES + ": ");
             int dataType = Integer.parseInt(console.nextLine());
 
             if (dataType < 1 || dataType > 7) {
-                System.out.println("Invalid data type; try again: ");
+                System.out.print("Invalid data type; try again: ");
                 dataType = Integer.parseInt(console.nextLine());
                 if (dataType < 1 || dataType > 7) {
+                    dataType = 8;
                     System.out.println("Invalid data type (again); now interpreted as flow (left), which is not cleaned; Too Bad!");
                 }
             }
@@ -87,6 +92,7 @@ public class StreamMonitoringMain {
                 System.out.print("(S)catter plot OR (H)istogram: ");
                 String choice = console.nextLine().substring(0, 1);
                 if (choice.equalsIgnoreCase("H")) { // histogram
+                    System.out.println("Bucket Size means the range of values contained within one bar.");
                     System.out.print("Bucket Size (0 for individual counts): ");
                     double bucketSize = Double.parseDouble(console.nextLine());
                     if (bucketSize < 0) {

@@ -29,8 +29,40 @@ it as part of your LWWIP project), please contact me.
 1. **Download Java.** 
     * Follow the instructions 
 [here](https://courses.cs.washington.edu/courses/cse142/17au/software/jdk.html)
-to get the Java Develpment Kit (JDK) on your machine.
-This is necessary for running the program. 
+to get the Java Development Kit (JDK) on your machine.
+This is necessary for running the program.
+    * IMPORTANT: Make sure to follow the instructions
+    to verify  the installation at the bottom of the
+    above page, under *Installing the JDK > Windows*,
+    where it checks the `java -version`. If it claims 
+    that `'java' is not recognized as an internal or external command`, 
+    then there is the extra step of setting up the Java
+    Path Variable:
+        * Open Control Panel. One way to do this is to
+        hold down the *Windows* key and press *R*, then
+        type *control panel*.
+        * In the search bar at the top right of Control
+        Panel, search for *environment* and one or two
+        results may show up. If you have admin privileges,
+        click *Edit the system environment variables*,
+        then click *Environment Variables...* at the bottom right.
+        Otherwise, click *Edit environment variables for
+        your account*.
+        * In the new open window, the top half should be
+        *User variables for Username* and the bottom should be
+        *System variables*. If you have admin privileges,
+        click on the *Path* or *PATH* variable in *System
+        Variables* and click *Edit...*. Otherwise, do the
+        same in the *User variables for Username* section.
+        * In the new open window, click *New* and type the
+        path to the *bin* file for your Java installation.
+        This should be something like `C:\Program Files\Java\jdk-12.0.1\bin`.
+        Once done, click *OK* then *OK* then exit out of
+        Control Panel.
+        * Now verify that the installation worked again,
+        using the same `cmd /K java -version` from *Run*.
+        This is mainly to check that the `java` command
+        works at Command Prompt.
     * Note: You
 may already have Java downloaded on your computer (e.g. 
 bsd laptops already have Java). If this is the case, you
@@ -48,6 +80,10 @@ Documents, as it will make a later step (5) easier.
 Go to *File > Download as > Tab-separated values (.tsv, 
 current sheet)*. Save this file to the same folder/directory 
 as the .jar file from step 2. 
+    * It is advised that you name the file to be short
+    and easy to remember (preferably without spaces),
+    rather than the default name. This will make typing
+    in the file name when running (step 5) easier.
     * You can find a sample raw
 data file in 
 [out/artifacts/lwwip_stream_monitoring_data_project_jar/coal_creek_data_3-2019_raw.tsv](https://github.com/dormantleopard7/lwwip-stream-monitoring-data-project/blob/master/out/artifacts/lwwip_stream_monitoring_data_project_jar/coal_creek_data_3-2019_raw.tsv).
@@ -57,7 +93,7 @@ of this file (i.e. same order of headers).
 Assuming there aren't any issues with the data, this
 is a simple step: 
     * Open the .tsv file from step 3 with
-a text editor 
+a text editor (right click on the file, Open with...)
         * Notepad, the default text editor on 
 Windows, works fine, but if you would like, you may
 download/use (for free) a more sophisticated text editor like 
