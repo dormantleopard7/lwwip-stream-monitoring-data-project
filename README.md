@@ -10,8 +10,98 @@ added to GitHub in March 2019.
 
 ## Description
 
-Description of features and explanation of interface,
-along with screenshots/images, coming soon.
+Once the program is running, and after an input file is
+entered, the user is presented with a menu, with four
+options:
+```
+Menu:
+        w to write cleaned data to file
+        a to analyze data statistically
+        v to visualize the data
+        q to quit
+```
+
+Note: **Analyze** and **Visualize** are complements to each
+other, in that looking at a particular data set using both
+options will give you the most information about the data.
+
+### Write
+
+```
+Enter an option (m to see the menu): w
+Output file name (end with .tsv): data_3-2019.tsv
+Done! Output file data_3-2019.tsv created.
+```
+
+This feature cleans the data, including standardizing
+the units, and prints the contents to a new output file,
+named by the user.
+
+Note: This output file is not the same format as
+the input file, so use this feature carefully.
+See [data_3-2019.tsv](https://github.com/dormantleopard7/lwwip-stream-monitoring-data-project/blob/master/data_3-2019.tsv)
+for a sample generated output file.
+
+### Analyze
+
+```
+Enter an option (m to see the menu): a
+Enter dates in format mm/dd/yy or mm/dd/yyyy
+Start date (leave blank if want first data date): 1/1/18
+End date (leave blank if want today's date): 12/31/2018
+Site (1 or 2; 0 if want both): 1
+Data type {1=Turbidity (NTU), 2=Turbidity (m), 3=Air Temp (°C), 4=Water Temp (°C), 5=pH, 6=DO (ppm), 7=Conductivity (μS/cm)}: 3
+Chosen data type: Air Temp (°C)
+
+Resulting Statistics
+--------------------
+Mean: 11.619047619047619
+Standard Deviation: 5.892700815627273
+Mode (frequency 7): [10.0]
+Min, Q1, Median, Q3, Max: [2.0, 8.0, 10.0, 15.0, 25.0]
+Outliers (based on 3 std devs): []
+Outliers (based on 1.5 IQRs): []
+```
+
+This feature prints out statistics regarding data in the
+given date range, at the given site, and for the given data
+type. 
+
+#### Date Range
+The dates must be entered in mm/dd/yy or mm/dd/yyyy format
+to be interpreted correctly. 
+If you want the default dates, just leave the line blank and
+hit *return*. The start date defaults to the first date with
+data (it will print something like `Start date set to 1/14/2006`)
+and the end date defaults to the current date (it will print
+something like `End date set to 6/29/2019`).
+As always, make sure the date range is valid to avoid 
+breaking the program or producing weird results. 
+
+#### Site
+We have two sites at Coal Creek, 1 and 2, so enter one of
+these based on the site you want. If you want to look at
+Coal Creek as a whole, and thus want both sites' data,
+enter 0.
+
+#### Data Type
+
+#### Resulting Statistics
+
+These statistics include the mean (average), standard
+deviation (how spread out the data is; in a normal bell
+curve, this means that 68% of the data is within 1 standard
+deviation of the mean, 95% of the data is within 2 standard
+deviations of the mean, and 99.7% of the data is within 3
+standard deviations of the mean), mode (most frequent data
+value) and its frequency, boxplot features (minimum, first
+quartile, median (a.k.a. second quartile), third quartile)
+
+### Visualize
+
+### Quit
+
+NOTE: A full run of the program can be found below (**Usage**).
 
 ## Installation Instructions
 
@@ -148,7 +238,7 @@ but it still only requires `dir` and `cd`.
         start typing the jar file name), then press *tab* 
 for auto-complete. 
         * It should prompt for a file name; 
-enter the name of the .tsv data file. 
+enter the name of the .tsv data file (including `.tsv`). 
         * If it displays 
 a Menu, then you should be good to go! The program is 
 now running, and you should be able to analyze and 
@@ -279,5 +369,4 @@ simply because Command Prompt does not recognize the
 
 ## Support
 
-Contact me if you have any issues or questions
-regarding the program.
+Contact me if you have any issues or questions.

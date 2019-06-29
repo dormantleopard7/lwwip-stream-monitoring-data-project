@@ -37,15 +37,22 @@ public class StreamMonitoringMain {
         } while (!option.equalsIgnoreCase("q"));
     }
 
+    // prints the menu of options
+    public static void printMenu() {
+        System.out.println("Menu:");
+        System.out.println("\tw to write cleaned data to file");
+        System.out.println("\ta to analyze data statistically");
+        System.out.println("\tv to visualize the data");
+        System.out.println("\tq to quit");
+    }
+
     // processes option given by user
     public static void processOption(String option, StreamMonitoringDataModel streamModel,
                                      StreamMonitoringDataVisualizer visualizer, Scanner console) {
         if (option.equalsIgnoreCase("m")) { // menu
             printMenu();
         } else if (option.equalsIgnoreCase("w")) { // write
-            System.out.print("Output file name (end with .tsv): ");
-            String outputFileName = console.nextLine();
-            StreamMonitoringDataWriter.write(streamModel, outputFileName);
+            writeData(streamModel, console);
         } else if (option.equalsIgnoreCase("a") || option.equalsIgnoreCase("v")) {
             // analyze or visualize
             System.out.println("Enter dates in format mm/dd/yy or mm/dd/yyyy");
@@ -55,7 +62,7 @@ public class StreamMonitoringMain {
                 start = new Date(console.nextLine());
             } catch (IllegalArgumentException e) {
                 start = streamModel.getData().get(0).getDate();
-                System.out.println("Start date set to " + StreamMonitoringDataVisualizer.dateToString(start));
+                System.out.println("Start date set to default of " + StreamMonitoringDataVisualizer.dateToString(start));
             }
             System.out.print("End date (leave blank if want today's date): ");
             Date end;
@@ -63,26 +70,39 @@ public class StreamMonitoringMain {
                 end = new Date(console.nextLine());
             } catch (IllegalArgumentException e) {
                 end = new Date();
-                System.out.println("End date set to " + StreamMonitoringDataVisualizer.dateToString(end));
+                System.out.println("End date set to default of " + StreamMonitoringDataVisualizer.dateToString(end));
             }
-            System.out.print("Site (1 or 2; 0 if want both): ");
-            int site = Integer.parseInt(console.nextLine());
-            if (site != 1 && site != 2 && site != 0) {
-                site = 0;
-                System.out.println("Invalid site number. Interpreted as both.");
-            }
-            System.out.print("Data type " + DATA_TYPES + ": ");
-            int dataType = Integer.parseInt(console.nextLine());
 
-            if (dataType < 1 || dataType > 7) {
-                System.out.print("Invalid data type; try again: ");
-                dataType = Integer.parseInt(console.nextLine());
-                if (dataType < 1 || dataType > 7) {
-                    dataType = 8;
-                    System.out.println("Invalid data type (again); now interpreted as flow (left), which is not cleaned; Too Bad!");
+            System.out.print("Site (1 or 2; 0 if want both): ");
+            int site = -1;
+            try {
+                site = Integer.parseInt(console.nextLine());
+            } catch (NumberFormatException ignored) {
+            } finally {
+                while (site != 1 && site != 2 && site != 0) {
+                    System.out.println("Invalid site number, try again. Enter 0, 1, or 2: ");
+                    try {
+                        site = Integer.parseInt(console.nextLine());
+                    } catch (NumberFormatException ignored) {
+                    }
                 }
             }
-            System.out.println("Chosen data type: " + DATA_TYPES.get(dataType));
+
+            System.out.print("Data type " + DATA_TYPES + ": ");
+            int dataType = 0;
+            try {
+                dataType = Integer.parseInt(console.nextLine());
+            } catch (NumberFormatException ignored) {
+            } finally {
+                while (dataType < 1 || dataType > 7) {
+                    System.out.print("Invalid data type, try again. Enter a number from 1 to 7: ");
+                    try {
+                        dataType = Integer.parseInt(console.nextLine());
+                    } catch (NumberFormatException ignored) {
+                    }
+                }
+                System.out.println("Chosen data type: " + DATA_TYPES.get(dataType));
+            }
 
             if (option.equalsIgnoreCase("a")) { // analyze
                 List<Double> sortedData = streamModel.getData(dataType, site, start, end);
@@ -121,13 +141,12 @@ public class StreamMonitoringMain {
         }
     }
 
-    // prints the menu of options
-    public static void printMenu() {
-        System.out.println("Menu:");
-        System.out.println("\tw to write cleaned data to file");
-        System.out.println("\ta to analyze data statistically");
-        System.out.println("\tv to visualize the data");
-        System.out.println("\tq to quit");
+    // writes the data to an output file
+    public static void writeData(StreamMonitoringDataModel streamModel, Scanner console) {
+        System.out.print("Output file name (end with .tsv): ");
+        String outputFileName = console.nextLine();
+        StreamMonitoringDataWriter.write(streamModel, outputFileName);
+        System.out.println("Done! Output file " + outputFileName + " created.");
     }
 
     // prints the statistics of the streamModel's sortedData

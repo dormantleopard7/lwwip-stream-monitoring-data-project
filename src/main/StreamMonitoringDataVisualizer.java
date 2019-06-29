@@ -52,7 +52,7 @@ public class StreamMonitoringDataVisualizer {
     // scatter plot single dot size
     private static final int DOT_SIZE = 4;
     // scaling factors for data points; MULTIPLIERS[i] = multiplier for DATA_TYPES.get(i + 1)
-    private static final int[] MULTIPLIERS = { 10, 100, 10, 10, 10, 10, 1, 1 };
+    private static final int[] MULTIPLIERS = { 10, 100, 10, 10, 10, 10, 1 };
 
     // histogram bar width
     private static final int HIST_BAR_WIDTH = 40;
