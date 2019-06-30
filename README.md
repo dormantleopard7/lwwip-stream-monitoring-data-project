@@ -25,7 +25,7 @@ Note: **Analyze** and **Visualize** are complements to each
 other, in that looking at a particular data set using both
 options will give you the most information about the data.
 
-### Write
+### Write (w)
 
 ```
 Enter an option (m to see the menu): w
@@ -46,14 +46,16 @@ of Java's MultiValuedMap.
 See [data_3-2019.tsv](https://github.com/dormantleopard7/lwwip-stream-monitoring-data-project/blob/master/data_3-2019.tsv)
 for a sample generated output file.
 
-### Analyze
+### Analyze (a)
 
 ```
 Enter an option (m to see the menu): a
 
 Enter dates in format mm/dd/yy or mm/dd/yyyy.
 Start date (leave blank if want first data date): 1/1/18
+Start date set to 1/1/2018
 End date (leave blank if want today's date): 12/31/18
+End date set to 12/31/2018
 Site (1 or 2; 0 if want both): 1
 Data type {1=Turbidity (NTU), 2=Turbidity (m), 3=Air Temp (°C), 4=Water Temp (°C), 5=pH, 6=DO (ppm), 7=Conductivity (μS/cm)}: 3
 Chosen data type: Air Temp (°C)
@@ -72,7 +74,18 @@ This feature prints out statistics regarding data in the
 given date range, at the given site, and for the given data
 type. 
 
-#### Date Range
+#### Data Options
+
+##### Date Range
+
+```
+Enter dates in format mm/dd/yy or mm/dd/yyyy.
+Start date (leave blank if want first data date): 1/1/18
+Start date set to 1/1/2018
+End date (leave blank if want today's date): 12/31/18
+End date set to 12/31/2018
+```
+
 The dates must be entered in mm/dd/yy or mm/dd/yyyy format
 to be interpreted correctly. 
 If you want the default dates, just leave the line blank and
@@ -80,35 +93,118 @@ hit *return*. The start date defaults to the first date with
 data (it will print something like `Start date set to 1/14/2006`)
 and the end date defaults to the current date (it will print
 something like `End date set to 6/29/2019`).
-As always, make sure the date range is valid to avoid 
-breaking the program or producing weird results. 
+As always, it is best to make sure the date range is valid 
+to avoid breaking the program or producing weird results.
+If a date is invalid, it will print something like
+`Invalid date, try again. Start date (leave blank if want first data date): `
+until a valid date is entered.
+If a range is invalid (i.e. the start date is after the end date,
+or the date range contains no data), this will be identified
+later in the program, when output is to be produced.
 
-#### Site
+##### Site
+
+```
+Site (1 or 2; 0 if want both): 1
+```
+
 We have two sites at Coal Creek, 1 and 2, so enter one of
 these based on the site you want. If you want to look at
 Coal Creek as a whole, and thus want both sites' data,
-enter 0.
+enter 0. If anything other than the numbers 0, 1 or 2
+is entered, it will print 
+`Invalid site number, try again. Enter 1, 2, or 0: `
+until a valid site number is entered.
 
-#### Data Type
+##### Data Type
+
+```
+Data type {1=Turbidity (NTU), 2=Turbidity (m), 3=Air Temp (°C), 4=Water Temp (°C), 5=pH, 6=DO (ppm), 7=Conductivity (μS/cm)}: 3
+Chosen data type: Air Temp (°C)
+```
+
+There are seven possible data types to analyze, and they
+are numbered 1 to 7 (note that 1 and 2 are both turbidity,
+but with different units). If anything other than a number
+between 1 and 7, inclusive, is entered, it will print
+`Invalid data type, try again. Enter a number from 1 to 7: `
+until a valid data type is entered.
 
 #### Resulting Statistics
 
-These statistics include the mean (average), standard
-deviation (how spread out the data is; in a normal bell
-curve, this means that 68% of the data is within 1 standard
-deviation of the mean, 95% of the data is within 2 standard
-deviations of the mean, and 99.7% of the data is within 3
-standard deviations of the mean), mode (most frequent data
-value) and its frequency, boxplot features (minimum, first
-quartile, median (a.k.a. second quartile), third quartile)
+```
+Resulting Statistics
+--------------------
+Mean: 11.619047619047619
+Standard Deviation: 5.892700815627273
+Mode (frequency 7): [10.0]
+Min, Q1, Median, Q3, Max: [2.0, 8.0, 10.0, 15.0, 25.0]
+Outliers (based on 3 std devs): []
+Outliers (based on 1.5 IQRs): []
+```
 
-### Visualize
+##### Mean
+This is simply the average of the data.
 
-### Quit
+##### Standard Deviation (SD)
+Standard deviation measures how spread out the data is.
+It is calculated by taking the square root of the average
+of the squares of the differences between each data point
+and the mean. In a normal bell
+curve, this means that 68% of the data is within 1 SD
+of the mean, 95% of the data is within 2 SDs of the mean, 
+and 99.7% of the data is within 3 SDs of the mean.
 
-NOTE: A full run of the program can be found below (**Usage**).
+##### Mode
+This is the most frequent data value in the data. The frequency
+of that value is also printed. If there are multiple data
+values with the same highest frequency, they are all listed
+(in sorted order). If all values have a frequency of 1, then
+rather than printing all values, it prints
+`Mode (frequency 1): all data unique`.
 
-## Installation Instructions
+##### Box-Plot Statistics
+I call these box-plot statistics because they are the five
+points needed to create a box-and-whiskers plot.
+These are: the minimum, the first quartile (Q1, the data value
+below which approx. 25% of the data lies), the median
+(the middle value, a.k.a. the second quartile), the third
+quartile (Q3, below which is 75% of the data), and the maximum.
+
+##### Outliers
+There are many ways to calculate outliers, and I have 
+provided two. The first is based on the standard deviation;
+as discussed above, in a normal curve, 99.7% of the data lies
+within 3 SDs of the mean, so anything outside of that can be
+considered an outlier. The second is based on the Inter-quartile
+Range (IQR), which is the difference between Q1 and Q3; any
+data that lies below of 1.5 IQR from Q1 or above 1.5 IQR from Q3
+can be considered an outlier.
+
+Note: Often, the two measures of outliers will produce different
+results, usually where the 1.5 IQR list of outliers is larger.
+Thus, it is up to you to decide how to interpret these results,
+based on what you might know about the data, and what you are
+given regarding the SD and IQR.
+
+### Visualize (v)
+
+### Quit (q)
+This is pretty self-explanatory, but this ends the program.
+Note that for this to work, all of the open graphics windows
+(with the scatter plots and histograms and such) must be closed.
+Otherwise, press *Ctrl-C* in Command Prompt at any point
+during the program to terminate it. To get the program up and
+running again, you can use the
+`java -jar lwwip-stream-monitoring-data-project.jar` command.
+Tip: Use the up arrow on your keyboard to see/run past commands
+run in Command Prompt.
+
+NOTE: A full run of the program can be found below in **Usage**.
+More information about running the program can be found below
+in **Installation**, especially at step 5.
+
+## Installation
 
 For this project to work correctly, you must have Java
 downloaded on your machine, and be able to navigate to 
@@ -248,6 +344,8 @@ enter the name of the .tsv data file (including `.tsv`).
 a Menu, then you should be good to go! The program is 
 now running, and you should be able to analyze and 
 visualize the data! 
+            * Note: For info on how to end/restart the program,
+            see above in **Description**, under **Quit**.
     * Note: You may put the .tsv file 
 in a different location than the .jar file, though it
 requires a bit more work: When prompted for the
@@ -364,9 +462,6 @@ C:\Users\Username\Desktop>
 Note: For visualization, graphical charts are
 generated and will open in a new window, where the user
 can zoom in and out, and save the image as a .png.
-All of these graphics windows must be closed for the
-(q)uit option to work. (Otherwise, use Ctrl-C to stop
-the program).
 
 Note: When it shows `Conductivity (?S/cm)`, this is
 simply because Command Prompt does not recognize the
