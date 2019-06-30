@@ -57,20 +57,18 @@ public class StreamMonitoringDataParser {
             // removes null dates
             streamData.removeIf(o -> o.getDate() == null);
 
+            try {
+                reader.close();
+            } catch (IOException e) {
+                System.err.println(e.toString());
+                e.printStackTrace(System.err);
+            }
+
             return streamData;
         } catch (IOException e) {
-            System.err.println(e.toString());
-            e.printStackTrace(System.err);
-            return new ArrayList<>();
-        } finally {
-            if (reader != null) {
-                try {
-                    reader.close();
-                } catch (IOException e) {
-                    System.err.println(e.toString());
-                    e.printStackTrace(System.err);
-                }
-            }
+            System.out.println("INVALID INPUT FILE.");
+            System.exit(1);
+            return null;
         }
     }
 

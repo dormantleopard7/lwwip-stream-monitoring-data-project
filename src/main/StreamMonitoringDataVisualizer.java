@@ -200,13 +200,7 @@ public class StreamMonitoringDataVisualizer {
     // draws a scatter plot of dataType at site site from startDate to endDate
     public void drawScatterPlot(int dataType, int site, Date startDate, Date endDate) {
         List<StreamMonitoringData> streamData = streamModel.getData();
-        if (startDate.compareTo(endDate) > 0) {
-            System.out.println("Invalid date range: start date is after end date");
-        }
         int startIndex = streamModel.leftBinarySearch(startDate);
-        if (startIndex >= streamData.size()) {
-            System.out.println("Invalid date range: no data available from after start date");
-        }
 
         int diff = differenceBetweenDates(startDate, endDate);
         double max = streamModel.getMax(streamModel.getData(dataType, site, startDate, endDate));

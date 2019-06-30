@@ -29,16 +29,20 @@ options will give you the most information about the data.
 
 ```
 Enter an option (m to see the menu): w
+
 Output file name (end with .tsv): data_3-2019.tsv
 Done! Output file data_3-2019.tsv created.
 ```
 
 This feature cleans the data, including standardizing
 the units, and prints the contents to a new output file,
-named by the user.
+named by the user. This output file is created in the same
+directory as the .jar file.
 
 Note: This output file is not the same format as
 the input file, so use this feature carefully.
+For instance, some data is printed in the format
+of Java's MultiValuedMap.
 See [data_3-2019.tsv](https://github.com/dormantleopard7/lwwip-stream-monitoring-data-project/blob/master/data_3-2019.tsv)
 for a sample generated output file.
 
@@ -46,9 +50,10 @@ for a sample generated output file.
 
 ```
 Enter an option (m to see the menu): a
-Enter dates in format mm/dd/yy or mm/dd/yyyy
+
+Enter dates in format mm/dd/yy or mm/dd/yyyy.
 Start date (leave blank if want first data date): 1/1/18
-End date (leave blank if want today's date): 12/31/2018
+End date (leave blank if want today's date): 12/31/18
 Site (1 or 2; 0 if want both): 1
 Data type {1=Turbidity (NTU), 2=Turbidity (m), 3=Air Temp (°C), 4=Water Temp (°C), 5=pH, 6=DO (ppm), 7=Conductivity (μS/cm)}: 3
 Chosen data type: Air Temp (°C)
@@ -239,7 +244,7 @@ but it still only requires `dir` and `cd`.
 for auto-complete. 
         * It should prompt for a file name; 
 enter the name of the .tsv data file (including `.tsv`). 
-        * If it displays 
+        * If there are no errors and it displays 
 a Menu, then you should be good to go! The program is 
 now running, and you should be able to analyze and 
 visualize the data! 

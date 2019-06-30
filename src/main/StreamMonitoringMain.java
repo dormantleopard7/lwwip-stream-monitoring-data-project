@@ -33,6 +33,7 @@ public class StreamMonitoringMain {
             System.out.println();
             System.out.print("Enter an option (m to see the menu): ");
             option = console.nextLine();
+            System.out.println();
             processOption(option, streamModel, visualizer, console);
         } while (!option.equalsIgnoreCase("q"));
     }
@@ -55,85 +56,54 @@ public class StreamMonitoringMain {
             writeData(streamModel, console);
         } else if (option.equalsIgnoreCase("a") || option.equalsIgnoreCase("v")) {
             // analyze or visualize
-            System.out.println("Enter dates in format mm/dd/yy or mm/dd/yyyy");
-            System.out.print("Start date (leave blank if want first data date): ");
-            Date start;
-            try {
-                start = new Date(console.nextLine());
-            } catch (IllegalArgumentException e) {
-                start = streamModel.getData().get(0).getDate();
-                System.out.println("Start date set to default of " + StreamMonitoringDataVisualizer.dateToString(start));
-            }
-            System.out.print("End date (leave blank if want today's date): ");
-            Date end;
-            try {
-                end = new Date(console.nextLine());
-            } catch (IllegalArgumentException e) {
-                end = new Date();
-                System.out.println("End date set to default of " + StreamMonitoringDataVisualizer.dateToString(end));
-            }
-
-            System.out.print("Site (1 or 2; 0 if want both): ");
-            int site = -1;
-            try {
-                site = Integer.parseInt(console.nextLine());
-            } catch (NumberFormatException ignored) {
-            } finally {
-                while (site != 1 && site != 2 && site != 0) {
-                    System.out.println("Invalid site number, try again. Enter 0, 1, or 2: ");
-                    try {
-                        site = Integer.parseInt(console.nextLine());
-                    } catch (NumberFormatException ignored) {
-                    }
-                }
-            }
-
-            System.out.print("Data type " + DATA_TYPES + ": ");
-            int dataType = 0;
-            try {
-                dataType = Integer.parseInt(console.nextLine());
-            } catch (NumberFormatException ignored) {
-            } finally {
-                while (dataType < 1 || dataType > 7) {
-                    System.out.print("Invalid data type, try again. Enter a number from 1 to 7: ");
-                    try {
-                        dataType = Integer.parseInt(console.nextLine());
-                    } catch (NumberFormatException ignored) {
-                    }
-                }
-                System.out.println("Chosen data type: " + DATA_TYPES.get(dataType));
-            }
+            System.out.println("Enter dates in format mm/dd/yy or mm/dd/yyyy.");
+            Date start = promptForDate(streamModel, console, true);
+            Date end = promptForDate(streamModel, console, false);
+            int site = promptForSite(console);
+            int dataType = promptForDataType(console);
 
             if (option.equalsIgnoreCase("a")) { // analyze
-                List<Double> sortedData = streamModel.getData(dataType, site, start, end);
                 System.out.println();
-                printStats(streamModel, sortedData);
+                List<Double> sortedData = streamModel.getData(dataType, site, start, end);
+                try {
+                    printStats(streamModel, sortedData);
+                } catch (NullPointerException e) {
+                    System.out.println("No statistics available.");
+                }
             } else { // visualize
-                System.out.print("(S)catter plot OR (H)istogram: ");
-                String choice = console.nextLine().substring(0, 1);
-                if (choice.equalsIgnoreCase("H")) { // histogram
-                    System.out.println("Bucket Size means the range of values contained within one bar.");
-                    System.out.print("Bucket Size (0 for individual counts): ");
-                    double bucketSize = Double.parseDouble(console.nextLine());
-                    if (bucketSize < 0) {
-                        bucketSize = 1;
-                        System.out.println("Invalid bucket size; changed to 1");
-                    }
-                    if (bucketSize < DELTA) {
-                        if (bucketSize != 0) {
-                            System.out.println("Bucket size too low; printing individual counts:");
+                boolean tryAgain = true;
+                boolean firstTry = true;
+                while (tryAgain) {
+                    try {
+                        if (firstTry) {
+                            System.out.print("(S)catter plot OR (H)istogram: ");
+                            firstTry = false;
+                        } else {
+                            System.out.print("Invalid choice, try again. Enter S or H: ");
                         }
-                        visualizer.simpleTextHistogram(dataType, site, start, end);
-                    } else {
-                        visualizer.drawHistogram(dataType, site, start, end, bucketSize);
+                        String choice = console.nextLine().substring(0, 1);
+                        if (choice.equalsIgnoreCase("H")) { // histogram
+                            tryAgain = false;
+                            System.out.println("Bucket Size means the range of values contained within one bar of the histogram.");
+                            double bucketSize = promptForBucketSize(console);
+                            System.out.println();
+                            if (bucketSize == 0) {
+                                System.out.println("Printing individual counts (no graphics window).");
+                                visualizer.simpleTextHistogram(dataType, site, start, end);
+                            } else {
+                                System.out.println("Histogram:");
+                                visualizer.drawHistogram(dataType, site, start, end, bucketSize);
+                                System.out.println("Histogram generated! See new open window for graphics.");
+                            }
+                        } else if (choice.equalsIgnoreCase("S")) { // scatter plot
+                            tryAgain = false;
+                            System.out.println();
+                            visualizer.drawScatterPlot(dataType, site, start, end);
+                            System.out.println("Scatter Plot Generated! See new open window for graphics.");
+                        }
+                    } catch (NullPointerException e) {
+                        System.out.println("No visualization available.");
                     }
-                    System.out.println("Histogram Generated!");
-                } else { // scatter plot (default)
-                    if (!choice.equalsIgnoreCase("S")) {
-                        System.out.println("Invalid choice, but still...");
-                    }
-                    visualizer.drawScatterPlot(dataType, site, start, end);
-                    System.out.println("Scatter Plot Generated!");
                 }
             }
         } else if (!option.equalsIgnoreCase("q")) { // invalid option
@@ -147,6 +117,93 @@ public class StreamMonitoringMain {
         String outputFileName = console.nextLine();
         StreamMonitoringDataWriter.write(streamModel, outputFileName);
         System.out.println("Done! Output file " + outputFileName + " created.");
+    }
+
+    // prompts for and returns the chosen date
+    public static Date promptForDate(StreamMonitoringDataModel streamModel, Scanner console, boolean start) {
+        String startOrEnd = start ? "Start" : "End";
+        Date date = null;
+        boolean firstTry = true;
+        while (date == null) { // continue prompting until valid
+            if (firstTry) {
+                firstTry = false;
+            } else {
+                System.out.print("Invalid date, try again. ");
+            }
+            String def = start ? "first data date" : "today's date";
+            System.out.print(startOrEnd + " date (leave blank if want " + def + "): ");
+            try {
+                String dateString = console.nextLine();
+                if (dateString.isEmpty()) { // blank
+                    // first data date or today's date
+                    date = start ? streamModel.getData().get(0).getDate() : new Date();
+                } else {
+                    date = new Date(dateString);
+                }
+                System.out.println(startOrEnd + " date set to " +
+                        StreamMonitoringDataVisualizer.dateToString(date));
+            } catch (IllegalArgumentException ignored) {
+            }
+        }
+        return date;
+    }
+
+    // prompts for and returns the chosen site
+    public static int promptForSite(Scanner console) {
+        int site = -1;
+        boolean firstTry = true;
+        while (site < 0 || site > 2) { // continue prompting until valid
+            if (firstTry) {
+                System.out.print("Site (1 or 2; 0 if want both): ");
+                firstTry = false;
+            } else {
+                System.out.print("Invalid site number, try again. Enter 1, 2, or 0: ");
+            }
+            try {
+                site = Integer.parseInt(console.nextLine());
+            } catch (NumberFormatException ignored) {
+            }
+        }
+        return site;
+    }
+
+    // prompts for and returns the chosen data type
+    public static int promptForDataType(Scanner console) {
+        int dataType = 0;
+        boolean firstTry = true;
+        while (dataType < 1 || dataType > 7) { // continue prompting until valid
+            if (firstTry) {
+                System.out.print("Data type " + DATA_TYPES + ": ");
+                firstTry = false;
+            } else {
+                System.out.print("Invalid data type, try again. Enter a number from 1 to 7: ");
+            }
+            try {
+                dataType = Integer.parseInt(console.nextLine());
+            } catch (NumberFormatException ignored) {
+            }
+        }
+        System.out.println("Chosen data type: " + DATA_TYPES.get(dataType));
+        return dataType;
+    }
+
+    // prompts for and returns the chosen bucket size
+    public static double promptForBucketSize(Scanner console) {
+        double bucketSize = -1;
+        boolean firstTry = true;
+        while (bucketSize < DELTA && bucketSize != 0) {
+            if (firstTry) {
+                firstTry = false;
+            } else {
+                System.out.print("Invalid bucket size; make sure it is a number above " + DELTA + ". ");
+            }
+            System.out.print("Bucket Size (0 for individual counts): ");
+            try {
+                bucketSize = Double.parseDouble(console.nextLine());
+            } catch (NumberFormatException ignored) {
+            }
+        }
+        return bucketSize;
     }
 
     // prints the statistics of the streamModel's sortedData

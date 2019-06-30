@@ -93,14 +93,14 @@ public class StreamMonitoringDataModel {
     public List<Double> getData(int dataType, int site, Date startDate, Date endDate) {
         // start date after end date
         if (startDate.compareTo(endDate) > 0) {
-            System.out.println("Invalid date range: start date is after end date");
+            System.out.println("INVALID DATE RANGE: start date is after end date");
             return null;
         }
         // find index of first entry
         int startIndex = leftBinarySearch(startDate);
         // start date too late
         if (startIndex >= streamData.size()) {
-            System.out.println("Invalid date range: no data available from after start date");
+            System.out.println("INVALID DATE RANGE: no data available from after start date");
             return null;
         }
 
@@ -119,6 +119,10 @@ public class StreamMonitoringDataModel {
                     }
                 }
             }
+        }
+        if (result.isEmpty()) {
+            System.out.println("INVALID DATE RANGE: no data available in date range.");
+            return null;
         }
         Collections.sort(result);
         return result;
