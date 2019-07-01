@@ -42,8 +42,8 @@ directory as the .jar file.
 Note: This output file is not the same format as
 the input file, so use this feature carefully.
 For instance, some data is printed in the format
-of Java's MultiValuedMap.
-See [data_3-2019.tsv](https://github.com/dormantleopard7/lwwip-stream-monitoring-data-project/blob/master/data_3-2019.tsv)
+of Java's MultiValuedMap. See 
+[out/artifacts/lwwip_stream_monitoring_data_project_jar/data_3-2019.tsv](https://github.com/dormantleopard7/lwwip-stream-monitoring-data-project/blob/master/out/artifacts/lwwip_stream_monitoring_data_project_jar/data_3-2019.tsv).
 for a sample generated output file.
 
 ### Analyze (a)
@@ -95,7 +95,7 @@ and the end date defaults to the current date (it will print
 something like `End date set to 6/29/2019`).
 As always, it is best to make sure the date range is valid 
 to avoid breaking the program or producing weird results.
-If a date is invalid, it will print something like
+If a date is invalid, it will prompt something like
 `Invalid date, try again. Start date (leave blank if want first data date): `
 until a valid date is entered.
 If a range is invalid (i.e. the start date is after the end date,
@@ -112,7 +112,7 @@ We have two sites at Coal Creek, 1 and 2, so enter one of
 these based on the site you want. If you want to look at
 Coal Creek as a whole, and thus want both sites' data,
 enter 0. If anything other than the numbers 0, 1 or 2
-is entered, it will print 
+is entered, it will prompt 
 `Invalid site number, try again. Enter 1, 2, or 0: `
 until a valid site number is entered.
 
@@ -126,7 +126,7 @@ Chosen data type: Air Temp (°C)
 There are seven possible data types to analyze, and they
 are numbered 1 to 7 (note that 1 and 2 are both turbidity,
 but with different units). If anything other than a number
-between 1 and 7, inclusive, is entered, it will print
+between 1 and 7, inclusive, is entered, it will prompt
 `Invalid data type, try again. Enter a number from 1 to 7: `
 until a valid data type is entered.
 
@@ -189,6 +189,288 @@ given regarding the SD and IQR.
 
 ### Visualize (v)
 
+```
+Enter an option (m to see the menu): v
+
+Enter dates in format mm/dd/yy or mm/dd/yyyy.
+Start date (leave blank if want first data date): 1/1/17
+Start date set to 1/1/2017
+End date (leave blank if want today's date): 12/31/17
+End date set to 12/31/2017
+Site (1 or 2; 0 if want both): 2
+Data type {1=Turbidity (NTU), 2=Turbidity (m), 3=Air Temp (°C), 4=Water Temp (°C), 5=pH, 6=DO (ppm), 7=Conductivity (μS/cm)}: 4
+Chosen data type: Water Temp (°C)
+(S)catter plot OR (H)istogram: s
+
+Scatter Plot Generated! See new open window for graphics.
+
+Enter an option (m to see the menu): v
+
+Enter dates in format mm/dd/yy or mm/dd/yyyy.
+Start date (leave blank if want first data date): 1/1/16
+Start date set to 1/1/2016
+End date (leave blank if want today's date): 12/31/16
+End date set to 12/31/2016
+Site (1 or 2; 0 if want both): 0
+Data type {1=Turbidity (NTU), 2=Turbidity (m), 3=Air Temp (°C), 4=Water Temp (°C), 5=pH, 6=DO (ppm), 7=Conductivity (μS/cm)}: 5
+Chosen data type: pH
+(S)catter plot OR (H)istogram: h
+Bucket Size means the range of values contained within one bar of the histogram.
+Bucket Size (0 for individual counts): 0
+
+Printing individual counts (no graphics window).
+
+7.00   : ***********
+7.20   : *
+7.25   : *****
+7.40   : *
+7.50   : **********************************************************
+7.75   : *****
+8.00   : ****
+8.50   : ***
+
+Enter an option (m to see the menu): v
+
+Enter dates in format mm/dd/yy or mm/dd/yyyy.
+Start date (leave blank if want first data date): 
+Start date set to 1/14/2006
+End date (leave blank if want today's date): 
+End date set to 6/30/2019
+Site (1 or 2; 0 if want both): 0
+Data type {1=Turbidity (NTU), 2=Turbidity (m), 3=Air Temp (°C), 4=Water Temp (°C), 5=pH, 6=DO (ppm), 7=Conductivity (μS/cm)}: 7
+Chosen data type: Conductivity (μS/cm)
+(S)catter plot OR (H)istogram: h
+Bucket Size means the range of values contained within one bar of the histogram.
+Bucket Size (0 for individual counts): 10.0
+
+Histogram:
+
+[80.00   -   90.00) : *
+[90.00   -  100.00) : 
+[100.00  -  110.00) : **
+[110.00  -  120.00) : *
+[120.00  -  130.00) : *******
+[130.00  -  140.00) : ***************
+[140.00  -  150.00) : *********
+[150.00  -  160.00) : **
+[160.00  -  170.00) : *******
+[170.00  -  180.00) : *****
+[180.00  -  190.00) : *******
+[190.00  -  200.00) : ****
+[200.00  -  210.00) : *******
+[210.00  -  220.00) : **
+[220.00  -  230.00) : ****
+[230.00  -  240.00) : ***
+[240.00  -  250.00) : ********
+[250.00  -  260.00) : 
+[260.00  -  270.00) : 
+[270.00  -  280.00) : *
+[280.00  -  290.00) : **
+[290.00  -  300.00) : *
+[300.00  -  310.00) : 
+[310.00  -  320.00) : *
+counts (from 80.00 to 320.00): [1, 0, 2, 1, 7, 15, 9, 2, 7, 5, 7, 4, 7, 2, 4, 3, 8, 0, 0, 1, 2, 1, 0, 1]
+Histogram generated! See new open window for graphics.
+```
+
+#### Data Options
+
+These are the same as the **Data Options** under **Analyze** above.
+
+#### Scatter Plot
+
+```
+Enter an option (m to see the menu): v
+
+Enter dates in format mm/dd/yy or mm/dd/yyyy.
+Start date (leave blank if want first data date): 1/1/17
+Start date set to 1/1/2017
+End date (leave blank if want today's date): 12/31/17
+End date set to 12/31/2017
+Site (1 or 2; 0 if want both): 2
+Data type {1=Turbidity (NTU), 2=Turbidity (m), 3=Air Temp (°C), 4=Water Temp (°C), 5=pH, 6=DO (ppm), 7=Conductivity (μS/cm)}: 4
+Chosen data type: Water Temp (°C)
+(S)catter plot OR (H)istogram: s
+
+Scatter Plot Generated! See new open window for graphics.
+```
+
+![out/artifacts/lwwip_stream_monitoring_data_project_jar/2017_site2_watertemp_scatter.png](out/artifacts/lwwip_stream_monitoring_data_project_jar/2017_site2_watertemp_scatter.png)
+
+The options required from the user for generating a scatter
+plot are exactly the same as for analysis. This generates
+a graph that is a bit more sophisticated than a simple 
+scatter plot.
+
+##### Data Points (blue)
+The data points in blue are like normal scatter plot data 
+points. The difference is that a larger data point means 
+more people/groups recorded that value on that day. Thus,
+we can be more confident with data coming from larger data
+dots.
+
+##### Average Line (green)
+The green data points and line connects the average value
+for each day that data was collected. Thus, it is a bit easier
+to see potential outliers.
+
+##### Title, Axes, Labels
+All scatter plots have a title of the data type plotted
+(which signifies the y-axis label), and an x-axis label
+of the Date. On the y-axis, 0.0 is marked, as well as the
+maximum value on the graph, all to scale. On the x-axis, 
+the start and end date are marked, to scale.
+
+##### The Graphics Window Overall
+The image is generated and shown in a new graphics window
+(whose icon is the Java logo). Under *File*, the useful
+feature is *Save As...*. Under *View*, you can zoom in and
+out, and you can click grid lines if it helps read the
+graph better.
+
+#### Histogram
+
+```
+Enter an option (m to see the menu): v
+
+Enter dates in format mm/dd/yy or mm/dd/yyyy.
+Start date (leave blank if want first data date): 
+Start date set to 1/14/2006
+End date (leave blank if want today's date): 
+End date set to 6/30/2019
+Site (1 or 2; 0 if want both): 0
+Data type {1=Turbidity (NTU), 2=Turbidity (m), 3=Air Temp (°C), 4=Water Temp (°C), 5=pH, 6=DO (ppm), 7=Conductivity (μS/cm)}: 7
+Chosen data type: Conductivity (μS/cm)
+(S)catter plot OR (H)istogram: h
+Bucket Size means the range of values contained within one bar of the histogram.
+Bucket Size (0 for individual counts): 10.0
+
+Histogram:
+
+[80.00   -   90.00) : *
+[90.00   -  100.00) : 
+[100.00  -  110.00) : **
+[110.00  -  120.00) : *
+[120.00  -  130.00) : *******
+[130.00  -  140.00) : ***************
+[140.00  -  150.00) : *********
+[150.00  -  160.00) : **
+[160.00  -  170.00) : *******
+[170.00  -  180.00) : *****
+[180.00  -  190.00) : *******
+[190.00  -  200.00) : ****
+[200.00  -  210.00) : *******
+[210.00  -  220.00) : **
+[220.00  -  230.00) : ****
+[230.00  -  240.00) : ***
+[240.00  -  250.00) : ********
+[250.00  -  260.00) : 
+[260.00  -  270.00) : 
+[270.00  -  280.00) : *
+[280.00  -  290.00) : **
+[290.00  -  300.00) : *
+[300.00  -  310.00) : 
+[310.00  -  320.00) : *
+counts (from 80.00 to 320.00): [1, 0, 2, 1, 7, 15, 9, 2, 7, 5, 7, 4, 7, 2, 4, 3, 8, 0, 0, 1, 2, 1, 0, 1]
+Histogram generated! See new open window for graphics.
+```
+
+![out/artifacts/lwwip_stream_monitoring_data_project_jar/alltime_bothsites_conductivity_hist.png](out/artifacts/lwwip_stream_monitoring_data_project_jar/alltime_bothsites_conductivity_hist.png)
+
+The options required from the user to generate a histogram
+are the same as for analysis and for scatter plot, with the
+addition of *bucket size*.
+
+##### Bucket Size
+Bucket size means the range of data values contained within
+one bar of the histogram. For instance, in the above example,
+a bucket size of 10.0 means each bar counts data within its
+range of 10.0; i.e. 80 to 90, 90 to 100, 100 to 110, etc.
+If an invalid bucket size is entered, or the bucket size
+entered is too low, it will prompt
+`Invalid bucket size; make sure it is a number above 1.0E-4. Bucket Size (0 for individual counts): `
+until a valid bucket size is entered. It is advised that 
+the bucket size be well over 0.0001 (it should really never
+be lower than 0.5, unless it's 0 for individual counts -- see below).
+
+###### Individual Counts
+
+```
+Enter an option (m to see the menu): v
+
+Enter dates in format mm/dd/yy or mm/dd/yyyy.
+Start date (leave blank if want first data date): 1/1/16
+Start date set to 1/1/2016
+End date (leave blank if want today's date): 12/31/16
+End date set to 12/31/2016
+Site (1 or 2; 0 if want both): 0
+Data type {1=Turbidity (NTU), 2=Turbidity (m), 3=Air Temp (°C), 4=Water Temp (°C), 5=pH, 6=DO (ppm), 7=Conductivity (μS/cm)}: 5
+Chosen data type: pH
+(S)catter plot OR (H)istogram: h
+Bucket Size means the range of values contained within one bar of the histogram.
+Bucket Size (0 for individual counts): 0
+
+Printing individual counts (no graphics window).
+
+7.00   : ***********
+7.20   : *
+7.25   : *****
+7.40   : *
+7.50   : **********************************************************
+7.75   : *****
+8.00   : ****
+8.50   : ***
+```
+
+A bucket size of 0 is interpreted as individual counts,
+which prints a horizontal histogram (made of asterisks;
+see **Text Histogram** below).
+
+##### Text Histogram
+A text histogram is always generated and printed out to
+the same console that the user interacts with. It consists
+of horizontal "bars" made of asterisks, where each asterisk
+represents one data point. A bar's range is printed before
+the asterisks for that bar (e.g. `[80.00   -   90.00)`).
+Below the text histogram is a list of counts, which shows
+how many data points are in each bar, in case you don't
+want to count all the asterisks for a bar (e.g. 
+`counts (from 80.00 to 320.00): [1, 0, 2, 1, 7, 15, 9, 2, 7, 5, 7, 4, 7, 2, 4, 3, 8, 0, 0, 1, 2, 1, 0, 1]`
+translates to 1 data point between 80 and 90, 0 between
+90 and 100, 2 between 100 and 110, etc.). Note that the
+bars are inclusive at the beginning of a range, and
+exclusive at the end of a range (so a bucket is really
+80.0000 to 89.9999, 90.0000 to 99.9999, etc.).
+
+##### Graphical Histogram
+
+A graphical histogram is also generated, and shown in a
+new window.
+
+###### Bars(blue)
+These are just like normal bars in a histogram. The
+bars are right next to each other (without space in
+between) because this is a histogram, and all the data
+is continuous. The higher the bar is, the more data
+points there are within that bar, to scale.
+
+###### Average line (green)
+This is a thing green line in the middle of the
+histogram, indicating the mean data value. This
+helps spot outliers and any discrepancies between
+the mean and mode (highest bar).
+
+###### Title, Axes, Labels
+The title and x-axis labels are both the data type.
+The highest count is marked on the y-axis, and the 
+x-axis indicates count 0, to scale. The x-axis is
+marked with the beginning of the lowest bucket and
+the end of the highest bucket, to scale.
+
+##### The Graphics Window Overall
+See above under **Scatter Plot** for the functionalities
+of the graphics window.
+
 ### Quit (q)
 This is pretty self-explanatory, but this ends the program.
 Note that for this to work, all of the open graphics windows
@@ -202,7 +484,7 @@ run in Command Prompt.
 
 NOTE: A full run of the program can be found below in **Usage**.
 More information about running the program can be found below
-in **Installation**, especially at step 5.
+in **Installation**, especially in step 5.
 
 ## Installation
 
@@ -470,3 +752,9 @@ simply because Command Prompt does not recognize the
 ## Support
 
 Contact me if you have any issues or questions.
+
+## Authors and acknowledgement
+This project was inspired by Eli Arao, but I am the sole author
+of the project. That is, with the exception of DrawingPanel.java,
+which was written by Stuart Reges and Marty Stepp, and provided
+much of what was necessary for the graphics in this project to work.

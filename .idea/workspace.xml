@@ -8,6 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f222aa8f-a7ac-492f-a42a-73b8efff7dc6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_3-2019.tsv" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -44,8 +45,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/StreamMonitoringMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1428">
-              <caret line="84" column="72" lean-forward="true" selection-start-line="84" selection-start-column="72" selection-end-line="84" selection-end-column="72" />
+            <state relative-caret-position="102">
+              <caret line="15" column="91" lean-forward="true" selection-start-line="15" selection-start-column="51" selection-end-line="15" selection-end-column="91" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -56,8 +57,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/notes.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="75" lean-forward="true" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="75" />
+            <state relative-caret-position="204">
+              <caret line="12" column="36" lean-forward="true" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -66,8 +67,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="214">
-                <caret line="199" column="45" selection-start-line="199" selection-start-column="45" selection-end-line="199" selection-end-column="45" />
+              <first_editor relative-caret-position="199">
+                <caret line="478" column="23" lean-forward="true" selection-start-line="478" selection-start-column="23" selection-end-line="478" selection-end-column="23" />
               </first_editor>
               <second_editor />
             </state>
@@ -103,6 +104,7 @@
       <find>data.</find>
       <find>EQUALS</find>
       <find>ctrl</find>
+      <find>print</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -392,7 +394,7 @@
       <workItem from="1560712027003" duration="8136000" />
       <workItem from="1560721622282" duration="1048000" />
       <workItem from="1560728919826" duration="14742000" />
-      <workItem from="1561258368727" duration="42526000" />
+      <workItem from="1561258368727" duration="47908000" />
     </task>
     <servers />
   </component>
@@ -429,7 +431,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="225661000" />
+    <option name="totallyTimeSpent" value="231043000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -454,7 +456,7 @@
       <window_info anchor="bottom" id="Duplicate detector" order="0" weight="0.3285968" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.3285968" />
-      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.22380106" />
+      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.4920071" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.39964476" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
@@ -734,28 +736,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/notes.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="36" lean-forward="true" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/StreamMonitoringMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1428">
-          <caret line="84" column="72" lean-forward="true" selection-start-line="84" selection-start-column="72" selection-end-line="84" selection-end-column="72" />
+        <state relative-caret-position="102">
+          <caret line="15" column="91" lean-forward="true" selection-start-line="15" selection-start-column="51" selection-end-line="15" selection-end-column="91" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/notes.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="75" lean-forward="true" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="214">
-            <caret line="199" column="45" selection-start-line="199" selection-start-column="45" selection-end-line="199" selection-end-column="45" />
+          <first_editor relative-caret-position="199">
+            <caret line="478" column="23" lean-forward="true" selection-start-line="478" selection-start-column="23" selection-end-line="478" selection-end-column="23" />
           </first_editor>
           <second_editor />
         </state>
