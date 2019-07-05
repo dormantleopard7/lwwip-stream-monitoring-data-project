@@ -8,7 +8,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f222aa8f-a7ac-492f-a42a-73b8efff7dc6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_3-2019.tsv" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -54,21 +53,12 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/notes.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="36" lean-forward="true" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="199">
-                <caret line="478" column="23" lean-forward="true" selection-start-line="478" selection-start-column="23" selection-end-line="478" selection-end-column="23" />
+            <state split_layout="FIRST">
+              <first_editor relative-caret-position="102">
+                <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
               </first_editor>
               <second_editor />
             </state>
@@ -169,24 +159,6 @@
             <path>
               <item name="lwwip-stream-monitoring-data-project" type="b2602c69:ProjectViewProjectNode" />
               <item name="lwwip-stream-monitoring-data-project" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="lwwip-stream-monitoring-data-project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lwwip-stream-monitoring-data-project" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="lwwip-stream-monitoring-data-project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lwwip-stream-monitoring-data-project" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="lwwip-stream-monitoring-data-project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lwwip-stream-monitoring-data-project" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-              <item name="lwwip_stream_monitoring_data_project_jar" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="lwwip-stream-monitoring-data-project" type="b2602c69:ProjectViewProjectNode" />
@@ -394,7 +366,7 @@
       <workItem from="1560712027003" duration="8136000" />
       <workItem from="1560721622282" duration="1048000" />
       <workItem from="1560728919826" duration="14742000" />
-      <workItem from="1561258368727" duration="47908000" />
+      <workItem from="1561258368727" duration="49785000" />
     </task>
     <servers />
   </component>
@@ -431,7 +403,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="231043000" />
+    <option name="totallyTimeSpent" value="232920000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -446,7 +418,7 @@
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49625936" weight="0.22995952" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49625936" visible="true" weight="0.22995952" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -755,9 +727,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="199">
-            <caret line="478" column="23" lean-forward="true" selection-start-line="478" selection-start-column="23" selection-end-line="478" selection-end-column="23" />
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="102">
+            <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
           </first_editor>
           <second_editor />
         </state>

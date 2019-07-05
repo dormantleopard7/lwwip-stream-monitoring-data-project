@@ -321,7 +321,7 @@ of the Date. On the y-axis, 0.0 is marked, as well as the
 maximum value on the graph, all to scale. On the x-axis, 
 the start and end date are marked, to scale.
 
-##### The Graphics Window Overall
+##### The Graphics Window
 The image is generated and shown in a new graphics window
 (whose icon is the Java logo). Under *File*, the useful
 feature is *Save As...*. Under *View*, you can zoom in and
@@ -467,7 +467,7 @@ x-axis indicates count 0, to scale. The x-axis is
 marked with the beginning of the lowest bucket and
 the end of the highest bucket, to scale.
 
-##### The Graphics Window Overall
+##### The Graphics Window
 See above under **Scatter Plot** for the functionalities
 of the graphics window.
 
@@ -509,9 +509,14 @@ it as part of your LWWIP project), please contact me.
 [here](https://courses.cs.washington.edu/courses/cse142/17au/software/jdk.html)
 to get the Java Development Kit (JDK) on your machine.
 This is necessary for running the program.
+        * Note: You
+    may already have Java downloaded on your computer (e.g. 
+    bsd laptops already have Java). If this is the case, you
+    may skip this step, but still make sure to verify the installation
+    as instructed below.
     * IMPORTANT: Make sure to follow the instructions
     to verify  the installation at the bottom of the
-    above page, under *Installing the JDK > Windows*,
+    above linked page, under *Installing the JDK > Windows*,
     where it checks the `java -version`. If it claims 
     that `'java' is not recognized as an internal or external command`, 
     then there is the extra step of setting up the Java
@@ -541,10 +546,6 @@ This is necessary for running the program.
         using the same `cmd /K java -version` from *Run*.
         This is mainly to check that the `java` command
         works at Command Prompt.
-    * Note: You
-may already have Java downloaded on your computer (e.g. 
-bsd laptops already have Java). If this is the case, you
-may skip this step.
 2. **Download the program.** 
     * Navigate to 
 [out/artifacts/lwwip_stream_monitoring_data_project_jar/lwwip-stream-monitoring-data-project.jar](https://github.com/dormantleopard7/lwwip-stream-monitoring-data-project/blob/master/out/artifacts/lwwip_stream_monitoring_data_project_jar/lwwip-stream-monitoring-data-project.jar)
@@ -622,11 +623,15 @@ but it still only requires `dir` and `cd`.
 for auto-complete. 
         * It should prompt for a file name; 
 enter the name of the .tsv data file (including `.tsv`). 
-        * If there are no errors and it displays 
+            * If there are no errors and it displays 
 a Menu, then you should be good to go! The program is 
 now running, and you should be able to analyze and 
 visualize the data! 
-            * Note: For info on how to end/restart the program,
+            * If the input file is invalid, it should
+            print `INVALID INPUT FILE.` and halt the
+            program. Make sure to enter the file name/path
+            exactly as it is.
+        * Note: For info on how to end/restart the program,
             see above in **Description**, under **Quit**.
     * Note: You may put the .tsv file 
 in a different location than the .jar file, though it
@@ -638,7 +643,7 @@ directory (something line `data/coal_creek_data_3-2019.tsv`).
 
 ## Usage
 
-**Example Run**
+**Example Run** (run from within [out/artifacts/lwwip_stream_monitoring_data_project_jar](https://github.com/dormantleopard7/lwwip-stream-monitoring-data-project/blob/master/out/artifacts/lwwip_stream_monitoring_data_project_jar))
 ```
 C:\Users\Username>cd Desktop
 C:\Users\Username\Desktop>java -jar lwwip-stream-monitoring-data-project.jar
@@ -654,10 +659,14 @@ Menu:
         q to quit
 
 Enter an option (m to see the menu): a
+
+Enter dates in format mm/dd/yy or mm/dd/yyyy.
 Start date (leave blank if want first data date): 1/1/18
+Start date set to 1/1/2018
 End date (leave blank if want today's date): 12/31/2018
+End date set to 12/31/2018
 Site (1 or 2; 0 if want both): 1
-Data type ({1=Turbidity (NTU), 2=Turbidity (m), 3=Air Temp (°C), 4=Water Temp (°C), 5=pH, 6=DO (ppm), 7=Conductivity (?S/cm)}): 3
+Data type {1=Turbidity (NTU), 2=Turbidity (m), 3=Air Temp (°C), 4=Water Temp (°C), 5=pH, 6=DO (ppm), 7=Conductivity (?S/cm)}: 3
 Chosen data type: Air Temp (°C)
 
 Resulting Statistics
@@ -670,38 +679,55 @@ Outliers (based on 3 std devs): []
 Outliers (based on 1.5 IQRs): []
 
 Enter an option (m to see the menu): v
+
+Enter dates in format mm/dd/yy or mm/dd/yyyy.
 Start date (leave blank if want first data date): 1/1/17
+Start date set to 1/1/2017
 End date (leave blank if want today's date): 12/31/17
+End date set to 12/31/2017
 Site (1 or 2; 0 if want both): 2
-Data type ({1=Turbidity (NTU), 2=Turbidity (m), 3=Air Temp (°C), 4=Water Temp (°C), 5=pH, 6=DO (ppm), 7=Conductivity (?S/cm)}): 4
+Data type {1=Turbidity (NTU), 2=Turbidity (m), 3=Air Temp (°C), 4=Water Temp (°C), 5=pH, 6=DO (ppm), 7=Conductivity (?S/cm)}: 4
 Chosen data type: Water Temp (°C)
 (S)catter plot OR (H)istogram: s
-Scatter Plot Generated!
+
+Scatter Plot Generated! See new open window for graphics.
 
 Enter an option (m to see the menu): v
+
+Enter dates in format mm/dd/yy or mm/dd/yyyy.
 Start date (leave blank if want first data date): 1/1/16
+Start date set to 1/1/2016
 End date (leave blank if want today's date): 12/31/16
+End date set to 12/31/2016
 Site (1 or 2; 0 if want both): 0
-Data type ({1=Turbidity (NTU), 2=Turbidity (m), 3=Air Temp (°C), 4=Water Temp (°C), 5=pH, 6=DO (ppm), 7=Conductivity (?S/cm)}): 5
+Data type {1=Turbidity (NTU), 2=Turbidity (m), 3=Air Temp (°C), 4=Water Temp (°C), 5=pH, 6=DO (ppm), 7=Conductivity (?S/cm)}: 5
 Chosen data type: pH
-(S)catter plot OR (H)istogram: h
+(S)catter plot OR (H)istogram: H
+Bucket Size means the range of values contained within one bar of the histogram.
 Bucket Size (0 for individual counts): 1
+
+Histogram:
 
 [7.00    -    8.00) : *********************************************************************************
 [8.00    -    9.00) : *******
 counts (from 7.00 to 9.00): [81, 7]
-Histogram Generated!
+Histogram generated! See new open window for graphics.
 
 Enter an option (m to see the menu): v
+
+Enter dates in format mm/dd/yy or mm/dd/yyyy.
 Start date (leave blank if want first data date):
 Start date set to 1/14/2006
 End date (leave blank if want today's date):
-End date set to 6/22/2019
+End date set to 7/5/2019
 Site (1 or 2; 0 if want both): 0
-Data type ({1=Turbidity (NTU), 2=Turbidity (m), 3=Air Temp (°C), 4=Water Temp (°C), 5=pH, 6=DO (ppm), 7=Conductivity (?S/cm)}): 7
+Data type {1=Turbidity (NTU), 2=Turbidity (m), 3=Air Temp (°C), 4=Water Temp (°C), 5=pH, 6=DO (ppm), 7=Conductivity (?S/cm)}: 7
 Chosen data type: Conductivity (?S/cm)
 (S)catter plot OR (H)istogram: h
+Bucket Size means the range of values contained within one bar of the histogram.
 Bucket Size (0 for individual counts): 10.0
+
+Histogram:
 
 [80.00   -   90.00) : *
 [90.00   -  100.00) :
@@ -728,9 +754,10 @@ Bucket Size (0 for individual counts): 10.0
 [300.00  -  310.00) :
 [310.00  -  320.00) : *
 counts (from 80.00 to 320.00): [1, 0, 2, 1, 7, 15, 9, 2, 7, 5, 7, 4, 7, 2, 4, 3, 8, 0, 0, 1, 2, 1, 0, 1]
-Histogram Generated!
+Histogram generated! See new open window for graphics.
 
 Enter an option (m to see the menu): m
+
 Menu:
         w to write cleaned data to file
         a to analyze data statistically
@@ -739,11 +766,14 @@ Menu:
 
 Enter an option (m to see the menu): q
 
+
 C:\Users\Username\Desktop>
 ```
 Note: For visualization, graphical charts are
 generated and will open in a new window, where the user
-can zoom in and out, and save the image as a .png.
+can zoom in and out, and save the image as a .png,
+as explained in the **Visualize (v)** section of
+**Description** above.
 
 Note: When it shows `Conductivity (?S/cm)`, this is
 simply because Command Prompt does not recognize the
@@ -755,6 +785,7 @@ Contact me if you have any issues or questions.
 
 ## Authors and acknowledgement
 This project was inspired by Eli Arao, but I am the sole author
-of the project. That is, with the exception of DrawingPanel.java,
-which was written by Stuart Reges and Marty Stepp, and provided
+of this project. That is, with the exception of 
+[DrawingPanel.java](https://github.com/dormantleopard7/lwwip-stream-monitoring-data-project/blob/master/src/main/DrawingPanel.java),
+which was written by Professors Stuart Reges and Marty Stepp, and provided
 much of what was necessary for the graphics in this project to work.
