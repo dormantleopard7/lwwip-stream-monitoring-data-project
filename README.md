@@ -511,7 +511,7 @@ to get the Java Development Kit (JDK) on your machine.
 This is necessary for running the program.
         * Note: You
     may already have Java downloaded on your computer (e.g. 
-    bsd laptops already have Java). If this is the case, you
+    school laptops already have Java). If this is the case, you
     may skip this step, but still make sure to verify the installation
     as instructed below.
     * IMPORTANT: Make sure to follow the instructions
@@ -781,11 +781,24 @@ simply because Command Prompt does not recognize the
 
 ## Support
 
-Contact me if you have any issues or questions.
+Additional information regarding the project can
+be found in [ProjectPresentation.pptx](https://github.com/dormantleopard7/lwwip-stream-monitoring-data-project/blob/master/ProjectPresentation.pptx),
+which is the slide deck from my 3rd Year Project Presentation.
+It includes motivations for the project, the process
+I took, an overview of the functionality (basically a
+less-detailed version of the **Description** above),
+many charts regarding our data (and what they might mean),
+and more.
+
+Please contact me if you have any issues or questions.
 
 ## Authors and acknowledgement
-This project was inspired by Eli Arao, but I am the sole author
-of this project. That is, with the exception of 
+Almost all of the code for this project was written by me.
+The exception is 
 [DrawingPanel.java](https://github.com/dormantleopard7/lwwip-stream-monitoring-data-project/blob/master/src/main/DrawingPanel.java),
 which was written by Professors Stuart Reges and Marty Stepp, and provided
 much of what was necessary for the graphics in this project to work.
+I would also like to thank Eli Arao for inspiring the
+project, Ian Schooley and Lisa Keith for supervising
+the project, and Laura Dean for offering a UX designer's
+perspective on the project and its possibilities.
