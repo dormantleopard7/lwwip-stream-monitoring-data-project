@@ -5,8 +5,21 @@ Internship Program (LWWIP), I chose to do a technical project,
 particularly analyzing and visualizing our stream monitoring 
 data.
 
+Additional information (other than this file) regarding the project can
+be found in [ProjectPresentation.pptx](https://github.com/dormantleopard7/lwwip-stream-monitoring-data-project/blob/master/ProjectPresentation.pptx),
+which is the slide deck from my 3rd Year Project Presentation.
+It includes motivations for the project, 
+an overview of the functionality (basically a
+less-detailed version of the **Description** below),
+many charts regarding our data (and what they might mean),
+and more.
+
 Note: This project began in November 2018, and was 
 added to GitHub in March 2019.
+
+Note that at some points in this file, you may have
+to scroll all the way to the right within a `code box`
+to see all of the input/output.
 
 ## Description
 
@@ -21,9 +34,8 @@ Menu:
         q to quit
 ```
 
-Note: **Analyze** and **Visualize** are complements to each
-other, in that looking at a particular data set using both
-options will give you the most information about the data.
+Note that you can also see the menu by typing **m**
+when asked `Enter an option (m to see the menu): `.
 
 ### Write (w)
 
@@ -37,14 +49,15 @@ Done! Output file data_3-2019.tsv created.
 This feature cleans the data, including standardizing
 the units, and prints the contents to a new output file,
 named by the user. This output file is created in the same
-directory as the .jar file.
+directory as the .jar file (see **Installation**).
 
 Note: This output file is not the same format as
 the input file, so use this feature carefully.
 For instance, some data is printed in the format
-of Java's MultiValuedMap. See 
-[out/artifacts/lwwip_stream_monitoring_data_project_jar/data_3-2019.tsv](https://github.com/dormantleopard7/lwwip-stream-monitoring-data-project/blob/master/out/artifacts/lwwip_stream_monitoring_data_project_jar/data_3-2019.tsv).
-for a sample generated output file.
+of a Java MultiValuedMap. See 
+[out/artifacts/lwwip_stream_monitoring_data_project_jar/data_3-2019.tsv](https://github.com/dormantleopard7/lwwip-stream-monitoring-data-project/blob/master/out/artifacts/lwwip_stream_monitoring_data_project_jar/data_3-2019.tsv)
+for a sample generated output file. All the `null`'s
+simply mean that there was no data for a particular cell.
 
 ### Analyze (a)
 
@@ -97,7 +110,7 @@ As always, it is best to make sure the date range is valid
 to avoid breaking the program or producing weird results.
 If a date is invalid, it will prompt something like
 `Invalid date, try again. Start date (leave blank if want first data date): `
-until a valid date is entered.
+ until a valid date is entered.
 If a range is invalid (i.e. the start date is after the end date,
 or the date range contains no data), this will be identified
 later in the program, when output is to be produced.
@@ -110,11 +123,12 @@ Site (1 or 2; 0 if want both): 1
 
 We have two sites at Coal Creek, 1 and 2, so enter one of
 these based on the site you want. If you want to look at
-Coal Creek as a whole, and thus want both sites' data,
+Coal Creek as a whole, and thus want both sites' data
+(including data from days when the Site was not recorded),
 enter 0. If anything other than the numbers 0, 1 or 2
 is entered, it will prompt 
 `Invalid site number, try again. Enter 1, 2, or 0: `
-until a valid site number is entered.
+ until a valid site number is entered.
 
 ##### Data Type
 
@@ -128,7 +142,7 @@ are numbered 1 to 7 (note that 1 and 2 are both turbidity,
 but with different units). If anything other than a number
 between 1 and 7, inclusive, is entered, it will prompt
 `Invalid data type, try again. Enter a number from 1 to 7: `
-until a valid data type is entered.
+ until a valid data type is entered.
 
 #### Resulting Statistics
 
@@ -166,7 +180,7 @@ rather than printing all values, it prints
 ##### Box-Plot Statistics
 I call these box-plot statistics because they are the five
 points needed to create a box-and-whiskers plot.
-These are: the minimum, the first quartile (Q1, the data value
+These are: the minimum value, the first quartile (Q1, the data value
 below which approx. 25% of the data lies), the median
 (the middle value, a.k.a. the second quartile), the third
 quartile (Q3, below which is 75% of the data), and the maximum.
@@ -176,9 +190,10 @@ There are many ways to calculate outliers, and I have
 provided two. The first is based on the standard deviation;
 as discussed above, in a normal curve, 99.7% of the data lies
 within 3 SDs of the mean, so anything outside of that can be
-considered an outlier. The second is based on the Inter-quartile
+considered an outlier. The second is based on the Inter-Quartile
 Range (IQR), which is the difference between Q1 and Q3; any
-data that lies below of 1.5 IQR from Q1 or above 1.5 IQR from Q3
+data that lies below 1.5 IQR from Q1 (< Q1 - 1.5 * IQR) 
+or above 1.5 IQR from Q3 (> Q3 + 1.5 * IQR)
 can be considered an outlier.
 
 Note: Often, the two measures of outliers will produce different
@@ -189,89 +204,8 @@ given regarding the SD and IQR.
 
 ### Visualize (v)
 
-```
-Enter an option (m to see the menu): v
-
-Enter dates in format mm/dd/yy or mm/dd/yyyy.
-Start date (leave blank if want first data date): 1/1/17
-Start date set to 1/1/2017
-End date (leave blank if want today's date): 12/31/17
-End date set to 12/31/2017
-Site (1 or 2; 0 if want both): 2
-Data type {1=Turbidity (NTU), 2=Turbidity (m), 3=Air Temp (°C), 4=Water Temp (°C), 5=pH, 6=DO (ppm), 7=Conductivity (μS/cm)}: 4
-Chosen data type: Water Temp (°C)
-(S)catter plot OR (H)istogram: s
-
-Scatter Plot Generated! See new open window for graphics.
-
-Enter an option (m to see the menu): v
-
-Enter dates in format mm/dd/yy or mm/dd/yyyy.
-Start date (leave blank if want first data date): 1/1/16
-Start date set to 1/1/2016
-End date (leave blank if want today's date): 12/31/16
-End date set to 12/31/2016
-Site (1 or 2; 0 if want both): 0
-Data type {1=Turbidity (NTU), 2=Turbidity (m), 3=Air Temp (°C), 4=Water Temp (°C), 5=pH, 6=DO (ppm), 7=Conductivity (μS/cm)}: 5
-Chosen data type: pH
-(S)catter plot OR (H)istogram: h
-Bucket Size means the range of values contained within one bar of the histogram.
-Bucket Size (0 for individual counts): 0
-
-Printing individual counts (no graphics window).
-
-7.00   : ***********
-7.20   : *
-7.25   : *****
-7.40   : *
-7.50   : **********************************************************
-7.75   : *****
-8.00   : ****
-8.50   : ***
-
-Enter an option (m to see the menu): v
-
-Enter dates in format mm/dd/yy or mm/dd/yyyy.
-Start date (leave blank if want first data date): 
-Start date set to 1/14/2006
-End date (leave blank if want today's date): 
-End date set to 6/30/2019
-Site (1 or 2; 0 if want both): 0
-Data type {1=Turbidity (NTU), 2=Turbidity (m), 3=Air Temp (°C), 4=Water Temp (°C), 5=pH, 6=DO (ppm), 7=Conductivity (μS/cm)}: 7
-Chosen data type: Conductivity (μS/cm)
-(S)catter plot OR (H)istogram: h
-Bucket Size means the range of values contained within one bar of the histogram.
-Bucket Size (0 for individual counts): 10.0
-
-Histogram:
-
-[80.00   -   90.00) : *
-[90.00   -  100.00) : 
-[100.00  -  110.00) : **
-[110.00  -  120.00) : *
-[120.00  -  130.00) : *******
-[130.00  -  140.00) : ***************
-[140.00  -  150.00) : *********
-[150.00  -  160.00) : **
-[160.00  -  170.00) : *******
-[170.00  -  180.00) : *****
-[180.00  -  190.00) : *******
-[190.00  -  200.00) : ****
-[200.00  -  210.00) : *******
-[210.00  -  220.00) : **
-[220.00  -  230.00) : ****
-[230.00  -  240.00) : ***
-[240.00  -  250.00) : ********
-[250.00  -  260.00) : 
-[260.00  -  270.00) : 
-[270.00  -  280.00) : *
-[280.00  -  290.00) : **
-[290.00  -  300.00) : *
-[300.00  -  310.00) : 
-[310.00  -  320.00) : *
-counts (from 80.00 to 320.00): [1, 0, 2, 1, 7, 15, 9, 2, 7, 5, 7, 4, 7, 2, 4, 3, 8, 0, 0, 1, 2, 1, 0, 1]
-Histogram generated! See new open window for graphics.
-```
+Visualization includes a graphical more-detailed scatter plot,
+as well as a histogram, both text-based and graphical.
 
 #### Data Options
 
@@ -324,8 +258,10 @@ the start and end date are marked, to scale.
 ##### The Graphics Window
 The image is generated and shown in a new graphics window
 (whose icon is the Java logo). Under *File*, the useful
-feature is *Save As...*. Under *View*, you can zoom in and
-out, and you can click grid lines if it helps read the
+feature is *Save As...*, through which you can save the
+graph as a .png or .gif file. 
+Under *View*, you can *Zoom* in and
+out, and you can click *Grid Lines* if it helps read the
 graph better.
 
 #### Histogram
@@ -380,6 +316,7 @@ Histogram generated! See new open window for graphics.
 The options required from the user to generate a histogram
 are the same as for analysis and for scatter plot, with the
 addition of *bucket size*.
+A text and graphical histogram are generated.
 
 ##### Bucket Size
 Bucket size means the range of data values contained within
@@ -389,7 +326,7 @@ range of 10.0; i.e. 80 to 90, 90 to 100, 100 to 110, etc.
 If an invalid bucket size is entered, or the bucket size
 entered is too low, it will prompt
 `Invalid bucket size; make sure it is a number above 1.0E-4. Bucket Size (0 for individual counts): `
-until a valid bucket size is entered. It is advised that 
+ until a valid bucket size is entered. It is advised that 
 the bucket size be well over 0.0001 (it should really never
 be lower than 0.5, unless it's 0 for individual counts -- see below).
 
@@ -455,7 +392,7 @@ is continuous. The higher the bar is, the more data
 points there are within that bar, to scale.
 
 ###### Average line (green)
-This is a thing green line in the middle of the
+This is a thin green line in the middle of the
 histogram, indicating the mean data value. This
 helps spot outliers and any discrepancies between
 the mean and mode (highest bar).
@@ -472,7 +409,7 @@ See above under **Scatter Plot** for the functionalities
 of the graphics window.
 
 ### Quit (q)
-This is pretty self-explanatory, but this ends the program.
+This is pretty self-explanatory: it ends the program.
 Note that for this to work, all of the open graphics windows
 (with the scatter plots and histograms and such) must be closed.
 Otherwise, press *Ctrl-C* in Command Prompt at any point
@@ -497,9 +434,9 @@ computer.
 
 NOTE: These instructions are mainly meant for Windows,
 though usage instructions for Mac or Linux should be quite 
-similar (e.g. using terminal instead of Command Prompt).
+similar (e.g. using Terminal instead of Command Prompt).
 
-NOTE: These instructions are meant for anyone to run
+NOTE: These instructions are meant for anyone to *run*
 the program. They are not meant for development purposes.
 If you would like to work on the code (say, to expand on
 it as part of your LWWIP project), please contact me.
@@ -513,11 +450,12 @@ This is necessary for running the program.
     may already have Java downloaded on your computer (e.g. 
     school laptops already have Java). If this is the case, you
     may skip this step, but still make sure to verify the installation
-    as instructed below.
+    as instructed below, so that you can successfully run the
+    `java` command from Command Prompt.
     * IMPORTANT: Make sure to follow the instructions
     to verify  the installation at the bottom of the
     above linked page, under *Installing the JDK > Windows*,
-    where it checks the `java -version`. If it claims 
+    where it checks the `java -version`. If your machine claims 
     that `'java' is not recognized as an internal or external command`, 
     then there is the extra step of setting up the Java
     Path Variable:
@@ -543,14 +481,15 @@ This is necessary for running the program.
         Once done, click *OK* then *OK* then exit out of
         Control Panel.
         * Now verify that the installation worked again,
-        using the same `cmd /K java -version` from *Run*.
-        This is mainly to check that the `java` command
+        using the same `cmd /K java -version` from *Run*
+        (*Windows-R*).
+        This entire process is mainly to check that the `java` command
         works at Command Prompt.
 2. **Download the program.** 
     * Navigate to 
-[out/artifacts/lwwip_stream_monitoring_data_project_jar/lwwip-stream-monitoring-data-project.jar](https://github.com/dormantleopard7/lwwip-stream-monitoring-data-project/blob/master/out/artifacts/lwwip_stream_monitoring_data_project_jar/lwwip-stream-monitoring-data-project.jar)
-within the project structure here. Click *Download*.
-    * Note: It is advised that you store this file in an
+[out/artifacts/lwwip_stream_monitoring_data_project_jar/lwwip-stream-monitoring-data-project.jar](https://github.com/dormantleopard7/lwwip-stream-monitoring-data-project/blob/master/out/artifacts/lwwip_stream_monitoring_data_project_jar/lwwip-stream-monitoring-data-project.jar). 
+Click *Download*.
+    * Note: It is advised that you save this file in an
 easy-to-access directory like Desktop, Downloads, or 
 Documents, as it will make a later step (5) easier.
 3. **Download the raw data.** 
@@ -581,14 +520,15 @@ download/use (for free) a more sophisticated text editor like
 This means that the new first line of the file should 
 contain data (in the case of our data, this new first
 line begins with 5/12/2006). 
-        * You can find a sample ready data file in
+        * You can find a sample ready data file (i.e. without
+        the headers) in
 [out/artifacts/lwwip_stream_monitoring_data_project_jar/coal_creek_data_3-2019.tsv](https://github.com/dormantleopard7/lwwip-stream-monitoring-data-project/blob/master/out/artifacts/lwwip_stream_monitoring_data_project_jar/coal_creek_data_3-2019.tsv).
         * Note: In text editors without line numbers,
 like Notepad, it might be hard to figure out when the
 first line ends. For our data, the first line (which we
 want to delete) begins with *Date* and ends with *Notes*.
 Make sure that you completely delete this first line --
-this means that there should not be a blank line in its
+this means that there should *not* be a blank line in its
 place; instead the first line must be a line with data.
 5. **Run the program.**
     * To do this, you need to open a Command Prompt (or Terminal)
@@ -633,17 +573,19 @@ visualize the data!
             exactly as it is.
         * Note: For info on how to end/restart the program,
             see above in **Description**, under **Quit**.
+            For a full run of the program from Command Prompt,
+            see below in **Usage**.
     * Note: You may put the .tsv file 
 in a different location than the .jar file, though it
 requires a bit more work: When prompted for the
-file name, enter the path to the file, either from
+file name, enter the *path* to the file, either from
 the root (from `C:` down; something like 
 `C:/Users/Username/Desktop/coal_creek_data_3-2019.tsv`), or from the current
 directory (something line `data/coal_creek_data_3-2019.tsv`).
 
 ## Usage
 
-**Example Run** (run from within [out/artifacts/lwwip_stream_monitoring_data_project_jar](https://github.com/dormantleopard7/lwwip-stream-monitoring-data-project/blob/master/out/artifacts/lwwip_stream_monitoring_data_project_jar))
+**Example Run** (was run from within the directory [out/artifacts/lwwip_stream_monitoring_data_project_jar](https://github.com/dormantleopard7/lwwip-stream-monitoring-data-project/blob/master/out/artifacts/lwwip_stream_monitoring_data_project_jar))
 ```
 C:\Users\Username>cd Desktop
 C:\Users\Username\Desktop>java -jar lwwip-stream-monitoring-data-project.jar
@@ -780,20 +722,10 @@ simply because Command Prompt does not recognize the
 μ (mu, for micro) symbol. It is supposed to be `Conductivity (μS/cm)`.
 
 ## Support
-
-Additional information regarding the project can
-be found in [ProjectPresentation.pptx](https://github.com/dormantleopard7/lwwip-stream-monitoring-data-project/blob/master/ProjectPresentation.pptx),
-which is the slide deck from my 3rd Year Project Presentation.
-It includes motivations for the project, the process
-I took, an overview of the functionality (basically a
-less-detailed version of the **Description** above),
-many charts regarding our data (and what they might mean),
-and more.
-
 Please contact me if you have any issues or questions.
 
 ## Authors and acknowledgement
-Almost all of the code for this project was written by me.
+Almost all of the code for this project was written by me 😁.
 The exception is 
 [DrawingPanel.java](https://github.com/dormantleopard7/lwwip-stream-monitoring-data-project/blob/master/src/main/DrawingPanel.java),
 which was written by Professors Stuart Reges and Marty Stepp, and provided
@@ -801,4 +733,4 @@ much of what was necessary for the graphics in this project to work.
 I would also like to thank Eli Arao for inspiring the
 project, Ian Schooley and Lisa Keith for supervising
 the project, and Laura Dean for offering a UX designer's
-perspective on the project and its possibilities.
+perspective on the project and its possibilities throughout.
