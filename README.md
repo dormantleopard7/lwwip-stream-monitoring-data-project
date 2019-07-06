@@ -282,42 +282,13 @@ Chosen data type: Conductivity (μS/cm)
 Bucket Size means the range of values contained within one bar of the histogram.
 Bucket Size (0 for individual counts): 10.0
 
-Histogram:
-
-[80.00   -   90.00) : *
-[90.00   -  100.00) : 
-[100.00  -  110.00) : **
-[110.00  -  120.00) : *
-[120.00  -  130.00) : *******
-[130.00  -  140.00) : ***************
-[140.00  -  150.00) : *********
-[150.00  -  160.00) : **
-[160.00  -  170.00) : *******
-[170.00  -  180.00) : *****
-[180.00  -  190.00) : *******
-[190.00  -  200.00) : ****
-[200.00  -  210.00) : *******
-[210.00  -  220.00) : **
-[220.00  -  230.00) : ****
-[230.00  -  240.00) : ***
-[240.00  -  250.00) : ********
-[250.00  -  260.00) : 
-[260.00  -  270.00) : 
-[270.00  -  280.00) : *
-[280.00  -  290.00) : **
-[290.00  -  300.00) : *
-[300.00  -  310.00) : 
-[310.00  -  320.00) : *
-counts (from 80.00 to 320.00): [1, 0, 2, 1, 7, 15, 9, 2, 7, 5, 7, 4, 7, 2, 4, 3, 8, 0, 0, 1, 2, 1, 0, 1]
-Histogram generated! See new open window for graphics.
 ```
-
-![out/artifacts/lwwip_stream_monitoring_data_project_jar/alltime_bothsites_conductivity_hist.png](out/artifacts/lwwip_stream_monitoring_data_project_jar/alltime_bothsites_conductivity_hist.png)
 
 The options required from the user to generate a histogram
 are the same as for analysis and for scatter plot, with the
-addition of [*bucket size*][bucket size].
-A text and graphical histogram are generated.
+addition of [bucket size][bucket size].
+A [text histogram][Text Histogram] and [graphical histogram][Graphical Histogram] 
+are generated (not shown above).
 
 ##### Bucket Size
 Bucket size means the range of data values contained within
@@ -366,6 +337,38 @@ which prints a horizontal histogram (made of asterisks;
 see [**Text Histogram**][Text Histogram] below).
 
 ##### Text Histogram
+
+```
+Histogram:
+
+[80.00   -   90.00) : *
+[90.00   -  100.00) : 
+[100.00  -  110.00) : **
+[110.00  -  120.00) : *
+[120.00  -  130.00) : *******
+[130.00  -  140.00) : ***************
+[140.00  -  150.00) : *********
+[150.00  -  160.00) : **
+[160.00  -  170.00) : *******
+[170.00  -  180.00) : *****
+[180.00  -  190.00) : *******
+[190.00  -  200.00) : ****
+[200.00  -  210.00) : *******
+[210.00  -  220.00) : **
+[220.00  -  230.00) : ****
+[230.00  -  240.00) : ***
+[240.00  -  250.00) : ********
+[250.00  -  260.00) : 
+[260.00  -  270.00) : 
+[270.00  -  280.00) : *
+[280.00  -  290.00) : **
+[290.00  -  300.00) : *
+[300.00  -  310.00) : 
+[310.00  -  320.00) : *
+counts (from 80.00 to 320.00): [1, 0, 2, 1, 7, 15, 9, 2, 7, 5, 7, 4, 7, 2, 4, 3, 8, 0, 0, 1, 2, 1, 0, 1]
+Histogram generated! See new open window for graphics.
+```
+
 A text histogram is always generated and printed out to
 the same console that the user interacts with. It consists
 of horizontal "bars" made of asterisks, where each asterisk
@@ -382,6 +385,9 @@ exclusive at the end of a range (so a bucket is really
 80.0000 to 89.9999, 90.0000 to 99.9999, etc.).
 
 ##### Graphical Histogram
+
+![out/artifacts/lwwip_stream_monitoring_data_project_jar/alltime_bothsites_conductivity_hist.png](out/artifacts/lwwip_stream_monitoring_data_project_jar/alltime_bothsites_conductivity_hist.png)
+
 
 A graphical histogram is also generated, and shown in a
 new window.
@@ -750,5 +756,6 @@ perspective on the project and its possibilities throughout.
 [bucket size]: https://github.com/dormantleopard7/lwwip-stream-monitoring-data-project#bucket-size
 [individual counts]: https://github.com/dormantleopard7/lwwip-stream-monitoring-data-project#individual-counts
 [Text Histogram]: https://github.com/dormantleopard7/lwwip-stream-monitoring-data-project#text-histogram
+[Graphical Histogram]: https://github.com/dormantleopard7/lwwip-stream-monitoring-data-project#graphical-histogram
 [Quit]: https://github.com/dormantleopard7/lwwip-stream-monitoring-data-project#quit-q
 [Usage]: https://github.com/dormantleopard7/lwwip-stream-monitoring-data-project#usage
