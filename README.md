@@ -10,16 +10,16 @@ be found in [ProjectPresentation.pptx](https://github.com/dormantleopard7/lwwip-
 which is the slide deck from my 3rd Year Project Presentation.
 It includes motivations for the project, 
 an overview of the functionality (basically a
-less-detailed version of the **Description** below),
+less-detailed version of the [**Description**][Description] below),
 many charts regarding our data (and what they might mean),
 and more.
-
-Note: This project began in November 2018, and was 
-added to GitHub in March 2019.
 
 Note that at some points in this file, you may have
 to scroll all the way to the right within a `code box`
 to see all of the input/output.
+
+Note: This project began in November 2018, and was 
+added to GitHub in March 2019.
 
 ## Description
 
@@ -49,7 +49,7 @@ Done! Output file data_3-2019.tsv created.
 This feature cleans the data, including standardizing
 the units, and prints the contents to a new output file,
 named by the user. This output file is created in the same
-directory as the .jar file (see **Installation**).
+directory as the .jar file (see [**Installation**][Installation]).
 
 Note: This output file is not the same format as
 the input file, so use this feature carefully.
@@ -209,7 +209,8 @@ as well as a histogram, both text-based and graphical.
 
 #### Data Options
 
-These are the same as the **Data Options** under **Analyze** above.
+These are the same as the [**Data Options**][Data Options] 
+under [**Analyze**][Analyze] above.
 
 #### Scatter Plot
 
@@ -315,7 +316,7 @@ Histogram generated! See new open window for graphics.
 
 The options required from the user to generate a histogram
 are the same as for analysis and for scatter plot, with the
-addition of *bucket size*.
+addition of [*bucket size*][bucket size].
 A text and graphical histogram are generated.
 
 ##### Bucket Size
@@ -328,7 +329,8 @@ entered is too low, it will prompt
 `Invalid bucket size; make sure it is a number above 1.0E-4. Bucket Size (0 for individual counts): `
  until a valid bucket size is entered. It is advised that 
 the bucket size be well over 0.0001 (it should really never
-be lower than 0.5, unless it's 0 for individual counts -- see below).
+be lower than 0.5, unless it's 0 for [individual counts][individual counts]
+ -- see below).
 
 ###### Individual Counts
 
@@ -361,7 +363,7 @@ Printing individual counts (no graphics window).
 
 A bucket size of 0 is interpreted as individual counts,
 which prints a horizontal histogram (made of asterisks;
-see **Text Histogram** below).
+see [**Text Histogram**][Text Histogram] below).
 
 ##### Text Histogram
 A text histogram is always generated and printed out to
@@ -384,7 +386,7 @@ exclusive at the end of a range (so a bucket is really
 A graphical histogram is also generated, and shown in a
 new window.
 
-###### Bars(blue)
+###### Bars (blue)
 These are just like normal bars in a histogram. The
 bars are right next to each other (without space in
 between) because this is a histogram, and all the data
@@ -405,7 +407,8 @@ marked with the beginning of the lowest bucket and
 the end of the highest bucket, to scale.
 
 ##### The Graphics Window
-See above under **Scatter Plot** for the functionalities
+See [**The Graphics Window**][graphics window] 
+above under [**Scatter Plot**][Scatter Plot] for the functionalities
 of the graphics window.
 
 ### Quit (q)
@@ -419,9 +422,9 @@ running again, you can use the
 Tip: Use the up arrow on your keyboard to see/run past commands
 run in Command Prompt.
 
-NOTE: A full run of the program can be found below in **Usage**.
+NOTE: A full run of the program can be found below in [**Usage**][Usage].
 More information about running the program can be found below
-in **Installation**, especially in step 5.
+in [**Installation**][Installation], especially in step 5.
 
 ## Installation
 
@@ -572,9 +575,10 @@ visualize the data!
             program. Make sure to enter the file name/path
             exactly as it is.
         * Note: For info on how to end/restart the program,
-            see above in **Description**, under **Quit**.
+            see above in [**Description**][Description], 
+            under [**Quit**][Quit].
             For a full run of the program from Command Prompt,
-            see below in **Usage**.
+            see below in [**Usage**][Usage].
     * Note: You may put the .tsv file 
 in a different location than the .jar file, though it
 requires a bit more work: When prompted for the
@@ -714,8 +718,9 @@ C:\Users\Username\Desktop>
 Note: For visualization, graphical charts are
 generated and will open in a new window, where the user
 can zoom in and out, and save the image as a .png,
-as explained in the **Visualize (v)** section of
-**Description** above.
+as explained in the [**Graphics Window**][graphics window]
+section of [**Visualize**][Visualize] under
+[**Description**][Description] above.
 
 Note: When it shows `Conductivity (?S/cm)`, this is
 simply because Command Prompt does not recognize the
@@ -734,3 +739,16 @@ I would also like to thank Eli Arao for inspiring the
 project, Ian Schooley and Lisa Keith for supervising
 the project, and Laura Dean for offering a UX designer's
 perspective on the project and its possibilities throughout.
+
+[Description]: https://github.com/dormantleopard7/lwwip-stream-monitoring-data-project#description
+[Installation]: https://github.com/dormantleopard7/lwwip-stream-monitoring-data-project#installation
+[Analyze]: https://github.com/dormantleopard7/lwwip-stream-monitoring-data-project#analyze-a
+[Data Options]: https://github.com/dormantleopard7/lwwip-stream-monitoring-data-project#data-options
+[Visualize]: https://github.com/dormantleopard7/lwwip-stream-monitoring-data-project#visualize-v
+[Scatter Plot]: https://github.com/dormantleopard7/lwwip-stream-monitoring-data-project#scatter-plot
+[Graphics Window]: https://github.com/dormantleopard7/lwwip-stream-monitoring-data-project#the-graphics-window
+[bucket size]: https://github.com/dormantleopard7/lwwip-stream-monitoring-data-project#bucket-size
+[individual counts]: https://github.com/dormantleopard7/lwwip-stream-monitoring-data-project#individual-counts
+[Text Histogram]: https://github.com/dormantleopard7/lwwip-stream-monitoring-data-project#text-histogram
+[Quit]: https://github.com/dormantleopard7/lwwip-stream-monitoring-data-project#quit-q
+[Usage]: https://github.com/dormantleopard7/lwwip-stream-monitoring-data-project#usage
