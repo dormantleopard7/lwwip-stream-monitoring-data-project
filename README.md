@@ -450,7 +450,7 @@ the program. They are not meant for development purposes.
 If you would like to work on the code (say, to expand on
 it as part of your LWWIP project), please contact me.
 
-1. **Download Java.** 
+1. **Install Java.** 
     * Follow the instructions 
 [here](https://courses.cs.washington.edu/courses/cse142/17au/software/jdk.html)
 to get the Java Development Kit (JDK) on your machine.
