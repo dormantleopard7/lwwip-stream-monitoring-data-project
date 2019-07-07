@@ -19,7 +19,7 @@ to scroll all the way to the right within a `code box`
 to see all of the input/output.
 
 Note: This project began in November 2018, and was 
-added to GitHub in March 2019.
+added to GitHub in March 2019. The repository was made publicly visible in July 2019.
 
 ## Description
 
