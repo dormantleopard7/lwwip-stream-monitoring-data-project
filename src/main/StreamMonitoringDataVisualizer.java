@@ -1,6 +1,7 @@
 package main;
 
 import org.apache.commons.collections4.MultiValuedMap;
+import org.apache.commons.collections4.multimap.ArrayListValuedHashMap;
 
 import java.awt.*;
 import java.util.*;
@@ -277,18 +278,26 @@ public class StreamMonitoringDataVisualizer {
         List<int[]> averageCoords = new ArrayList<>();
         Date currDate = streamData.get(startIndex).getDate(); //startDate;
         List<Double> currVals = new ArrayList<>();
-        for (int i = startIndex; i < streamData.size(); i++) {
-            StreamMonitoringData data = streamData.get(i);
-            Date date = data.getDate();
-            if (date.compareTo(endDate) > 0) {
-                break;
+        for (int i = startIndex; i <= streamData.size(); i++) {
+            Date date;
+            MultiValuedMap<Integer, Double> dataTypes;
+            if (i < streamData.size()) {
+                StreamMonitoringData data = streamData.get(i);
+                date = data.getDate();
+                if (date.compareTo(endDate) > 0) {
+                    i = streamData.size() - 1;
+                    continue;
+                }
+                dataTypes = StreamMonitoringDataModel.getDataTypes(dataType, site, data);
+            } else { // i == streamData.size(): special case to process last date, data
+                date = null;
+                dataTypes = new ArrayListValuedHashMap<>();
             }
-            MultiValuedMap<Integer, Double> dataTypes = StreamMonitoringDataModel.getDataTypes(dataType, site, data);
             if (dataTypes != null) {
                 Collection<Double> vals = dataTypes.values();
                 vals.removeIf(Objects::isNull);
 
-                if (!date.equals(currDate)) {
+                if (date == null || !date.equals(currDate)) {
                     // plot currDate's points first
                     Collections.sort(currVals);
                     g.setColor(Color.BLUE);
