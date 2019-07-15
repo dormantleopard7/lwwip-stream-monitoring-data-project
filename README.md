@@ -14,7 +14,11 @@ less-detailed version of the [**Description**][Description] below),
 many charts regarding our data (and what they might mean),
 and more.
 
-Note that at some points in this file, you may have
+Note: It is advised that you open links in this file in a new tab in
+order to be able to continue to read the instructions/descriptions
+here.
+
+Note: At some points in this file, you may have
 to scroll all the way to the right within a `code box`
 to see all of the input/output.
 
@@ -525,7 +529,7 @@ a text editor (right click on the file, Open with...)
 Windows, works fine, but if you would like, you may
 download/use (for free) a more sophisticated text editor like 
 [Sublime Text](https://www.sublimetext.com/).
-    * Delete the first line (the headers line) completely.
+    * Delete the first line (the headers line) COMPLETELY.
 This means that the new first line of the file should 
 contain data (in the case of our data, this new first
 line begins with 5/12/2006). 
@@ -536,9 +540,11 @@ line begins with 5/12/2006).
 like Notepad, it might be hard to figure out when the
 first line ends. For our data, the first line (which we
 want to delete) begins with *Date* and ends with *Notes*.
-Make sure that you completely delete this first line --
+Make sure that you *completely delete* this first line --
 this means that there should *not* be a blank line in its
 place; instead the first line must be a line with data.
+            * Hit *backspace* from the first (non-blank) data 
+            line to delete the prior (blank) line(s).
 5. **Run the program.**
     * To do this, you need to open a Command Prompt (or Terminal)
 window. You can do this by holding down the *Windows* key
@@ -556,7 +562,9 @@ current directory).
 go into the wrong directory, you can type `cd ..` to go
 back up one directory. 
                 * Also, fun fact: you can press
-*tab* to auto-complete a directory or file in cmd. 
+*tab* to auto-complete a directory or file in cmd. If it 
+auto-completes incorrectly (to the wrong file/folder),
+just hit *tab* again until the desired file/folder shows up.
             * If you
 would like more help with Command Prompt, there are
 numerous basic online tutorials like 
@@ -569,7 +577,7 @@ but it still only requires `dir` and `cd`.
 `java -jar lwwip-stream-monitoring-data-project.jar`
         * Tip: start typing `java -jar lwwip` (basically
         start typing the jar file name), then press *tab* 
-for auto-complete. 
+for auto-complete (see fun fact above). 
         * It should prompt for a file name; 
 enter the name of the .tsv data file (including `.tsv`). 
             * If there are no errors and it displays 
